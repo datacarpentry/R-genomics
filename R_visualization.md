@@ -35,11 +35,16 @@ These statistics desribe how a particular variable is distributed, but we may ha
 
 
 `ddply(dataset, .(categorical_variable), summarise,
+
 mean=mean(variable),
+
 sd=sd(variable),
+
 hi_95=quantile(variable, 0.975),
+
 lo_95=quantile(variable, 0.025))
+
 `
 
-)
+
 
