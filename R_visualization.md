@@ -16,3 +16,6 @@ Resources:
 Assuming use of RStudio and general knowledge of R or completion of [R for first timers](https://github.com/datacarpentry/datacarpentry/tree/master/lessons/R/materials)
 
 
+# First we are going to input data
+
+`dataset<-read.table("file/name/here",sep=...,header=T)
