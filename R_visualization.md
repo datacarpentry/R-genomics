@@ -32,8 +32,9 @@ sd(dataset$variable)
 quantile(dataset$variable, c(0.025,0.975))`
 
 These statistics desribe how a particular variable is distributed, but we may have this variable from several genomes, and we would want to know how the distribution may differ.  To do this we can use the `ddply()` function from the `"plyr"` package.
-`
-ddply(dataset, .(categorical_variable), summarise,
+
+
+`ddply(dataset, .(categorical_variable), summarise,
 mean=mean(variable),
 sd=sd(variable),
 hi_95=quantile(variable, 0.975),
