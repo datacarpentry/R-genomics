@@ -41,7 +41,7 @@ Challenge Questions:
 * Fill in arguments for ggplot() in order to produce a new plot.
 * Correct a mistake in a call to ggplot().
 
-#*The text below is all rough, and much of it is just a start
+*The text below is all rough, and much of it is just a start
 
 First we are going to input data
 
