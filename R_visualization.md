@@ -69,8 +69,9 @@ lo_95=quantile(variable, 0.025))
 
 To start plotting this we will use the ggplot2() package.  We will start with a blank plot and add aesthetic layers to it.  
 
-`ggplot(dataset)  # note the error
+```
+ggplot(dataset)  # note the error
 ggplot(dataset)+geom_boxplot(aes(x=categorical_variable, y= variable))
-`
+```
 
 
