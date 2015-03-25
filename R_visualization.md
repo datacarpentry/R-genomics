@@ -74,4 +74,6 @@ ggplot(dataset)  # note the error
 ggplot(dataset)+geom_boxplot(aes(x=categorical_variable, y= variable))
 ```
 
+With this plot we can see the distributions of data (quantiles and median) categorized by our categorical variable.  While this visualization can show you how your data is distributed (is it skewed?), you can also begin comparing between categorical variables (is my variable greater under one category than another)?
+
 
