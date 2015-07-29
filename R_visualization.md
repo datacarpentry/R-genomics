@@ -94,7 +94,7 @@ library(vegan)
 ```
 These packages include many visualization, statistical, and data management tools that can be used to summarize your data and produce publication-ready plots.
 
-First we will read in the data (this will be at the github repo too), we will remove some nonsenical labels for ease of visualization here.  We will also add a variable that allows us to count up SNPs in the database
+First we will read in the data (journal.pone.0081760.s004.csv), we will remove some nonsenical labels for ease of visualization here.  We will also add a variable that allows us to count up SNPs in the database
 ```
 data<-read.csv("~/Desktop/journal.pone.0081760.s004.csv")
 data<-subset(data, RefGenomeID != "" & locus_tag != "")
@@ -102,15 +102,18 @@ data$count<-1
 
 ```
 
-This dataset displays SNPs among multiple E.coli strains.  We are interested in looking at how many total SNPs there are per E.coli genome.  We will do this using ddply.
+This dataset displays SNPs among multiple E.coli strains.  We are interested in looking at how many total SNPs there are per E.coli genome.  We will do this using ddply.  Here we could calculate multiple descriptive statistics that can be useful when visualizing relationships.  Alternatively, this data can be read in straight from the github repo.
 
 ```
 av_snps<-ddply(dataset_melt, .(RefGenomeID),summarise,
 average=mean(value),
 SD=sd(value)
 )
+
+av_snps<-read.table("https://github.com/datacarpentry/R-genomics/raw/master/Ecoli_genomes_with_SNPs_per_locus_tag.txt",header=T,sep="\t")
+
 ```
-Here we could calculate multiple descriptive statistics that can be useful when visualizing relationships.
+
 Now we will use ggplot to produce visualizations of these data.  These functions work in a step-wise manner, where we add visual layers to our data.
 
 ```
@@ -132,7 +135,7 @@ ggplot(av_snps)+geom_bar(aes(x=reorder(variable,average), y=average),stat="ident
 
 ```
 
-These are hard to see.  We will arrange them, look  at the top 10, and flip the axes so we can read labels
+These are hard to see.  We will arrange them, look at the top 10, and flip the axes so we can read labels.
 
 ```
 av_snps<-arrange(av_snps,-average)
@@ -188,5 +191,5 @@ Now let's look at the first two axes from our NMDS analysis and colour points by
 ggplot(scores)+geom_point(aes(x=NMDS1,y=NMDS2,colour=RefGenomeID))
 ```
 
-This visualization shows where points are in multidimensional space in relation to one another compressed down into a 2D form.  Points that are very close together are very similar while points that are very far apart are dissimilar.
+This visualization shows where points are in multidimensional space in relation to one another compressed down into a 2D form.  Points that are very close together are very similar while points that are very far apart are dissimilar.  These are just a few examples of how you can visualizae univariate, bivariate, and multivariate relationships in data.
 
