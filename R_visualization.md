@@ -105,14 +105,21 @@ data$count<-1
 This dataset displays SNPs among multiple E.coli strains.  We are interested in looking at how many total SNPs there are per E.coli genome.  We will do this using ddply.  Here we could calculate multiple descriptive statistics that can be useful when visualizing relationships.  Alternatively, this data can be read in straight from the github repo.
 
 ```
+dataset<-read.table("https://github.com/datacarpentry/R-genomics/raw/master/Ecoli_genomes_with_SNPs_per_locus_tag.txt",header=T,sep="\t")
+
+```
+We can then convert the data to long form
+```
+dataset_melt<-melt(dataset, id="RefGenomeID")
+```
+We will then create another object that will include information about the average number of SNPs per E.coli genome
+```
 av_snps<-ddply(dataset_melt, .(RefGenomeID),summarise,
 average=mean(value),
 SD=sd(value)
 )
-
-av_snps<-read.table("https://github.com/datacarpentry/R-genomics/raw/master/Ecoli_genomes_with_SNPs_per_locus_tag.txt",header=T,sep="\t")
-
 ```
+
 
 Now we will use ggplot to produce visualizations of these data.  These functions work in a step-wise manner, where we add visual layers to our data.
 
