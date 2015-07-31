@@ -130,7 +130,7 @@ ggplot(av_snps)
 The errror shows that we have no layers in our plot, so lets add bars to show the average number of SNPs per genome.  
 
 ```
-data<-arrange(data, -average)
+av_snps<-arrange(av_snps, -average)
 ggplot(av_snps)+geom_bar(aes(x=variable, y=average),stat="identity")
 
 ```
