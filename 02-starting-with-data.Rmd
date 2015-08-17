@@ -149,7 +149,7 @@ R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 `"male"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, eval=FALSE}
 levels(sex)
 nlevels(sex)
 ```
@@ -159,7 +159,7 @@ to specify the order because it is meaningful (e.g., "low", "medium", "high") or
 it is required by particular type of analysis. Additionally, specifying the
 order of the levels allows to compare levels:
 
-```{r, purl=TRUE, error=TRUE}
+```{r, purl=FALSE, error=TRUE, eval=FALSE}
 expression <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
 levels(expression)
 expression <- factor(expression, levels=c("low", "medium", "high"))

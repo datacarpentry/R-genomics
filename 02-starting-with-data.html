@@ -221,25 +221,17 @@ img {
 <p>Once created, factors can only contain a pre-defined set values, known as <em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order. For instance, if you have a factor with 2 levels:</p>
 <pre class="r"><code>sex &lt;- factor(c(&quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;))</code></pre>
 <p>R will assign <code>1</code> to the level <code>&quot;female&quot;</code> and <code>2</code> to the level <code>&quot;male&quot;</code> (because <code>f</code> comes before <code>m</code>, even though the first element in this vector is <code>&quot;male&quot;</code>). You can check this by using the function <code>levels()</code>, and check the number of levels using <code>nlevels()</code>:</p>
-<pre class="r"><code>levels(sex)</code></pre>
-<pre><code>## [1] &quot;female&quot; &quot;male&quot;</code></pre>
-<pre class="r"><code>nlevels(sex)</code></pre>
-<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>levels(sex)
+nlevels(sex)</code></pre>
 <p>Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., “low”, “medium”, “high”) or it is required by particular type of analysis. Additionally, specifying the order of the levels allows to compare levels:</p>
 <pre class="r"><code>expression &lt;- factor(c(&quot;low&quot;, &quot;high&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;))
-levels(expression)</code></pre>
-<pre><code>## [1] &quot;high&quot;   &quot;low&quot;    &quot;medium&quot;</code></pre>
-<pre class="r"><code>expression &lt;- factor(expression, levels=c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;))
-levels(expression)</code></pre>
-<pre><code>## [1] &quot;low&quot;    &quot;medium&quot; &quot;high&quot;</code></pre>
-<pre class="r"><code>min(expression) ## doesn't work</code></pre>
-<pre><code>## Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c(&quot;low&quot;, : 'min' not meaningful for factors</code></pre>
-<pre class="r"><code>expression &lt;- factor(expression, levels=c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;), ordered=TRUE)
-levels(expression)</code></pre>
-<pre><code>## [1] &quot;low&quot;    &quot;medium&quot; &quot;high&quot;</code></pre>
-<pre class="r"><code>min(expression) ## works!</code></pre>
-<pre><code>## [1] low
-## Levels: low &lt; medium &lt; high</code></pre>
+levels(expression)
+expression &lt;- factor(expression, levels=c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;))
+levels(expression)
+min(expression) ## doesn't work
+expression &lt;- factor(expression, levels=c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;), ordered=TRUE)
+levels(expression)
+min(expression) ## works!</code></pre>
 <p>In R’s memory, these factors are represented by numbers (1, 2, 3). They are better than using simple integer labels because factors are self describing: <code>&quot;low&quot;</code>, <code>&quot;medium&quot;</code>, and <code>&quot;high&quot;</code>&quot; is more descriptive than <code>1</code>, <code>2</code>, <code>3</code>. Which is low? You wouldn’t be able to tell with just integer data. Factors have this information built in. It is particularly helpful when there are many levels (like the species in our example data set).</p>
 <div id="converting-factors" class="section level3">
 <h3>Converting factors</h3>
