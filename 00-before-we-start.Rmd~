@@ -21,18 +21,9 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 ------------
 
-# Presentation of RStudio
-
-Start RStudio -- Let's start by learning about our tool.
-
-* Console, Scripts, Environments, Plots
-* Code and workflow are more reproducible if we can document everything that we
-  do.
-* Our end goal is not just to "do stuff" but to do it in a way that anyone can
-  easily and exactly replicate our workflow and results.
-
 # Before we get started
 
+* Start RStudio (presentation of RStudio -below- should happen here)
 * Under the `File` menu, click on `New project`, choose `New directory`, then
   `Empty project`
 * Enter a name for this new folder, and choose a convenient location for
@@ -49,6 +40,15 @@ Your working directory should now look like this:
 
 ![How it should look like at the beginning of this lesson](img/r_starting_how_it_should_like.png)
 
+# Presentation of RStudio
+
+Let's start by learning about our tool.
+
+* Console, Scripts, Environments, Plots
+* Code and workflow are more reproducible if we can document everything that we
+  do.
+* Our end goal is not just to "do stuff" but to do it in a way that anyone can
+  easily and exactly replicate our workflow and results.
 
 # Interacting with R
 

@@ -202,5 +202,5 @@ Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`) and
 factors (`factor`).
 
-We are now going to use our metadata file ('Ecoli_metadata.csv') to explore the `data.frame` data
+We are now going to use our "surveys" dataset to explore the `data.frame` data
 structure.
