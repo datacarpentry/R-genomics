@@ -5,105 +5,112 @@ author: Data Carpentry contributors
 minutes: 20
 ---
 
-```{r, echo=FALSE, purl=FALSE, message = FALSE}
-source("setup.R")
-```
 
 ------------
 
 > ## Learning Objectives
 >
 > * load external data (CSV files) in memory using the survey table
->  (`surveys.csv`) as an example
+>  (`Ecoli_metadata.csv`) as an example
 > * explore the structure and the content of the data in R
 > * understand what are factors and how to manipulate them
 
 ------------
 
-# Presentation of the Survey Data
+# Presentation of Metadata
 
 ```{r, echo=FALSE, purl=TRUE}
-# Presentation of the survey data
+# Presentation of metadata
 ```
 
 We are studying the species and weight of animals caught in plots in our study
 area. The dataset is stored as a `csv` file: each row holds information for a
-single animal, and the columns represent:
+single animal, 
+
+We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones and the columns represent:
 
 | Column           | Description                        |
 |------------------|------------------------------------|
-| record\_id       | Unique id for the observation      |
-| month            | month of observation               |
-| day              | day of observation                 |
-| year             | year of observation                |
-| plot\_id         | ID of a particular plot            |
-| species\_id      | 2-letter code                      |
-| sex              | sex of animal ("M", "F")           |
-| hindfoot\_length | length of the hindfoot in mm       |
-| weight           | weight of the animal in grams      |
-| genus            | genus of animal                    |
-| specie s         | species of animal                  |
-| taxa             | e.g. Rodent, Reptile, Bird, Rabbit |
-| plot\_type       | type of plot                       |
+| sample           | clone name                         |
+| generation       | generation when sample frozen      |
+| clade            | based on parsimony-based tree      |
+| strain           | ancestral strain                   |
+| cit              | citrate-using mutant status        |
+| run              | Sequence read archive sample ID    |
+| genome_size      | size in Mbp                        |
 
-We are going to use the R function `download.file()` to download the CSV file
-that contains the survey data from figshare, and we will use `read.csv()` to
-load into memory (as a `data.frame`) the content of the CSV file:
+
+
+The data file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
 
 - First, make sure you are in the correct working directory by typing `getwd()`.
-- Second, create a new directory within this working directory called `data`. You
-can do this by clicking on the new folder icon in RStudio under the file tab, or
-by typing `dir.create("data")` at the terminal.
-- Third, download the data:
+- Second, create a new directory within this working directory called `data`
+- Third, move the downloaded file into this directory
 
-```{r, eval=FALSE, purl=TRUE}
-if (!require("curl")) {
-  install.packages("curl")
-}
-library("curl")
-curl_download("https://dl.dropboxusercontent.com/u/22808457/portal_data_joined.csv",
-              "data/portal_data_joined.csv")
-```
-
-You are now ready to load the data:
+You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
 ```{r, eval=TRUE,  purl=FALSE}
-surveys <- read.csv('data/portal_data_joined.csv')
+metadata <- read.csv('data/Ecoli_metadata.csv')
 ```
 
 This statement doesn't produce any output because assignment doesn't display
 anything. If we want to check that our data has been loaded, we can print the
-variable's value: `surveys`
+variable's value: `metadata`
 
 Alternatively, wrapping an assignment in parentheses will perform the assignment
 and display it at the same time.
 
 ```{r, eval = TRUE, purl = FALSE}
-(surveys <- read.csv('data/portal_data_joined.csv'))
+(metadata <- read.csv('data/Ecoli_metadata.csv'))
 ```
 
-Wow... that was a lot of output. At least it means the data loaded
-properly. Let's check the top (the first 6 lines) of this `data.frame` using the
-function `head()`:
+Wow... that was a lot of output. At least it means the data loaded properly. Let's check the top (the first 6 lines) of this `data.frame` using the function `head()`:
 
 ```{r, results='show', purl=FALSE}
-head(surveys)
+head(metadata)
 ```
 
 Let's now check the __str__ucture of this `data.frame` in more details with the
 function `str()`:
 
 ```{r, purl=FALSE}
-str(surveys)
+str(metadata)
 ```
+
+# Inspecting `data.frame` objects
+
+We already saw how the functions `head()` and `str()` can be useful to check the
+content and the structure of a `data.frame`. Here is a non-exhaustive list of
+functions to get a sense of the content/structure of the data.
+
+* Size:
+    * `dim()` - returns a vector with the number of rows in the first element, and
+    the number of columns as the second element (the __dim__ensions of the object)
+    * `nrow()` - returns the number of rows
+    * `ncol()` - returns the number of columns
+* Content:
+    * `head()` - shows the first 6 rows
+    * `tail()` - shows the last 6 rows
+* Names:
+    * `names()` - returns the column names (synonym of `colnames()` for `data.frame`
+	objects)
+   * `rownames()` - returns the row names
+* Summary:
+   * `str()` - structure of the object and information about the class, length and
+	content of  each column
+   * `summary()` - summary statistics for each column
+
+Note: most of these functions are "generic", they can be used on other types of
+objects besides `data.frame`.
+
 
 ### Challenge
 
-Based on the output of `str(surveys)`, can you answer the following questions?
+Based on the give table of functions to asses data structure, can you answer the following questions?
 
 * What is the class of the object `surveys`?
 * How many rows and how many columns are in this object?
-* How many species have been recorded during these surveys?
+* How many citrate+ mutants have been recorded in this population?
 
 ```{r, echo=FALSE, purl=TRUE}
 ## Exercise
@@ -113,7 +120,7 @@ Based on the output of `str(surveys)`, can you answer the following questions?
 ## * How many species have been recorded during these surveys?
 ```
 
-As you can see, the columns `species` and `sex` are of a special class called
+As you can see, many of the columns in our data frame are of a special class called
 `factor`. Before we learn more about the `data.frame` class, we are going to
 talk about factors. They are very useful but not necessarily intuitive, and
 therefore require some attention.
@@ -157,14 +164,14 @@ it is required by particular type of analysis. Additionally, specifying the
 order of the levels allows to compare levels:
 
 ```{r, purl=TRUE, error=TRUE}
-food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
-levels(food)
-food <- factor(food, levels=c("low", "medium", "high"))
-levels(food)
-min(food) ## doesn't work
-food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
-levels(food)
-min(food) ## works!
+expression <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
+levels(expression)
+expression <- factor(expression, levels=c("low", "medium", "high"))
+levels(expression)
+min(expression) ## doesn't work
+expression <- factor(expression, levels=c("low", "medium", "high"), ordered=TRUE)
+levels(expression)
+min(expression) ## works!
 ```
 
 In R's memory, these factors are represented by numbers (1, 2, 3). They are
@@ -182,7 +189,7 @@ If you need to convert a factor to a character vector, simply use
 Converting a factor to a numeric vector is however a little trickier, and you
 have to go via a character vector. Compare:
 
-```{r, purl=TRUE}
+```{r, purl=TRUE, eval=FALSE}
 f <- factor(c(1, 5, 10, 2))
 as.numeric(f)               ## wrong! and there is no warning...
 as.numeric(as.character(f)) ## works...
