@@ -203,5 +203,41 @@ Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`) and
 factors (`factor`).
 
-We are now going to use our metadata file ('Ecoli_metadata.csv') to explore the `data.frame` data
-structure.
+## Functions and their arguments
+
+Functions are **"self contained" modules of code that accomplish a specific task**. Functions usually take in data, process it, and return a result. We have already used a few examples of basic functions above i.e `length`, `class` and `str`.
+
+Let's look at a more advanced function call below `read.csv`. This function is used to read in data from a csv (comma separated values) file. There are numerous other functions to load in data depending on your filetype, we will discuss this in detail in the next section.
+
+_Note: When typing out read.csv try pressing the `Tab` key after typing only `read`. You will find that a drop-down menu will appear listing all `read` options for loading in files. The window to the right gives you more information on the function and its arguments as you scroll down and highlight each individually._ 
+
+
+```{r, eval=FALSE}
+getwd()
+read.csv(file="meta//mouse_exp_design.csv")
+```
+
+The `file=` part inside the parentheses is called an **argument**, and most functions use arguments. Arguments modify the behavior of the function. Typically, they take some input (e.g., some data, an object) and other
+options to change what the function will return, or how to treat the data provided. Simple functions like the function `length` don't need additional modifications. It will take input (i.e. vector), process it (i.e. count the number of elements) and return value.
+
+Most functions can take several arguments, but most are specified by default so you don't have to enter them. To see these default values, you can either type `args(read.csv)` or look at the help for this function (e.g., `?read.csv`).
+
+```{r, results='show'}
+args(read.csv)
+```
+
+If you provide the arguments in the exact same order as they are defined you
+don't have to name them:
+
+```{r, eval=FALSE}
+read.csv(file="meta/mouse_exp_design.csv", header=TRUE) # is identical to:
+read.csv("meta/mouse_exp_design.csv", TRUE)
+```
+
+However, it's usually not recommended practice because it's a lot of remembering
+to do, and if you share your code with others that includes less known functions
+it makes your code difficult to read. If you include names **do not use the assignment operator**. A `=` should be used to specify the values of arguments in functions. (It's however OK to not include the names
+of the arguments for basic functions like `mean`, `min`, etc...). Another advantage of naming arguments, is that the order doesn't matter.
+
+
+
