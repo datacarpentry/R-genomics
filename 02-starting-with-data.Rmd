@@ -17,15 +17,11 @@ minutes: 20
 
 ------------
 
-# Presentation of Metadata
+# Looking at Metadata
 
 ```{r, echo=FALSE, purl=TRUE}
-# Presentation of metadata
+# Looking at metadata
 ```
-
-We are studying the species and weight of animals caught in plots in our study
-area. The dataset is stored as a `csv` file: each row holds information for a
-single animal, 
 
 We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones and the columns represent:
 
@@ -41,7 +37,7 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 
 
-The data file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
+The metadata file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
 
 - First, make sure you are in the correct working directory by typing `getwd()`.
 - Second, create a new directory within this working directory called `data`
