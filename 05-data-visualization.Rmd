@@ -117,21 +117,55 @@ ggplot(metadata) +
   geom_point(aes(x = sample, y= genome_size))
 ```
 
-The labels on the x-axis are quite hard to read. To do this we need to use the themes. The ggplot2 `theme` system handles non-data plot elements such as:
+The labels on the x-axis are quite hard to read. To do this we need to add an additional theme layer. The ggplot2 `theme` system handles non-data plot elements such as:
 
 * Axis labels
 * Plot background
 * Facet label backround
 * Legend appearance
 
-There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. 
+There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status. The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not mapping to a variable.
 
 ```{r}
 ggplot(metadata) +
-  geom_point(aes(x = sample, y= genome_size)) +
+  geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
   theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
 
+## Histogram
+
+To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument. 
+
+```{r, eval=FALSE}
+ggplot(metadata) +
+  geom_bar(aes(x = genome_size))
+  
+```
+
+Try plotting with the default value and compare it to the plot using the binwidth values. How do they differ?
+
+```{r}
+ggplot(metadata) +
+  geom_bar(aes(x = genome_size), stat = "bin", binwidth=0.05)
+  
+```
+
+## Boxplot
+
+Now that we have all the required information on let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore all the different layers and what each contributes to the graph.
+
+```{r}
+ggplot(metadata) +
+  geom_boxplot(aes(x = cit, y = genome_size, fill = cit)) +
+  ggtitle('Boxplot of genome size by citrate mutant type') +
+  xlab('citrate mutant') +
+  ylab('genome size') +
+  theme(panel.grid.major = element_line(size = .5, color = "grey"),
+          axis.text.x = element_text(angle=45, hjust=1),
+          axis.title = element_text(size = rel(1.5)),
+          axis.text = element_text(size = rel(1.25)))
+
+```
 
 
 Resources:
