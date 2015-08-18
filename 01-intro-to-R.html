@@ -154,24 +154,6 @@ lengths</code></pre>
 </ul>
 <p>Vectors are one of the many <strong>data structures</strong> that R uses. Other important ones are lists (<code>list</code>), matrices (<code>matrix</code>), data frames (<code>data.frame</code>) and factors (<code>factor</code>).</p>
 </div>
-<div id="functions-and-their-arguments" class="section level2">
-<h2>Functions and their arguments</h2>
-<p>Functions are <strong>“self contained” modules of code that accomplish a specific task</strong>. Functions usually take in data, process it, and return a result. We have already used a few examples of basic functions above i.e <code>length</code>, <code>class</code> and <code>str</code>.</p>
-<p>Let’s look at a more advanced function call below <code>read.csv</code>. This function is used to read in data from a csv (comma separated values) file. There are numerous other functions to load in data depending on your filetype, we will discuss this in detail in the next section.</p>
-<p><em>Note: When typing out read.csv try pressing the <code>Tab</code> key after typing only <code>read</code>. You will find that a drop-down menu will appear listing all <code>read</code> options for loading in files. The window to the right gives you more information on the function and its arguments as you scroll down and highlight each individually.</em></p>
-<pre class="r"><code>getwd()
-read.csv(file=&quot;meta//mouse_exp_design.csv&quot;)</code></pre>
-<p>The <code>file=</code> part inside the parentheses is called an <strong>argument</strong>, and most functions use arguments. Arguments modify the behavior of the function. Typically, they take some input (e.g., some data, an object) and other options to change what the function will return, or how to treat the data provided. Simple functions like the function <code>length</code> don’t need additional modifications. It will take input (i.e. vector), process it (i.e. count the number of elements) and return value.</p>
-<p>Most functions can take several arguments, but most are specified by default so you don’t have to enter them. To see these default values, you can either type <code>args(read.csv)</code> or look at the help for this function (e.g., <code>?read.csv</code>).</p>
-<pre class="r"><code>args(read.csv)</code></pre>
-<pre><code>## function (file, header = TRUE, sep = &quot;,&quot;, quote = &quot;\&quot;&quot;, dec = &quot;.&quot;, 
-##     fill = TRUE, comment.char = &quot;&quot;, ...) 
-## NULL</code></pre>
-<p>If you provide the arguments in the exact same order as they are defined you don’t have to name them:</p>
-<pre class="r"><code>read.csv(file=&quot;meta/mouse_exp_design.csv&quot;, header=TRUE) # is identical to:
-read.csv(&quot;meta/mouse_exp_design.csv&quot;, TRUE)</code></pre>
-<p>However, it’s usually not recommended practice because it’s a lot of remembering to do, and if you share your code with others that includes less known functions it makes your code difficult to read. If you include names <strong>do not use the assignment operator</strong>. A <code>=</code> should be used to specify the values of arguments in functions. (It’s however OK to not include the names of the arguments for basic functions like <code>mean</code>, <code>min</code>, etc…). Another advantage of naming arguments, is that the order doesn’t matter.</p>
-</div>
 
 
 </div>
