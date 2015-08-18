@@ -2,7 +2,7 @@
 layout: topic
 title: Data Visualization
 author: Data Carpentry contributors
-minutes: 15
+minutes: 30
 ---
 
 ```{r, echo=FALSE}
@@ -112,7 +112,7 @@ Each type of geom usually has a required set of aesthetics to be set, and usuall
 
 To start, we will add position for the x- and y-axis since `geom_point` requires mappings for x and y, all others are optional.
 
-```{r}
+```{r, fig.align='center'}
 ggplot(metadata) +
   geom_point(aes(x = sample, y= genome_size))
 ```
@@ -124,9 +124,9 @@ The labels on the x-axis are quite hard to read. To do this we need to add an ad
 * Facet label backround
 * Legend appearance
 
-There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status. The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not mapping to a variable.
+There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. _For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not mapping to a variable.
 
-```{r}
+```{r, fig.align='center'}
 ggplot(metadata) +
   geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
   theme(axis.text.x = element_text(angle=45, hjust=1))
@@ -152,7 +152,7 @@ ggplot(metadata) +
 
 ## Boxplot
 
-Now that we have all the required information on let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore all the different layers and what each contributes to the graph.
+Now that we have all the required information on let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
 
 ```{r}
 ggplot(metadata) +
@@ -167,10 +167,9 @@ ggplot(metadata) +
 
 ```
 
+We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject.
 
 Resources:
 ---------
-* [RStudio cheatsheet](http://www.rstudio.com/resources/cheatsheets/)
-* [Choosing a good chart] (http://extremepresentation.typepad.com/blog/2006/09/choosing_a_good.html)
-* [Nature Points of Significance] (http://www.nature.com/collections/qghhqm/pointsofsignificance)
-* [Kick the bar chart habit] (http://www.nature.com/nmeth/journal/v11/n2/pdf/nmeth.2837.pdf)
+* IQSS
+* SWC
