@@ -5,8 +5,8 @@ author: Data Carpentry contributors
 ---
 
 ```{r, echo=FALSE, purl=FALSE, message = FALSE}
-source("setup.R")
-surveys <- read.csv("data/portal_data_joined.csv")
+# source("setup.R")
+metadata <- read.csv("data/Ecoli_metadata.csv")
 ```
 
 ------------
@@ -14,7 +14,9 @@ surveys <- read.csv("data/portal_data_joined.csv")
 # Data manipulation using dplyr
 
 Bracket subsetting is handy, but it can be cumbersome and difficult to read,
-especially for complicated operations. Enter `dplyr`. `dplyr` is a package for
+especially for complicated operations. Enter `dplyr`. 
+
+`dplyr` is a package for
 making data manipulation easier.
 
 Packages in R are basically sets of additional functions that let you do more
@@ -60,16 +62,16 @@ back just what you need for analysis in R.
 We're going to learn some of the most common `dplyr` functions: `select()`,
 `filter()`, `mutate()`, `group_by()`, and `summarize()`. To select columns of a
 data frame, use `select()`. The first argument to this function is the data
-frame (`surveys`), and the subsequent arguments are the columns to keep.
+frame (`metadata`), and the subsequent arguments are the columns to keep.
 
 ```{r, results = 'hide', purl = FALSE}
-select(surveys, plot_id, species_id, weight)
+select(metadata, sample, clade, cit, genome_size)
 ```
 
 To choose rows, use `filter()`:
 
 ```{r, purl = FALSE}
-filter(surveys, year == 1995)
+filter(metadata, cit == "plus")
 ```
 
 ### Pipes
@@ -87,14 +89,14 @@ useful when you need to many things to the same data set.  Pipes in R look like
 part of `dplyr`.
 
 ```{r, purl = FALSE}
-surveys %>%
-  filter(weight < 5) %>%
-  select(species_id, sex, weight)
+metadata %>%
+  filter(cit == "plus") %>%
+  select(sample, generation, clade)
 ```
 
-In the above we use the pipe to send the `surveys` data set first through
-`filter`, to keep rows where `wgt` was less than 5, and then through `select` to
-keep the `species` and `sex` columns. When the data frame is being passed to the
+In the above we use the pipe to send the `metadata` data set first through
+`filter`, to keep rows where `cit` was equal to 'plus', and then through `select` to
+keep the `sample` and `generation` and `clade` columns. When the data frame is being passed to the
 `filter()` and `select()` functions through a pipe, we don't need to include it
 as an argument to these functions anymore.
 
@@ -102,17 +104,17 @@ If we wanted to create a new object with this smaller version of the data we
 could do so by assigning it a new name:
 
 ```{r, purl = FALSE}
-surveys_sml <- surveys %>%
-  filter(weight < 5) %>%
-  select(species_id, sex, weight)
+meta_citplus <- metadata %>%
+  filter(cit == "plus") %>%
+  select(sample, generation, clade)
 
-surveys_sml
+meta_citplus
 ```
 
 > ### Challenge {.challenge}
 >
-> Using pipes, subset the data to include rows before 1995. Retain columns
-> `year`, `sex`, and `weight.`
+> Using pipes, subset the data to include rows where the clade is 'Cit+'. Retain columns
+> `sample`, `cit`, and `genome_size.`
 
 ### Mutate
 
@@ -120,30 +122,30 @@ Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions or find the ratio of values in two
 columns. For this we'll use `mutate()`.
 
-To create a new column of weight in kg:
+To create a new column of genome size in bp:
 
-```{r, purl = FALSE}
-surveys %>%
-  mutate(weight_kg = weight / 1000)
+```{r, purl = FALSE, eval=FALSE}
+metadata %>%
+  mutate(genome_bp = genome_size *1e6)
 ```
 
 If this runs off your screen and you just want to see the first few rows, you
 can use a pipe to view the `head()` of the data (pipes work with non-dplyr
 functions too, as long as the `dplyr` or `magrittr` packages are loaded).
 
-```{r, purl = FALSE}
-surveys %>%
-  mutate(weight_kg = weight / 1000) %>%
+```{r, purl = FALSE, eval=FALSE}
+metadata %>%
+  mutate(genome_bp = genome_size *1e6) %>%
   head
 ```
 
-The first few rows are full of NAs, so if we wanted to remove those we could
+The row has a NA value for clade, so if we wanted to remove those we could
 insert a `filter()` in this chain:
 
-```{r, purl = FALSE}
-surveys %>%
-  mutate(weight_kg = weight / 1000) %>%
-  filter(!is.na(weight)) %>%
+```{r, purl = FALSE, eval=FALSE}
+metadata %>%
+  mutate(genome_bp = genome_size *1e6) %>%
+  filter(!is.na(clade)) %>%
   head
 ```
 
@@ -156,41 +158,40 @@ Many data analysis tasks can be approached using the "split-apply-combine"
 paradigm: split the data into groups, apply some analysis to each group, and
 then combine the results. `dplyr` makes this very easy through the use of the
 `group_by()` function. `group_by()` splits the data into groups upon which some
-operations can be run. For example, if we wanted to group by sex and find the
-number of rows of data for each sex, we would do:
+operations can be run. For example, if we wanted to group by citrate-using mutant status and find the
+number of rows of data for each status, we would do:
 
 ```{r, purl = FALSE}
-surveys %>%
-  group_by(sex) %>%
+metadata %>%
+  group_by(cit) %>%
   tally()
 ```
 
 `group_by()` is often used together with `summarize()` which collapses each
-group into a single-row summary of that group. So to view mean `weight` by sex:
+group into a single-row summary of that group. So to view mean `genome_size` by mutant status:
 
 ```{r, purl = FALSE}
-surveys %>%
-  group_by(sex) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE))
+metadata %>%
+  group_by(cit) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))
 ```
 
 You can group by multiple columns too:
 
 ```{r, purl = FALSE}
-surveys %>%
-  group_by(sex, species_id) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE))
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE))
 
 ```
 
-Looks like most of these species were never weighed. We could then discard rows
-where `mean_weight` is `NaN` (`NaN` refers to "Not a Number") using `filter()`:
+Looks like for one of these clones, the clade is missing. We could then discard those rows using `filter()`:
 
-```{r, purl = FALSE}
-surveys %>%
-  group_by(sex, species_id) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE)) %>%
-  filter(!is.nan(mean_weight))
+```{r, purl = FALSE, eval=FALSE}
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE)) %>%
+  filter(!is.na(clade))
 ```
 
 All of a sudden this isn't running of the screen anymore. That's because `dplyr`
@@ -200,29 +201,14 @@ automatically show tons of data going off the screen.
 
 You can also summarize multiple variables at the same time:
 
-```{r, purl = FALSE}
-surveys %>%
-  group_by(sex, species_id) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE),
-            min_weight = min(weight, na.rm = TRUE)) %>%
-  filter(!is.nan(mean_weight))
+```{r, purl = FALSE, eval=FALSE}
+metadata %>%
+  group_by(cit, clade) %>%
+  summarize(mean_size = mean(genome_size, na.rm = TRUE),
+            min_generation = min(generation))
+
 ```
 
-> ### Challenge {.challenge}
->
-> How many times was each `plot_type` surveyed?
-
-
-> ### Challenge {.challenge}
->
-> Use `group_by()` and `summarize()` to find the mean, min, and max hindfoot
-> length for each species.
-
-
-> ### Challenge {.challenge}
->
-> What was the heaviest animal measured in each year? Return the columns `year`,
-> `genus`, `species`, and `weight`.
 
 
 [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
