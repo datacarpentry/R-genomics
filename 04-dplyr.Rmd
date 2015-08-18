@@ -167,8 +167,10 @@ metadata %>%
   tally()
 ```
 
+There are several different summary statistics that can be generated from our data. The R base package provides many built-in functions such as `mean`, `median`, `min`, `max`, and `range`.  By default, all **R functions operating on vectors that contains missing data will return NA**. It's a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
+
 `group_by()` is often used together with `summarize()` which collapses each
-group into a single-row summary of that group. So to view mean `genome_size` by mutant status:
+group into a single-row summary of that group. `summarize()` can then be used to apply a function such as those that compute simple stats to give an overview for the group. So to view mean `genome_size` by mutant status:
 
 ```{r, purl = FALSE}
 metadata %>%

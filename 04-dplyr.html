@@ -164,7 +164,8 @@ meta_citplus</code></pre>
 ## 1   minus  9
 ## 2    plus  9
 ## 3 unknown 12</code></pre>
-<p><code>group_by()</code> is often used together with <code>summarize()</code> which collapses each group into a single-row summary of that group. So to view mean <code>genome_size</code> by mutant status:</p>
+<p>There are several different summary statistics that can be generated from our data. The R base package provides many built-in functions such as <code>mean</code>, <code>median</code>, <code>min</code>, <code>max</code>, and <code>range</code>. By default, all <strong>R functions operating on vectors that contains missing data will return NA</strong>. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore <code>NA</code> (the missing data) is to use <code>na.rm=TRUE</code> (<code>rm</code> stands for remove).</p>
+<p><code>group_by()</code> is often used together with <code>summarize()</code> which collapses each group into a single-row summary of that group. <code>summarize()</code> can then be used to apply a function such as those that compute simple stats to give an overview for the group. So to view mean <code>genome_size</code> by mutant status:</p>
 <pre class="r"><code>metadata %&gt;%
   group_by(cit) %&gt;%
   summarize(mean_size = mean(genome_size, na.rm = TRUE))</code></pre>
