@@ -167,6 +167,30 @@ ggplot(metadata) +
 
 ```
 
+## Writing figures to file
+
+There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png`.
+
+Initialize a plot that will be written directly to a file using `pdf`, `png` etc. Within the function you will need to specify a name for your image, and the with and height (optional). Then create a plot using the usual functions in R. Finally, close the file using the `dev.off()` function. There are also `bmp`, `tiff`, and `jpeg` functions, though the jpeg function has proven less stable than the others.
+
+
+```{r, eval=FALSE}
+pdf("figure/boxplot.pdf")
+
+ggplot(example_data) +
+  geom_boxplot(aes(x = cit, y =....) +
+  ggtitle(...) +
+  xlab(...) +
+  ylab(...) +
+  theme(panel.grid.major = element_line(...),
+          axis.text.x = element_text(...),
+          axis.title = element_text(...),
+          axis.text = element_text(...)
+
+dev.off()
+```
+
+
 
 
 Resources:
