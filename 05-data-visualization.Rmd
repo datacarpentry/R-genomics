@@ -50,7 +50,7 @@ plot(genome_size, pch=8, main="Scatter plot of genome sizes")
 ## Histogram
 Another way to visualize the distribution of genome sizes is to use a histogram, we can do this buy using the `hist` function:
 
-```{r}
+```{r, fig.align='center'}
 hist(genome_size)
 ```
 
@@ -95,14 +95,14 @@ Geometric objects are the actual marks we put on a plot. Examples include:
 * lines (`geom_line`, for time series, trend lines, etc)
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 
-A plot must have at least one geom; there is no upper limit. You can add a geom to a plot using the + operator
+A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
 
 ```{r, eval=FALSE}
 ggplot(metadata) +
   geom_point() # note what happens here
 ```
 
-Each type of geom usually has a required set of aesthetics to be set, and usually accepts only a subset of all aesthetics --refer to the geom help pages to see what mappings each geom accepts. Aesthetic mappings are set with the aes() function. Examples include:
+Each type of geom usually has a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics --refer to the geom help pages to see what mappings each geom accepts. Aesthetic mappings are set with the aes() function. Examples include:
 
 * position (i.e., on the x and y axes)
 * color ("outside" color)
@@ -144,7 +144,7 @@ ggplot(metadata) +
 
 Try plotting with the default value and compare it to the plot using the binwidth values. How do they differ?
 
-```{r}
+```{r, fig.align='center'}
 ggplot(metadata) +
   geom_bar(aes(x = genome_size), stat = "bin", binwidth=0.05)
   
@@ -154,7 +154,7 @@ ggplot(metadata) +
 
 Now that we have all the required information on let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
 
-```{r}
+```{r, fig.align='center'}
 ggplot(metadata) +
   geom_boxplot(aes(x = cit, y = genome_size, fill = cit)) +
   ggtitle('Boxplot of genome size by citrate mutant type') +
@@ -167,9 +167,8 @@ ggplot(metadata) +
 
 ```
 
-We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject.
+
 
 Resources:
 ---------
-* IQSS
-* SWC
+We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
