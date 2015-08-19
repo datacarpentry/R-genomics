@@ -143,7 +143,7 @@ metadata[1, 6]   # first element in the 6th column
 metadata[1:3, 7] # first three elements in the 7th column
 metadata[3, ]    # the 3rd element for all columns
 metadata[, 7]    # the entire 7th column
-head_meta <- metadata[1:6, ] # surveys[1:6, ] is equivalent to head(surveys)
+head_meta <- metadata[1:6, ] # metadata[1:6, ] is equivalent to head(metadata)
 ```
 
 ### Challenge
@@ -152,13 +152,6 @@ head_meta <- metadata[1:6, ] # surveys[1:6, ] is equivalent to head(surveys)
    in conjuction with `seq()` to create a new `data.frame` called
    `meta_by_2` that includes every other row of the survey data frame
    starting at row 2 (2, 4, 6, ...)
-
-```{r, echo=FALSE, purl=TRUE}
-### The function `nrow()` on a `data.frame` returns the number of
-### rows. Use it, in conjuction with `seq()` to create a new
-### `data.frame` called `surveys_by_10` that includes every 10th row
-### of the survey data frame starting at row 10 (10, 20, 30, ...)
-```
 
 <!---
 ```{r, purl=FALSE}
@@ -191,5 +184,11 @@ the square brackets. Suppose we wanted strain and clade information:
 metadata[, c("strain", "clade")]
 ```
 
-You can even access columns by column name _and_ select specific rows of interest. For example, if  we 
+You can even access columns by column name _and_ select specific rows of interest. For example, if we wanted the strain and clade of just rows
+4 through 7, we could do:
+
+```{r, eval=FALSE}
+metadata[4:7, c("strain", "clade")]
+```
+
 
