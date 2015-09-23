@@ -55,7 +55,7 @@ We can also comment what it is we're doing
 
 What happens if we do that same command with the # sign in the front?
 
-```{r, purl=FALSE, evaluate=FALSE}
+```{r, purl=FALSE, eval=FALSE}
 I am adding 3 and 5. R is fun!
 3+5
 ```
