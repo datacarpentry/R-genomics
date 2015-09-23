@@ -66,6 +66,30 @@ Wow... that was a lot of output. At least it means the data loaded properly. Let
 head(metadata)
 ```
 
+We've just done two very useful things.
+1. We've read our data in to R, so now we can work with it in R
+2. We've created a data frame (with the read.csv command) the 
+standard way R works with data. 
+
+# What are data frames?
+
+`data.frame` is the _de facto_ data structure for most tabular data and what we
+use for statistics and plotting.
+
+A `data.frame` is a collection of vectors of identical lengths. Each vector
+represents a column, and each vector can be of a different data type (e.g.,
+characters, integers, factors). The `str()` function is useful to inspect the
+data types of the columns.
+
+A `data.frame` can be created by the functions `read.csv()` or `read.table()`, in
+other words, when importing spreadsheets from your hard drive (or the web).
+
+By default, `data.frame` converts (= coerces) columns that contain characters
+(i.e., text) into the `factor` data type. Depending on what you want to do with
+the data, you may want to keep these columns as `character`. To do so,
+`read.csv()` and `read.table()` have an argument called `stringsAsFactors` which
+can be set to `FALSE`:
+
 Let's now check the __str__ucture of this `data.frame` in more details with the
 function `str()`:
 
@@ -134,7 +158,7 @@ Once created, factors can only contain a pre-defined set values, known as
 instance, if you have a factor with 2 levels:
 
 ```{r, purl=TRUE}
-citrate <- factor(c("plus", "minus", "minus", "plus"))
+citrate <- factor(c("plus", "minus", "minus", "plus", "minus"))
 ```
 
 R will assign `1` to the level `"minus"` and `2` to the level `"plus"` (because

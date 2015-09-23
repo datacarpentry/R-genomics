@@ -168,6 +168,14 @@ img {
 ## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
 ## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
 ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63</code></pre>
+<p>We’ve just done two very useful things. 1. We’ve read our data in to R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.</p>
+</div>
+<div id="what-are-data-frames" class="section level1">
+<h1>What are data frames?</h1>
+<p><code>data.frame</code> is the <em>de facto</em> data structure for most tabular data and what we use for statistics and plotting.</p>
+<p>A <code>data.frame</code> is a collection of vectors of identical lengths. Each vector represents a column, and each vector can be of a different data type (e.g., characters, integers, factors). The <code>str()</code> function is useful to inspect the data types of the columns.</p>
+<p>A <code>data.frame</code> can be created by the functions <code>read.csv()</code> or <code>read.table()</code>, in other words, when importing spreadsheets from your hard drive (or the web).</p>
+<p>By default, <code>data.frame</code> converts (= coerces) columns that contain characters (i.e., text) into the <code>factor</code> data type. Depending on what you want to do with the data, you may want to keep these columns as <code>character</code>. To do so, <code>read.csv()</code> and <code>read.table()</code> have an argument called <code>stringsAsFactors</code> which can be set to <code>FALSE</code>:</p>
 <p>Let’s now check the __str__ucture of this <code>data.frame</code> in more details with the function <code>str()</code>:</p>
 <pre class="r"><code>str(metadata)</code></pre>
 <pre><code>## 'data.frame':    30 obs. of  7 variables:
@@ -219,7 +227,7 @@ img {
 <p>Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.</p>
 <p>Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.</p>
 <p>Once created, factors can only contain a pre-defined set values, known as <em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order. For instance, if you have a factor with 2 levels:</p>
-<pre class="r"><code>citrate &lt;- factor(c(&quot;plus&quot;, &quot;minus&quot;, &quot;minus&quot;, &quot;plus&quot;))</code></pre>
+<pre class="r"><code>citrate &lt;- factor(c(&quot;plus&quot;, &quot;minus&quot;, &quot;minus&quot;, &quot;plus&quot;, &quot;minus&quot;))</code></pre>
 <p>R will assign <code>1</code> to the level <code>&quot;minus&quot;</code> and <code>2</code> to the level <code>&quot;plus&quot;</code> (because <code>m</code> comes before <code>p</code>, even though the first element in this vector is <code>&quot;male&quot;</code>). You can check this by using the function <code>levels()</code>, and check the number of levels using <code>nlevels()</code>:</p>
 <pre class="r"><code>levels(citrate)
 nlevels(citrate)</code></pre>

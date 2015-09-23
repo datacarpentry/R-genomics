@@ -101,30 +101,6 @@ str(example_data)</code></pre>
 ##  $ animal: chr  &quot;dog&quot; &quot;cat&quot; &quot;sea cucumber&quot; &quot;sea urchin&quot;
 ##  $ feel  : chr  &quot;furry&quot; &quot;furry&quot; &quot;squishy&quot; &quot;spiny&quot;
 ##  $ weight: num  45 8 1.1 0.8</code></pre>
-<div id="challenge" class="section level3">
-<h3>Challenge</h3>
-<ol style="list-style-type: decimal">
-<li>There are a few mistakes in this hand crafted <code>data.frame</code>, can you spot and fix them? Don’t hesitate to experiment!</li>
-</ol>
-<pre class="r"><code>   ##  There are a few mistakes in this hand crafted `data.frame`,
-   ##  can you spot and fix them? Don't hesitate to experiment!
-   author_book &lt;- data.frame(author_first=c(&quot;Charles&quot;, &quot;Ernst&quot;, &quot;Theodosius&quot;),
-                                author_last=c(Darwin, Mayr, Dobzhansky),
-                                year=c(1942, 1970))</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Can you predict the class for each of the columns in the following example?</li>
-</ol>
-<pre class="r"><code>   ## Can you predict the class for each of the columns in the following example?
-   ## Check your guesses using `str(country_climate)`. Are they what you expected?
-   ##  Why? why not?
-   country_climate &lt;- data.frame(country=c(&quot;Canada&quot;, &quot;Panama&quot;, &quot;South Africa&quot;, &quot;Australia&quot;),
-                                  climate=c(&quot;cold&quot;, &quot;hot&quot;, &quot;temperate&quot;, &quot;hot/temperate&quot;),
-                                  temperature=c(10, 30, 18, &quot;15&quot;),
-                                  north_hemisphere=c(TRUE, TRUE, FALSE, &quot;FALSE&quot;),
-                                  has_kangaroo=c(FALSE, FALSE, FALSE, 1))</code></pre>
-<p>Check your guesses using <code>str(country_climate)</code>. Are they what you expected? Why? Why not? Check your gueses using <code>str(country_climate)</code>. Are they what you expected? Why? Why not?</p>
-<p>R coerces (when possible) to the data type that is the least common denominator and the easiest to coerce to.</p>
-</div>
 </div>
 <div id="indexing-and-sequences-within-a-vector" class="section level1">
 <h1>Indexing and sequences (within a vector)</h1>
@@ -146,7 +122,7 @@ metadata[1:3, 7] # first three elements in the 7th column
 metadata[3, ]    # the 3rd element for all columns
 metadata[, 7]    # the entire 7th column
 head_meta &lt;- metadata[1:6, ] # metadata[1:6, ] is equivalent to head(metadata)</code></pre>
-<div id="challenge-1" class="section level3">
+<div id="challenge" class="section level3">
 <h3>Challenge</h3>
 <ol style="list-style-type: decimal">
 <li>The function <code>nrow()</code> on a <code>data.frame</code> returns the number of rows. Use it, in conjuction with <code>seq()</code> to create a new <code>data.frame</code> called <code>meta_by_2</code> that includes every other row of the survey data frame starting at row 2 (2, 4, 6, …)</li>

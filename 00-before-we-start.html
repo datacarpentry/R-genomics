@@ -103,7 +103,6 @@ img {
 <h1>Interacting with R</h1>
 <p>There are two main ways of interacting with R: using the console or by using script files (plain text files that contain your code).</p>
 <p>The console window (in RStudio, the bottom left panel) is the place where R is waiting for you to tell it what to do, and where it will show the results of a command. You can type commands directly into the console, but they will be forgotten when you close the session. It is better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the <code>Ctrl-Enter</code> shortcut.</p>
-<p>At some point in your analysis you may want to check the content of variable or the structure of an object, without necessarily keep a record of it in your script. You can type these commands directly in the console. RStudio provides the <code>Ctrl-1</code> and <code>Ctrl-2</code> shortcuts allow you to jump between the script and the console windows.</p>
 <p>If R is ready to accept commands, the R console shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <code>Ctrl-Enter</code>), R will try to execute it, and when ready, show the results and come back with a new <code>&gt;</code>-prompt to wait for new commands.</p>
 <p>If R is still waiting for you to enter more data because it isn’t complete yet, the console will show a <code>+</code> prompt. It means that you haven’t finished entering a complete command. This is because you have not ‘closed’ a parenthesis or quotation. If you’re in Rstudio and this happens, click inside the console window and press <code>Esc</code>; this should help you out of trouble.</p>
 </div>
@@ -118,40 +117,6 @@ img {
 <li>For people who have experience in programmming: R is both an object-oriented and a so-called <a href="http://adv-r.had.co.nz/Functional-programming.html">functional language</a></li>
 <li>Large and growing community of peers.</li>
 </ul>
-<div id="commenting" class="section level2">
-<h2>Commenting</h2>
-<p>Use <code>#</code> signs to comment. Comment liberally in your R scripts. Anything to the right of a <code>#</code> is ignored by R.</p>
-</div>
-<div id="assignment-operator" class="section level2">
-<h2>Assignment operator</h2>
-<p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
-<p>In RStudio, typing <code>Alt + -</code> (push <code>Alt</code>, the key next to your space bar at the same time as the <code>-</code> key) will write <code>&lt;-</code> in a single keystroke.</p>
-</div>
-<div id="functions-and-their-arguments" class="section level2">
-<h2>Functions and their arguments</h2>
-<p>Functions are “canned scripts” that automate something complicated or convenient or both. Many functions are predefined, or become available when using the function <code>library()</code> (more on that later). A function usually gets one or more inputs called <em>arguments</em>. Functions often (but not always) return a <em>value</em>. A typical example would be the function <code>sqrt()</code>. The input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function (‘running it’) is called <em>calling</em> the function. An example of a function call is:</p>
-<p><code>b &lt;- sqrt(a)</code></p>
-<p>Here, the value of <code>a</code> is given to the <code>sqrt()</code> function, the <code>sqrt()</code> function calculates the square root, and returns the value which is then assigned to variable <code>b</code>. This function is very simple, because it takes just one argument.</p>
-<p>The return ‘value’ of a function need not be numerical (like that of <code>sqrt()</code>), and it also does not need to be a single item: it can be a set of things, or even a data set. We’ll see that when we read data files in to R.</p>
-<p>Arguments can be anything, not only numbers or filenames, but also other objects. Exactly what each argument means differs per function, and must be looked up in the documentation (see below). If an argument alters the way the function operates, such as whether to ignore ‘bad values’, such an argument is sometimes called an <em>option</em>.</p>
-<p>Most functions can take several arguments, but many have so-called <em>defaults</em>. If you don’t specify such an argument when calling the function, the function itself will fall back on using the <em>default</em>. This is a standard value that the author of the function specified as being “good enough in standard cases”. An example would be what symbol to use in a plot. However, if you want something specific, simply change the argument yourself with a value of your choice.</p>
-<p>Let’s try a function that can take multiple arguments <code>round</code>.</p>
-<pre class="r"><code>round(3.14159)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<p>We can see that we get <code>3</code>. That’s because the default is to round to the nearest whole number. If we want more digits we can see how to do that by getting information about the <code>round</code> function. We can use <code>args(round)</code> or look at the help for this function using <code>?round</code>.</p>
-<pre class="r"><code>args(round)</code></pre>
-<pre><code>## function (x, digits = 0) 
-## NULL</code></pre>
-<pre class="r"><code>?round</code></pre>
-<p>We see that if we want a different number of digits, we can type <code>digits=2</code> or however many we want.</p>
-<pre class="r"><code>round(3.14159, digits=2)</code></pre>
-<pre><code>## [1] 3.14</code></pre>
-<p>If you provide the arguments in the exact same order as they are defined you don’t have to name them:</p>
-<pre class="r"><code>round(3.14159, 2)</code></pre>
-<pre><code>## [1] 3.14</code></pre>
-<p>However, it’s usually not recommended practice because it’s a lot of remembering to do, and if you share your code with others that includes less known functions it makes your code difficult to read. (It’s however OK to not include the names of the arguments for basic functions like <code>mean</code>, <code>min</code>, etc…)</p>
-<p>Another advantage of naming arguments, is that the order doesn’t matter. This is useful when there start to be more arguments.</p>
-</div>
 <div id="organizing-your-working-directory" class="section level2">
 <h2>Organizing your working directory</h2>
 <p>You should separate the original data (raw data) from intermediate datasets that you may create for the need of a particular analysis. For instance, you may want to create a <code>data/</code> directory within your working directory that stores the raw data, and have a <code>data_output/</code> directory for intermediate datasets and a <code>figure_output/</code> directory for the plots you will generate.</p>
@@ -200,37 +165,20 @@ img {
 <pre class="r"><code>some_data &lt;- readRDS(file=&quot;~/Downloads/iris.rds&quot;)</code></pre>
 <p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>## R version 3.2.1 (2015-06-18)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu precise (12.04.5 LTS)
+<pre><code>## R version 3.1.3 (2015-03-09)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: OS X 10.9.5 (Mavericks)
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
-## other attached packages:
-## [1] knitr_1.10.5    rmarkdown_0.6.1 pheatmap_1.0.2  CHBUtils_0.1   
-## [5] edgeR_3.10.2    limma_3.24.10   gplots_2.16.0   reshape_0.8.5  
-## [9] ggplot2_1.0.1  
-## 
 ## loaded via a namespace (and not attached):
-##  [1] knitrBootstrap_1.0.0 Rcpp_0.11.5          magrittr_1.5        
-##  [4] MASS_7.3-43          munsell_0.4.2        colorspace_1.2-6    
-##  [7] stringr_1.0.0        plyr_1.8.2           caTools_1.17.1      
-## [10] tools_3.2.1          grid_3.2.1           gtable_0.1.2        
-## [13] KernSmooth_2.23-15   htmltools_0.2.6      gtools_3.4.2        
-## [16] yaml_2.1.13          digest_0.6.8         formatR_1.2         
-## [19] RColorBrewer_1.1-2   reshape2_1.4.1       bitops_1.0-6        
-## [22] mime_0.3             evaluate_0.7         labeling_0.3        
-## [25] gdata_2.13.3         stringi_0.5-5        scales_0.2.4        
-## [28] markdown_0.7.7       proto_0.3-10</code></pre>
+##  [1] digest_0.6.8    evaluate_0.7.2  formatR_1.2     htmltools_0.2.6
+##  [5] knitr_1.10.5    magrittr_1.5    rmarkdown_0.7   stringi_0.5-5  
+##  [9] stringr_1.0.0   tools_3.1.3     yaml_2.1.13</code></pre>
 </div>
 <div id="where-to-ask-for-help" class="section level3">
 <h3>Where to ask for help?</h3>
