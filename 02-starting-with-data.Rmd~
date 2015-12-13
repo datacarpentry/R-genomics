@@ -25,15 +25,15 @@ minutes: 20
 
 We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones and the columns represent:
 
-| Column           | Description                                |
-|------------------|--------------------------------------------|
-| sample           | clone name					|
-| generation       | generation when sample frozen		|
-| clade            | based on parsimony-based tree		|
-| strain           | ancestral strain				|
-| cit              | citrate-using mutant status		|
-| run              | Sequence read archive sample ID		|
-| genome_size      | size in Mbp (made up data for this lesson) |
+| Column           | Description                        |
+|------------------|------------------------------------|
+| sample           | clone name                         |
+| generation       | generation when sample frozen      |
+| clade            | based on parsimony-based tree      |
+| strain           | ancestral strain                   |
+| cit              | citrate-using mutant status        |
+| run              | Sequence read archive sample ID    |
+| genome_size      | size in Mbp                        |
 
 
 
@@ -65,30 +65,6 @@ Wow... that was a lot of output. At least it means the data loaded properly. Let
 ```{r, results='show', purl=FALSE}
 head(metadata)
 ```
-
-We've just done two very useful things.
-1. We've read our data in to R, so now we can work with it in R
-2. We've created a data frame (with the read.csv command) the 
-standard way R works with data. 
-
-# What are data frames?
-
-`data.frame` is the _de facto_ data structure for most tabular data and what we
-use for statistics and plotting.
-
-A `data.frame` is a collection of vectors of identical lengths. Each vector
-represents a column, and each vector can be of a different data type (e.g.,
-characters, integers, factors). The `str()` function is useful to inspect the
-data types of the columns.
-
-A `data.frame` can be created by the functions `read.csv()` or `read.table()`, in
-other words, when importing spreadsheets from your hard drive (or the web).
-
-By default, `data.frame` converts (= coerces) columns that contain characters
-(i.e., text) into the `factor` data type. Depending on what you want to do with
-the data, you may want to keep these columns as `character`. To do so,
-`read.csv()` and `read.table()` have an argument called `stringsAsFactors` which
-can be set to `FALSE`:
 
 Let's now check the __str__ucture of this `data.frame` in more details with the
 function `str()`:
@@ -128,10 +104,17 @@ objects besides `data.frame`.
 
 Based on the give table of functions to asses data structure, can you answer the following questions?
 
-* What is the class of the object `metadata`?
+* What is the class of the object `surveys`?
 * How many rows and how many columns are in this object?
 * How many citrate+ mutants have been recorded in this population?
 
+```{r, echo=FALSE, purl=TRUE}
+## Exercise
+## Based on the output of `str(surveys)`, can you answer the following questions?
+## * What is the class of the object `surveys`?
+## * How many rows and how many columns are in this object?
+## * How many species have been recorded during these surveys?
+```
 
 As you can see, many of the columns in our data frame are of a special class called
 `factor`. Before we learn more about the `data.frame` class, we are going to
@@ -153,28 +136,22 @@ integers. While factors look (and often behave) like character vectors, they are
 actually integers under the hood, and you need to be careful when treating them
 like strings.
 
-In the data frame we just imported, let's do 
+Once created, factors can only contain a pre-defined set values, known as
+*levels*. By default, R always sorts *levels* in alphabetical order. For
+instance, if you have a factor with 2 levels:
+
 ```{r, purl=TRUE}
-str(metadata)
+sex <- factor(c("male", "female", "female", "male"))
 ```
 
-We can see the names of the multiple columns. And, we see that 
-some say things like `Factor w/ 30 levels`
-
-When we read in a file, any column that contains text is automatically
-assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as
-*levels*. By default, R always sorts *levels* in alphabetical order. 
-
-For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
-
-<!--
-
-You can check this by using the function `levels()`, and check the
+R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
+`f` comes before `m`, even though the first element in this vector is
+`"male"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
 ```{r, purl=FALSE, eval=FALSE}
-levels(citrate)
-nlevels(citrate)
+levels(sex)
+nlevels(sex)
 ```
 
 Sometimes, the order of the factors does not matter, other times you might want
@@ -229,7 +206,7 @@ table(exprmt)
 barplot(table(exprmt))
 ```
 
-
+<!---
 ```{r correct-order, purl=FALSE}
 exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
 barplot(table(exprmt))
