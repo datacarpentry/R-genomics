@@ -1,3 +1,10 @@
+---
+layout: lesson
+root: .
+title: Lesson Title
+minutes: 5
+---
+
 R-visualization-genomics
 =======================
 
