@@ -36,17 +36,17 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 | genome_size      | size in Mbp (made up data for this lesson) |
 
 
+We're going to download the data through R. 
 
-The metadata file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
+```{r, eval=TRUE,  purl=FALSE}
+download.file("http://datacarpentry.github.io/R-genomics/data/Ecoli_metadata.csv", "Ecoli_metadata.csv")
+```
 
-- First, make sure you are in the correct working directory by typing `getwd()`.
-- Second, create a new directory within this working directory called `data`
-- Third, move the downloaded file into this directory
 
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
 ```{r, eval=TRUE,  purl=FALSE}
-metadata <- read.csv('data/Ecoli_metadata.csv')
+metadata <- read.csv('Ecoli_metadata.csv')
 ```
 
 This statement doesn't produce any output because assignment doesn't display
@@ -126,7 +126,7 @@ objects besides `data.frame`.
 
 ### Challenge
 
-Based on the give table of functions to asses data structure, can you answer the following questions?
+Based on the list of functions above to assess data structure, can you answer the following questions?
 
 * What is the class of the object `metadata`?
 * How many rows and how many columns are in this object?
