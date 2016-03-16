@@ -67,9 +67,9 @@ head(metadata)
 ```
 
 We've just done two very useful things.
-1. We've read our data in to R, so now we can work with it in R
-2. We've created a data frame (with the read.csv command) the 
-standard way R works with data. 
+
+1. We've read our data in to R, so now we can work with it in R.
+2. We've created a data frame (with the read.csv command) the standard way R works with data. 
 
 # What are data frames?
 
