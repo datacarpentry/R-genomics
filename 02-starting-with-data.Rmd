@@ -57,7 +57,7 @@ Alternatively, wrapping an assignment in parentheses will perform the assignment
 and display it at the same time.
 
 ```{r, eval = TRUE, purl = FALSE}
-(metadata <- read.csv('data/Ecoli_metadata.csv'))
+(metadata <- read.csv('Ecoli_metadata.csv'))
 ```
 
 Wow... that was a lot of output. At least it means the data loaded properly. Let's check the top (the first 6 lines) of this `data.frame` using the function `head()`:
