@@ -1,4 +1,4 @@
 # R Genomics	
 
-This is a repository for Data Carpentry R Genomics lessons
+This is a repository for the AARUG Beginner R Workshop
 
