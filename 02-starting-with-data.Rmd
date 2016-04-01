@@ -1,5 +1,5 @@
 ---
-title: Starting with data
+title: Data frames
 ---
 
 
@@ -7,60 +7,52 @@ title: Starting with data
 
 > ## Learning Objectives
 >
-> * load external data (CSV files) in memory using the survey table
->  (`Ecoli_metadata.csv`) as an example
-> * explore the structure and the content of the data in R
+> * load external data (CSV files) in memory 
+> * understand the concept of a `data.frame`
+> * know how to access any element of a `data.frame`
 > * understand what are factors and how to manipulate them
 
 ------------
 
-# Looking at Metadata
+# Setup
+The file required for this lesson can be downlaoded by clicking on this [link](./data/cats.csv)
 
-```{r, echo=FALSE, purl=TRUE}
-# Looking at metadata
+- Move the downloaded file into the directory for this workshop
+
+To view your current working directory use the `getwd()` command
+
+```{r, eval=FALSE, echo=FALSE}
+getwd()
 ```
 
-We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones and the columns represent:
+To set you working directory, use the `setwd()` command. We want to set the working directory to the same location as the file 
+```{r, eval=FALSE}
+setwd("~/Documents/AARUG")
+```
 
-| Column           | Description                                |
-|------------------|--------------------------------------------|
-| sample           | clone name					|
-| generation       | generation when sample frozen		|
-| clade            | based on parsimony-based tree		|
-| strain           | ancestral strain				|
-| cit              | citrate-using mutant status		|
-| run              | Sequence read archive sample ID		|
-| genome_size      | size in Mbp (made up data for this lesson) |
-
+Caution: Knitr doesn't like `setwd()`. It assumes that all data files are under the same directory as the script files 
+so you can use relative paths. If you don't like this, you can set the root directory in the global chunk options like this
+```{r, eval=FALSE}
+opts_chunk$set(root.dir = '/mydir')
+```
 
 
-The metadata file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
+# Looking at data
 
-- First, make sure you are in the correct working directory by typing `getwd()`.
-- Second, create a new directory within this working directory called `data`
-- Third, move the downloaded file into this directory
 
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
 ```{r, eval=TRUE,  purl=FALSE}
-metadata <- read.csv('data/Ecoli_metadata.csv')
+cats <- read.csv('data/cats.csv')
 ```
 
 This statement doesn't produce any output because assignment doesn't display
 anything. If we want to check that our data has been loaded, we can print the
-variable's value: `metadata`
+variable's value: `cats`
 
-Alternatively, wrapping an assignment in parentheses will perform the assignment
-and display it at the same time.
-
-```{r, eval = TRUE, purl = FALSE}
-(metadata <- read.csv('data/Ecoli_metadata.csv'))
-```
-
-Wow... that was a lot of output. At least it means the data loaded properly. Let's check the top (the first 6 lines) of this `data.frame` using the function `head()`:
-
-```{r, results='show', purl=FALSE}
-head(metadata)
+```{r, eval=FALSE, purl=FALSE}
+head(cats)
+View(cats)
 ```
 
 We've just done two very useful things.
@@ -91,7 +83,7 @@ Let's now check the __str__ucture of this `data.frame` in more details with the
 function `str()`:
 
 ```{r, purl=FALSE}
-str(metadata)
+str(cats)
 ```
 
 # Inspecting `data.frame` objects
@@ -121,20 +113,60 @@ Note: most of these functions are "generic", they can be used on other types of
 objects besides `data.frame`.
 
 
+
+## Indexing `data.frame` objects
+
+
+Our cats data frame has rows and columns (it has 2 dimensions), if we want to
+extract some specific data from it, we need to specify the "coordinates" we want
+from it. Row numbers come first, followed by column numbers (i.e. [row, column]).
+
+```{r, purl=FALSE, eval=FALSE}
+cats[1, 2]   # first element in the 2nd column of the data frame
+cats[1, 6]   # first element in the 6th column
+cats[1:3, 7] # first three elements in the 7th column
+cats[3, ]    # the 3rd element for all columns
+cats[, 7]    # the entire 7th column
+head_meta <- cats[1:6, ] 
+```
+
 ### Challenge
 
-Based on the give table of functions to asses data structure, can you answer the following questions?
+1. The function `nrow()` on a `data.frame` returns the number of rows. Use it,
+   in conjuction with `seq()` to create a new `data.frame` called
+   `data_by_2` that includes every other row of the cats data frame
+   starting at row 2 (2, 4, 6, ...)
 
-* What is the class of the object `metadata`?
-* How many rows and how many columns are in this object?
-* How many citrate+ mutants have been recorded in this population?
 
+For larger datasets, it can be tricky to remember the column number that
+corresponds to a particular variable. (Are species names in column 5 or 7? oh,
+right... they are in column 6). In some cases, in which column the variable will
+be can change if the script you are using adds or removes columns. It's
+therefore often better to use column names to refer to a particular variable,
+and it makes your code easier to read and your intentions clearer.
 
-As you can see, many of the columns in our data frame are of a special class called
-`factor`. Before we learn more about the `data.frame` class, we are going to
-talk about factors. They are very useful but not necessarily intuitive, and
-therefore require some attention.
+You can do operations on a particular column, by selecting it using the `$`
+sign. In this case, the entire column is a vector. You can use
+`names(cats)` or `colnames(cats)` to remind yourself of the column names.
+For instance, to extract all the strain information from our datasets:
 
+```{r, eval=FALSE}
+cats$weight
+```
+
+In some cases, you may way to select more than one column. You can do this using
+the square brackets. Suppose we wanted strain and clade information:
+
+```{r, eval=FALSE}
+cats[, c("weight", "coat")]
+```
+
+You can even access columns by column name _and_ select specific rows of interest. For example, if we wanted the weight and coat of just rows
+4 through 7, we could do:
+
+```{r, eval=FALSE}
+cats[4:7, c("weight", "coat")]
+```
 
 ## Factors
 
@@ -152,26 +184,23 @@ like strings.
 
 In the data frame we just imported, let's do 
 ```{r, purl=TRUE}
-str(metadata)
+str(cats)
 ```
 
 We can see the names of the multiple columns. And, we see that 
-some say things like `Factor w/ 30 levels`
+coat is a `Factor w/ 5 levels`
 
 When we read in a file, any column that contains text is automatically
 assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. 
 
-For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
-
-<!--
 
 You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
 ```{r, purl=FALSE, eval=FALSE}
-levels(citrate)
-nlevels(citrate)
+levels(cats$coat)
+nlevels(cats$coat)
 ```
 
 Sometimes, the order of the factors does not matter, other times you might want
@@ -180,14 +209,14 @@ it is required by particular type of analysis. Additionally, specifying the
 order of the levels allows to compare levels:
 
 ```{r, purl=FALSE, error=TRUE, eval=FALSE}
-expression <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
-levels(expression)
-expression <- factor(expression, levels=c("low", "medium", "high"))
-levels(expression)
-min(expression) ## doesn't work
-expression <- factor(expression, levels=c("low", "medium", "high"), ordered=TRUE)
-levels(expression)
-min(expression) ## works!
+satisfaction <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
+levels(satisfaction)
+satisfaction <- factor(satisfaction, levels = c("low", "medium", "high"))
+levels(satisfaction)
+min(satisfaction) ## doesn't work
+satisfaction <- factor(satisfaction, levels = c("low", "medium", "high"), ordered = TRUE)
+levels(satisfaction)
+min(satisfaction) ## works!
 ```
 
 In R's memory, these factors are represented by numbers (1, 2, 3). They are
@@ -218,17 +247,9 @@ The function `table()` tabulates observations and can be used to create
 bar plots quickly. For instance:
 
 ```{r wrong-order, results='show', purl=TRUE}
-## Question: How can you recreate this plot but by having "control"
+## Question: How can you recreate this table but by having "control"
 ## being listed last instead of first?
 exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
                    "treat1", "treat2", "treat3"))
 table(exprmt)
-barplot(table(exprmt))
 ```
-
-
-```{r correct-order, purl=FALSE}
-exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
-barplot(table(exprmt))
-```
---->
