@@ -5,7 +5,7 @@ lastupdated: March 28, 2016
 contributors: ["Kate Hertweck", "Susan McClatchey", "Tracy Teal", "Ryan Williams", "Michelle Berry", "Ellis Valentiner", "Rob Weyant", "Clayton Yochum"]
 topic: R
 software: R
-dataurl: https://github.com/AnnArborRUserGroup/AARUG-R-workshop/tree/gh-pages/data
+dataurl: https://raw.githubusercontent.com/AnnArborRUserGroup/AARUG-R-workshop/gh-pages/data
 
 ---
 
@@ -15,7 +15,7 @@ dataurl: https://github.com/AnnArborRUserGroup/AARUG-R-workshop/tree/gh-pages/da
 <!-- THE LESSON INFORMATION -->
 
 
-#AARUG Beginner R Workshop
+AARUG Beginner R Workshop
 =======
 
 
