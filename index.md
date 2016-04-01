@@ -5,7 +5,7 @@ lastupdated: March 28, 2016
 contributors: ["Kate Hertweck", "Susan McClatchey", "Tracy Teal", "Ryan Williams", "Michelle Berry", "Ellis Valentiner", "Rob Weyant", "Clayton Yochum"]
 topic: R
 software: R
-dataurl: https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv
+dataurl: https://github.com/AnnArborRUserGroup/AARUG-R-workshop/tree/gh-pages/data
 
 ---
 
@@ -24,16 +24,18 @@ dataurl: https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/maste
 ## Lessons:
 
 
-1. [Lesson 00 Before we start](00-before-we-start.html)
-2. [Lesson 01 Introduction to R](01-intro-to-R.html)
-3. [Lesson 02 Starting with data](02-starting-with-data.html)
-4. [Lesson 03 Introducing `data.frame`](03-data-frames.html)
-5. [Lesson 04 Aggregating and analyzing data with dplyr](04-dplyr.html)
-6. [Lesson 05 Data visualisation with ggplot2](05-data-visualization.html)
+0. [Lesson 00 Before we start](00-before-we-start.html)
+1. [Lesson 01 Introduction to R](01-intro-to-R.html)
+2. [Lesson 02 Starting with data](02-starting-with-data.html)
+3. [Lesson 03 Aggregating and analyzing data with dplyr](04-dplyr.html)
+4. [Lesson 04 Data visualisation with ggplot2](05-data-visualization.html)
+5. Stats models
 
 ## Data
 
-Data files for the lesson are available here: [{{page.dataurl %}}]({{page.dataurl %}})
+Cats data is available [here]({{page.dataurl}}/cats.csv)
+         	
+Gapminder data is available [here]({{page.dataurl}}/gapminder-FiveYearData.csv)
 
 
 ### Requirements
