@@ -35,7 +35,7 @@ AARUG Beginner R Workshop
 
 Cats data is available [here]({{page.dataurl}}/cats.csv)
          	
-Gapminder data is available [here]({{page.dataurl}}/gapminder-FiveYearData.csv)
+Birthwt data is available [here]({{page.dataurl}}/birthwt.csv)
 
 
 ### Requirements
