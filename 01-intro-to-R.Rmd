@@ -2,10 +2,6 @@
 title: Introduction to R
 ---
 
-```{r, echo=FALSE, purl=FALSE}
-knitr::opts_chunk$set(results='hide', fig.path='img/')
-```
-
 ------------
 
 > ## Learning Objectives
@@ -216,23 +212,22 @@ This is useful when there start to be more arguments.
 
 ## Vectors and data types
 
-```{r, echo=FALSE, purl=TRUE}
-### Vectors and data types
-```
 
 A vector is the most common and basic data structure in R, and is pretty much
 the workhorse of R. It's basically just a list of values, mainly either numbers or
 characters. They're special lists that you can do math with. You can assign this list of values to a variable, just like you
-would for one item. For example we can create a vector of :
+would for one item. You can add elements to your vector simply by using the `c()` function, which stands for combine:
 
-```{r, purl=FALSE}
+
+```{r}
 one_to_five <- c(1, 2, 3, 4, 5)
 one_to_five <- 1:5
+one_to_five
 ```
 
 A vector can also contain characters:
 
-```{r, purl=FALSE}
+```{r}
 primary_colors <- c("red", "yellow", "blue")
 primary_colors
 ```
@@ -240,7 +235,7 @@ primary_colors
 There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
-```{r, purl=FALSE}
+```{r}
 length(one_to_five)
 length(primary_colors)
 ```
@@ -248,13 +243,13 @@ length(primary_colors)
 
 You can also do math with whole vectors. For instance if we wanted to multiply all the values in our vector by a scalar, we can do
 
-```{r, purl=FALSE}
+```{r}
 5 * one_to_five
 ```
 
 or we can add the data in the two vectors together
 
-```{r, purl=FALSE}
+```{r}
 two_to_ten <- one_to_five + one_to_five
 two_to_ten
 ```
@@ -266,23 +261,13 @@ There are few ways to figure out what's going on in a vector.
 
 `class()` indicates the class (the type of element) of an object:
 
-```{r, purl=FALSE}
+```{r}
 class(one_to_five)
 class(primary_colors)
 ```
 
-The function `str()` provides an overview of the object and the elements it
-contains. It is a really useful function when working with large and complex
-objects:
 
-```{r, purl=FALSE}
-str(one_to_five)
-str(primary_colors)
-```
-
-You can add elements to your vector simply by using the `c()` function, which stands for combine:
-
-```{r, purl=FALSE}
+```{r}
 new_digits <- c(one_to_five, 90) # adding at the end
 new_digits <- c(30, new_digits) # adding at the beginning
 new_digits
@@ -307,7 +292,7 @@ in a vector with the `c()` command, R will try to coerce all the values to the s
 If it cannot, it will throw an error. 
     
 For example, what data type is our `one_to_five` vector if we divide it by 2?
-```{r, purl=FALSE}
+```{r}
 divided_integers <- one_to_five/2
 divided_integers
 
@@ -321,13 +306,14 @@ family (including C++, Java, Perl, and Python) count from 0 because that's
 simpler for computers to do.
 
 We can index a vector in many different ways. We can specify a position of a single value, a range of values, or a vector of values. We can even specify which values to remove by their indices. 
-```{r, purl=FALSE}
+```{r}
 one_to_five[3]
 one_to_five[1:3]
 one_to_five[c(1,3,5)]
 one_to_five[-2]
 ```
 
+## Other data structures
 Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), and data frames (`data.frame`) 
 

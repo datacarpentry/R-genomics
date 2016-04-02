@@ -130,25 +130,16 @@ $(document).ready(function () {
 <li>Move the downloaded file into the directory for this workshop</li>
 </ul>
 <p>To view your current working directory use the <code>getwd()</code> command</p>
-<p>To set you working directory, use the <code>setwd()</code> command. We want to set the working directory to the same location as the file</p>
-<pre class="r"><code>setwd(&quot;~/Documents/AARUG&quot;)</code></pre>
-<p>Caution: Knitr doesn’t like <code>setwd()</code>. It assumes that all data files are under the same directory as the script files so you can use relative paths. If you don’t like this, you can set the root directory in the global chunk options like this</p>
-<pre class="r"><code>opts_chunk$set(root.dir = '/mydir')</code></pre>
+<p>To set you working directory, use the <code>setwd()</code> command. We want to set the working directory to the same location as the file. For example:</p>
+<pre class="r"><code>setwd(&quot;~/Workshops/AARUG&quot;)</code></pre>
 </div>
 <div id="looking-at-data" class="section level1">
 <h1>Looking at data</h1>
 <p>You are now ready to load the data. We are going to use the R function <code>read.csv()</code> to load the data file into memory (as a <code>data.frame</code>):</p>
-<pre class="r"><code>cats &lt;- read.csv('data/cats.csv')</code></pre>
+<pre class="r"><code>cats &lt;- read.csv(file = 'data/cats.csv')</code></pre>
 <p>This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: <code>cats</code></p>
-<pre class="r"><code>head(cats)</code></pre>
-<pre><code>##   cat_id   coat weight likes_string
-## 1      1 calico    2.1         TRUE
-## 2      2  black    5.0        FALSE
-## 3      3  tabby    3.2         TRUE
-## 4      4   grey    6.0         TRUE
-## 5      5  black    4.0         TRUE
-## 6      6 orange    3.7        FALSE</code></pre>
-<pre class="r"><code>View(cats)</code></pre>
+<pre class="r"><code>head(cats)
+View(cats)</code></pre>
 <p>We’ve just done two very useful things. 1. We’ve read our data in to R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.</p>
 </div>
 <div id="what-are-data-frames" class="section level1">
@@ -198,20 +189,57 @@ cats[1, 6]   # first element in the 6th column
 cats[1:3, 7] # first three elements in the 7th column
 cats[3, ]    # the 3rd element for all columns
 cats[, 7]    # the entire 7th column
-head_meta &lt;- cats[1:6, ] </code></pre>
-<div id="challenge" class="section level3">
-<h3>Challenge</h3>
-<ol style="list-style-type: decimal">
-<li>The function <code>nrow()</code> on a <code>data.frame</code> returns the number of rows. Use it, in conjuction with <code>seq()</code> to create a new <code>data.frame</code> called <code>data_by_2</code> that includes every other row of the cats data frame starting at row 2 (2, 4, 6, …)</li>
-</ol>
+head_meta &lt;- cats[1:6, ] # Row 1-6 which is the same as head</code></pre>
 <p>For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. (Are species names in column 5 or 7? oh, right… they are in column 6). In some cases, in which column the variable will be can change if the script you are using adds or removes columns. It’s therefore often better to use column names to refer to a particular variable, and it makes your code easier to read and your intentions clearer.</p>
-<p>You can do operations on a particular column, by selecting it using the <code>$</code> sign. In this case, the entire column is a vector. You can use <code>names(cats)</code> or <code>colnames(cats)</code> to remind yourself of the column names. For instance, to extract all the strain information from our datasets:</p>
+<p>You can do operations on a particular column, by selecting it using the <code>$</code> sign. In this case, the entire column is a vector. You can use <code>names(cats)</code> or <code>colnames(cats)</code> to remind yourself of the column names. For instance, to extract all the cats’ weight information from our dataset:</p>
 <pre class="r"><code>cats$weight</code></pre>
-<p>In some cases, you may way to select more than one column. You can do this using the square brackets. Suppose we wanted strain and clade information:</p>
+<pre><code>## [1] 2.1 5.0 3.2 6.0 4.0 3.7 4.4 3.8</code></pre>
+<p>In some cases, you may way to select more than one column. You can do this using the square brackets. Suppose we wanted weight and coat information:</p>
 <pre class="r"><code>cats[, c(&quot;weight&quot;, &quot;coat&quot;)]</code></pre>
+<pre><code>##   weight   coat
+## 1    2.1 calico
+## 2    5.0  black
+## 3    3.2  tabby
+## 4    6.0   grey
+## 5    4.0  black
+## 6    3.7 orange
+## 7    4.4 calico
+## 8    3.8  tabby</code></pre>
 <p>You can even access columns by column name <em>and</em> select specific rows of interest. For example, if we wanted the weight and coat of just rows 4 through 7, we could do:</p>
 <pre class="r"><code>cats[4:7, c(&quot;weight&quot;, &quot;coat&quot;)]</code></pre>
-</div>
+<pre><code>##   weight   coat
+## 4    6.0   grey
+## 5    4.0  black
+## 6    3.7 orange
+## 7    4.4 calico</code></pre>
+<p>We can can also use logical statements to select and filter items from a <code>data.frame</code>. For example, to select all rows with black cats we could use the following statement</p>
+<pre class="r"><code>cats[cats$coat == &quot;black&quot;, ]</code></pre>
+<pre><code>##   cat_id  coat weight likes_string
+## 2      2 black      5        FALSE
+## 5      5 black      4         TRUE</code></pre>
+<p>let’s break this down a bit. The logical statement in the brackets returns a vector of <code>TRUE</code> and <code>FALSE</code> values.</p>
+<pre class="r"><code>cats$coat == &quot;black&quot;</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE</code></pre>
+<p>These <code>booleans</code> allow us to select which records we want from our <code>data.frame</code></p>
+<p>Another way to do this is with the function <code>which()</code>. <code>which()</code> finds the indexes of records meeting a logical statement</p>
+<pre class="r"><code>which(cats$coat == &quot;black&quot;)</code></pre>
+<pre><code>## [1] 2 5</code></pre>
+<p>So, we could also write</p>
+<pre class="r"><code>cats[which(cats$coat == &quot;black&quot;), ]</code></pre>
+<pre><code>##   cat_id  coat weight likes_string
+## 2      2 black      5        FALSE
+## 5      5 black      4         TRUE</code></pre>
+<p>But that’s getting really long and ugly. R is already considered somewhat of an ugly duckling among programming languages, so no reason to play into the stereotype.</p>
+<p>We can combine logical statements and index statements</p>
+<pre class="r"><code>cats[cats$coat == &quot;black&quot;, c(&quot;coat&quot;, &quot;weight&quot;)]</code></pre>
+<pre><code>##    coat weight
+## 2 black      5
+## 5 black      4</code></pre>
+<p>Finally, we can use <code>&amp;</code>, the symbol for “and”, and <code>|</code>, the symbol for “or”, to make logical statements.</p>
+<pre class="r"><code>cats[cats$coat == &quot;black&quot; &amp; cats$likes_string == TRUE, ]</code></pre>
+<pre><code>##   cat_id  coat weight likes_string
+## 5      5 black      4         TRUE</code></pre>
+<p>This statement selects all records with black cats that also like string</p>
 </div>
 <div id="factors" class="section level2">
 <h2>Factors</h2>
@@ -247,18 +275,6 @@ min(satisfaction) ## works!</code></pre>
 as.numeric(f)               ## wrong! and there is no warning...
 as.numeric(as.character(f)) ## works...
 as.numeric(levels(f))[f]    ## The recommended way.</code></pre>
-</div>
-<div id="challenge-1" class="section level3">
-<h3>Challenge</h3>
-<p>The function <code>table()</code> tabulates observations and can be used to create bar plots quickly. For instance:</p>
-<pre class="r"><code>## Question: How can you recreate this table but by having &quot;control&quot;
-## being listed last instead of first?
-exprmt &lt;- factor(c(&quot;treat1&quot;, &quot;treat2&quot;, &quot;treat1&quot;, &quot;treat3&quot;, &quot;treat1&quot;, &quot;control&quot;,
-                   &quot;treat1&quot;, &quot;treat2&quot;, &quot;treat3&quot;))
-table(exprmt)</code></pre>
-<pre><code>## exprmt
-## control  treat1  treat2  treat3 
-##       1       4       2       2</code></pre>
 </div>
 </div>
 </div>

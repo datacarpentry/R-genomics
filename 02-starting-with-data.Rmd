@@ -25,16 +25,12 @@ To view your current working directory use the `getwd()` command
 getwd()
 ```
 
-To set you working directory, use the `setwd()` command. We want to set the working directory to the same location as the file 
+To set you working directory, use the `setwd()` command. We want to set the working directory to the same location as the file. For example: 
 ```{r, eval=FALSE}
-setwd("~/Documents/AARUG")
+setwd("~/Workshops/AARUG")
 ```
 
-Caution: Knitr doesn't like `setwd()`. It assumes that all data files are under the same directory as the script files 
-so you can use relative paths. If you don't like this, you can set the root directory in the global chunk options like this
-```{r, eval=FALSE}
-opts_chunk$set(root.dir = '/mydir')
-```
+
 
 
 # Looking at data
@@ -43,7 +39,7 @@ opts_chunk$set(root.dir = '/mydir')
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
 ```{r, eval=TRUE,  purl=FALSE}
-cats <- read.csv('data/cats.csv')
+cats <- read.csv(file = 'data/cats.csv')
 ```
 
 This statement doesn't produce any output because assignment doesn't display
@@ -127,15 +123,8 @@ cats[1, 6]   # first element in the 6th column
 cats[1:3, 7] # first three elements in the 7th column
 cats[3, ]    # the 3rd element for all columns
 cats[, 7]    # the entire 7th column
-head_meta <- cats[1:6, ] 
+head_meta <- cats[1:6, ] # Row 1-6 which is the same as head
 ```
-
-### Challenge
-
-1. The function `nrow()` on a `data.frame` returns the number of rows. Use it,
-   in conjuction with `seq()` to create a new `data.frame` called
-   `data_by_2` that includes every other row of the cats data frame
-   starting at row 2 (2, 4, 6, ...)
 
 
 For larger datasets, it can be tricky to remember the column number that
@@ -148,31 +137,68 @@ and it makes your code easier to read and your intentions clearer.
 You can do operations on a particular column, by selecting it using the `$`
 sign. In this case, the entire column is a vector. You can use
 `names(cats)` or `colnames(cats)` to remind yourself of the column names.
-For instance, to extract all the strain information from our datasets:
+For instance, to extract all the cats' weight information from our dataset:
 
-```{r, eval=FALSE}
+```{r}
 cats$weight
 ```
 
 In some cases, you may way to select more than one column. You can do this using
-the square brackets. Suppose we wanted strain and clade information:
+the square brackets. Suppose we wanted weight and coat information:
 
-```{r, eval=FALSE}
+```{r}
 cats[, c("weight", "coat")]
 ```
 
 You can even access columns by column name _and_ select specific rows of interest. For example, if we wanted the weight and coat of just rows
 4 through 7, we could do:
 
-```{r, eval=FALSE}
+```{r}
 cats[4:7, c("weight", "coat")]
 ```
 
-## Factors
+We can can also use logical statements to select and filter items from a `data.frame`. For example, to select all rows with black cats we could use the following statement
 
-```{r, echo=FALSE, purl=TRUE}
-### Factors
+```{r}
+cats[cats$coat == "black", ]
+
 ```
+
+let's break this down a bit. The logical statement in the brackets returns a vector of `TRUE` and `FALSE` values. 
+
+```{r}
+cats$coat == "black"
+```
+
+These `booleans` allow us to select which records we want from our `data.frame`
+
+Another way to do this is with the function `which()`. `which()` finds the indexes of records meeting a logical statement
+```{r}
+which(cats$coat == "black")
+
+```
+
+So, we could also write 
+```{r}
+cats[which(cats$coat == "black"), ]
+```
+But that's getting really long and ugly. R is already considered somewhat of an ugly duckling among programming languages, so no reason to play into the stereotype.
+
+We can combine logical statements and index statements
+```{r}
+cats[cats$coat == "black", c("coat", "weight")]
+
+```
+
+Finally, we can use `&`, the symbol for "and", and `|`, the symbol for "or", to make logical statements.
+
+```{r}
+cats[cats$coat == "black" & cats$likes_string == TRUE, ]
+
+```
+This statement selects all records with black cats that also like string
+
+## Factors
 
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
@@ -241,15 +267,3 @@ as.numeric(as.character(f)) ## works...
 as.numeric(levels(f))[f]    ## The recommended way.
 ```
 
-### Challenge
-
-The function `table()` tabulates observations and can be used to create
-bar plots quickly. For instance:
-
-```{r wrong-order, results='show', purl=TRUE}
-## Question: How can you recreate this table but by having "control"
-## being listed last instead of first?
-exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
-                   "treat1", "treat2", "treat3"))
-table(exprmt)
-```

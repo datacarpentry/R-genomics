@@ -129,13 +129,18 @@ $(document).ready(function () {
 <div id="creating-objects" class="section level2">
 <h2>Creating objects</h2>
 <p>You can get output from R simply by typing in math in the console</p>
-<pre class="r"><code>3 + 5
-12/7
-2*4
-2^4</code></pre>
+<pre class="r"><code>3 + 5</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>12/7</code></pre>
+<pre><code>## [1] 1.714286</code></pre>
+<pre class="r"><code>2*4</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>2^4</code></pre>
+<pre><code>## [1] 16</code></pre>
 <p>We can also comment what it is we’re doing</p>
 <pre class="r"><code># I am adding 3 and 5. R is fun!
 3 + 5</code></pre>
+<pre><code>## [1] 8</code></pre>
 <p>What happens if we do that same command with the # sign in the front?</p>
 <pre class="r"><code>I am adding 3 and 5. R is fun!
 3 + 5</code></pre>
@@ -152,14 +157,21 @@ a &lt;- 3
 b &lt;- 5
 
 # what now is a
-a
-# what now is b
-b
-
-#Add a and b
+a</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code># what now is b
+b</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>#Add a and b
 a + b</code></pre>
+<pre><code>## [1] 8</code></pre>
 <p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
 <p>In RStudio, typing <code>Alt + -</code> (push <code>Alt</code>, the key next to your space bar at the same time as the <code>-</code> key) will write <code>&lt;-</code> in a single keystroke.</p>
+<p>To view which objects we have stored in memory, we can use the <code>ls()</code> command</p>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
+<p>To remove objects we can use the <code>rm()</code> command</p>
+<pre class="r"><code>rm(a)</code></pre>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>
 <ul>
@@ -205,32 +217,38 @@ a + b</code></pre>
 </div>
 <div id="vectors-and-data-types" class="section level2">
 <h2>Vectors and data types</h2>
-<p>A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically just a list of values, mainly either numbers or characters. They’re special lists that you can do math with. You can assign this list of values to a variable, just like you would for one item. For example we can create a vector of :</p>
+<p>A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically just a list of values, mainly either numbers or characters. They’re special lists that you can do math with. You can assign this list of values to a variable, just like you would for one item. You can add elements to your vector simply by using the <code>c()</code> function, which stands for combine:</p>
 <pre class="r"><code>one_to_five &lt;- c(1, 2, 3, 4, 5)
-one_to_five &lt;- 1:5</code></pre>
+one_to_five &lt;- 1:5
+one_to_five</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>A vector can also contain characters:</p>
 <pre class="r"><code>primary_colors &lt;- c(&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;)
 primary_colors</code></pre>
+<pre><code>## [1] &quot;red&quot;    &quot;yellow&quot; &quot;blue&quot;</code></pre>
 <p>There are many functions that allow you to inspect the content of a vector. <code>length()</code> tells you how many elements are in a particular vector:</p>
-<pre class="r"><code>length(one_to_five)
-length(primary_colors)</code></pre>
+<pre class="r"><code>length(one_to_five)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>length(primary_colors)</code></pre>
+<pre><code>## [1] 3</code></pre>
 <p>You can also do math with whole vectors. For instance if we wanted to multiply all the values in our vector by a scalar, we can do</p>
 <pre class="r"><code>5 * one_to_five</code></pre>
+<pre><code>## [1]  5 10 15 20 25</code></pre>
 <p>or we can add the data in the two vectors together</p>
 <pre class="r"><code>two_to_ten &lt;- one_to_five + one_to_five
 two_to_ten</code></pre>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
 <p>This is very useful if we have data in different vectors that we want to combine or work with.</p>
 <p>There are few ways to figure out what’s going on in a vector.</p>
 <p><code>class()</code> indicates the class (the type of element) of an object:</p>
-<pre class="r"><code>class(one_to_five)
-class(primary_colors)</code></pre>
-<p>The function <code>str()</code> provides an overview of the object and the elements it contains. It is a really useful function when working with large and complex objects:</p>
-<pre class="r"><code>str(one_to_five)
-str(primary_colors)</code></pre>
-<p>You can add elements to your vector simply by using the <code>c()</code> function, which stands for combine:</p>
+<pre class="r"><code>class(one_to_five)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>class(primary_colors)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
 <pre class="r"><code>new_digits &lt;- c(one_to_five, 90) # adding at the end
 new_digits &lt;- c(30, new_digits) # adding at the beginning
 new_digits</code></pre>
+<pre><code>## [1] 30  1  2  3  4  5 90</code></pre>
 <p>What happens here is that we take the original vector <code>one_to_five</code>, and we are adding another item first to the end of the other ones, and then another item at the beginning. We can do this over and over again to build a vector or a dataset. As we program, this may be useful to autoupdate results that we are collecting or calculating.</p>
 <p>We just saw 2 of the <strong>data types</strong> that R uses: <code>&quot;character&quot;</code> and <code>&quot;integer&quot;</code>. The others you will likely encounter during data analysis are:</p>
 <ul>
@@ -242,14 +260,24 @@ new_digits</code></pre>
 <p>Importantly, a vector can only contain <strong>one</strong> data type. If you combine multiple data types in a vector with the <code>c()</code> command, R will try to coerce all the values to the same data type. If it cannot, it will throw an error.</p>
 <p>For example, what data type is our <code>one_to_five</code> vector if we divide it by 2?</p>
 <pre class="r"><code>divided_integers &lt;- one_to_five/2
-divided_integers
-
-class(divided_integers)</code></pre>
-<p>Vectors are indexed sets, which means that every value can be referred to by its order in the vector. Unlike most other languages, indexing starts at 1</p>
-<pre class="r"><code>one_to_five[3]
-one_to_five[1:3]
-one_to_five[-2]</code></pre>
-<p>Vectors are one of the many <strong>data structures</strong> that R uses. Other important ones are lists (<code>list</code>), matrices (<code>matrix</code>), data frames (<code>data.frame</code>) and factors (<code>factor</code>).</p>
+divided_integers</code></pre>
+<pre><code>## [1] 0.5 1.0 1.5 2.0 2.5</code></pre>
+<pre class="r"><code>class(divided_integers)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Vectors are indexed sets, which means that every value can be referred to by its order in the vector. R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.</p>
+<p>We can index a vector in many different ways. We can specify a position of a single value, a range of values, or a vector of values. We can even specify which values to remove by their indices.</p>
+<pre class="r"><code>one_to_five[3]</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>one_to_five[1:3]</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>one_to_five[c(1,3,5)]</code></pre>
+<pre><code>## [1] 1 3 5</code></pre>
+<pre class="r"><code>one_to_five[-2]</code></pre>
+<pre><code>## [1] 1 3 4 5</code></pre>
+</div>
+<div id="other-data-structures" class="section level2">
+<h2>Other data structures</h2>
+<p>Vectors are one of the many <strong>data structures</strong> that R uses. Other important ones are lists (<code>list</code>), matrices (<code>matrix</code>), and data frames (<code>data.frame</code>)</p>
 </div>
 
 
