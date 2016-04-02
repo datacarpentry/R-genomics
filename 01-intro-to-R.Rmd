@@ -2,10 +2,6 @@
 title: Introduction to R
 ---
 
-```{r, echo=FALSE, purl=FALSE}
-knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
-```
-
 ------------
 
 > ## Learning Objectives
@@ -19,16 +15,6 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 ## The R syntax
 
-_Start by showing an example of a script_
-
-* Point to the different parts:
-  - a function
-  - the assignment operator `<-`
-  - the `=` for arguments
-  - the comments `#` and how they are used to document function and its content
-  - the `$` operator
-* Point to indentation and consistency in spacing to improve clarity
-
 
 ## Creating objects
 
@@ -41,20 +27,22 @@ You can get output from R simply by typing in math in the console
 ```{r, purl=FALSE}
 3 + 5
 12/7
+2*4
+2^4
 ```
 
 We can also comment what it is we're doing
 
 ```{r, purl=FALSE}
 # I am adding 3 and 5. R is fun!
-3+5
+3 + 5
 ```
 
 What happens if we do that same command with the # sign in the front?
 
 ```{r, purl=FALSE, eval=FALSE}
 I am adding 3 and 5. R is fun!
-3+5
+3 + 5
 ```
 
 Now R is trying to run that sentence as a command, and it 
@@ -99,7 +87,16 @@ be used to specify the values of arguments in functions, see below.
 In RStudio, typing `Alt + -` (push `Alt`, the key next to your space bar at the
 same time as the `-` key) will write ` <- ` in a single keystroke.
 
+To view which objects we have stored in memory, we can use the `ls()` command
 
+```{r, purl=FALSE}
+ls()
+```
+
+To remove objects we can use the `rm()` command
+```{r, purl=FALSE}
+rm(a)
+```
 ### Exercise 
 
 - What happens if we change `a` and then re-add `a` and `b`?
@@ -111,7 +108,7 @@ same time as the `-` key) will write ` <- ` in a single keystroke.
 Objects can be given any name such as `x`, `current_temperature`, or
 `subject_id`. You want your object names to be explicit and not too long. They
 cannot start with a number (`2x` is not valid but `x2` is). R is case sensitive
-(e.g., `genome_length_mb` is different from `genome_length_mb`). There are some names that
+(e.g., `my_data` is different from `My_data`). There are some names that
 cannot be used because they represent the names of fundamental functions in R
 (e.g., `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
@@ -195,7 +192,7 @@ We see that if we want a different number of digits, we can
 type `digits=2` or however many we want.
 
 ```{r, results='show'}
-round(3.14159, digits=2)
+round(3.14159, digits = 2)
 ```
 
 If you provide the arguments in the exact same order as they are defined you don't have to name them:
@@ -213,107 +210,48 @@ Another advantage of naming arguments, is that the order doesn't matter.
 This is useful when there start to be more arguments. 
 
 
-### Exercise
-
-We're going to work with genome lengths.
-- Create a variable `genome_length_mb` and assign it the value `4.6`
-
-## Solution
-
-```{r, purl=FALSE}
-(genome_length_mb <- 4.6)
-genome_length_mb
-```
-
-### Exercise
-
-Now that R has `genome_length_mb` in memory, we can do arithmetic with it. For
-instance, we may want to convert this to the weight of the genome in 
-picograms (for some reason). 978Mb = 1picogram. Divide the 
-genome length in Mb by 978. 
-
-### Solution
-
-```{r, purl=FALSE}
-genome_length_mb / 978.0
-```
-
-It turns out an E. coli genome doesn't weigh very much.
-
-### Exercise
-
-We can also change the variable's value by assigning it a new one. Say
-we want to think about a human genome rather than E. coli. Change `genome_length_mb` to 3000 and figure out the weight of the human 
-genome. 
-
-### Solution
-
-```{r, purl=FALSE}
-genome_length_mb <- 3000.0
-genome_length_mb / 978.0
-```
-
-This means that assigning a value to one variable does not change the values of
-other variables.  For example, let's store the genome's weight in a variable.
-
-```{r, purl=FALSE}
-genome_weight_pg <- genome_length_mb / 978.0
-```
-
-and then change `genome_length_mb` to 100.
-
-```{r, purl=FALSE}
-genome_length_mb <- 100
-```
-
-### Exercise
-
-What do you think is the current content of the object `genome_weight_pg`? 3.06 or 0.102?
-
-
 ## Vectors and data types
 
-```{r, echo=FALSE, purl=TRUE}
-### Vectors and data types
-```
 
 A vector is the most common and basic data structure in R, and is pretty much
 the workhorse of R. It's basically just a list of values, mainly either numbers or
 characters. They're special lists that you can do math with. You can assign this list of values to a variable, just like you
-would for one item. For example we can create a vector of genome lengths:
+would for one item. You can add elements to your vector simply by using the `c()` function, which stands for combine:
 
-```{r, purl=FALSE}
-glengths <- c(4.6, 3000, 50000)
-glengths
+
+```{r}
+one_to_five <- c(1, 2, 3, 4, 5)
+one_to_five <- 1:5
+one_to_five
 ```
 
 A vector can also contain characters:
 
-```{r, purl=FALSE}
-species <- c("ecoli", "human", "corn")
-species
+```{r}
+primary_colors <- c("red", "yellow", "blue")
+primary_colors
 ```
 
 There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
-```{r, purl=FALSE}
-length(glengths)
-length(species)
+```{r}
+length(one_to_five)
+length(primary_colors)
 ```
 
 
-You can also do math with whole vectors. For instance if we wanted to multiply the genome lengths of all the genomes in the list, we can do
+You can also do math with whole vectors. For instance if we wanted to multiply all the values in our vector by a scalar, we can do
 
-```{r, purl=FALSE}
-5 * glengths
+```{r}
+5 * one_to_five
 ```
 
 or we can add the data in the two vectors together
 
-```{r, purl=FALSE}
-new_lengths <- glengths + glengths
-new_lengths
+```{r}
+two_to_ten <- one_to_five + one_to_five
+two_to_ten
 ```
 
 This is very useful if we have data in different vectors that we 
@@ -323,47 +261,61 @@ There are few ways to figure out what's going on in a vector.
 
 `class()` indicates the class (the type of element) of an object:
 
-```{r, purl=FALSE}
-class(glengths)
-class(species)
+```{r}
+class(one_to_five)
+class(primary_colors)
 ```
 
-The function `str()` provides an overview of the object and the elements it
-contains. It is a really useful function when working with large and complex
-objects:
 
-```{r, purl=FALSE}
-str(glengths)
-str(species)
+```{r}
+new_digits <- c(one_to_five, 90) # adding at the end
+new_digits <- c(30, new_digits) # adding at the beginning
+new_digits
 ```
 
-You can add elements to your vector simply by using the `c()` function:
-
-```{r, purl=FALSE}
-lengths <- c(glengths, 90) # adding at the end
-lengths <- c(30, glengths) # adding at the beginning
-lengths
-```
-
-What happens here is that we take the original vector `glengths`, and we are
+What happens here is that we take the original vector `one_to_five`, and we are
 adding another item first to the end of the other ones, and then another item at
 the beginning. We can do this over and over again to build a vector or a
 dataset. As we program, this may be useful to autoupdate results that we are
 collecting or calculating.
 
-We just saw 2 of the 6 **data types** that R uses: `"character"` and
-`"numeric"`. The other 4 are:       
+We just saw 2 of the **data types** that R uses: `"character"` and
+`"integer"`. The others you will likely encounter during data analysis are:       
 
 * `"logical"` for `TRUE` and `FALSE` (the boolean data type)
-* `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R that it's an integer)
-* `"complex"` to represent complex numbers with real and imaginary parts (e.g.,
-  `1+4i`) and that's all we're going to say about them
-* `"raw"` that we won't discuss further
+* `"numeric"` for floating point decimal numbers      
+* `"factor"` for categorical data. Similar to `"character"` data, but factors have levels   
+   
 
+Importantly, a vector can only contain **one** data type. If you combine multiple data types
+in a vector with the `c()` command, R will try to coerce all the values to the same data type.
+If it cannot, it will throw an error. 
+    
+For example, what data type is our `one_to_five` vector if we divide it by 2?
+```{r}
+divided_integers <- one_to_five/2
+divided_integers
+
+class(divided_integers)
+```
+
+Vectors are indexed sets, which means that every value can be referred to by its order in the vector. 
+R indexes start at 1. Programming languages like Fortran, MATLAB, and R start
+counting at 1, because that's what human beings typically do. Languages in the C
+family (including C++, Java, Perl, and Python) count from 0 because that's
+simpler for computers to do.
+
+We can index a vector in many different ways. We can specify a position of a single value, a range of values, or a vector of values. We can even specify which values to remove by their indices. 
+```{r}
+one_to_five[3]
+one_to_five[1:3]
+one_to_five[c(1,3,5)]
+one_to_five[-2]
+```
+
+## Other data structures
 Vectors are one of the many **data structures** that R uses. Other important
-ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`) and
-factors (`factor`).
-
+ones are lists (`list`), matrices (`matrix`), and data frames (`data.frame`) 
 
 
 
