@@ -37,8 +37,25 @@ Cats data is available [here]({{page.dataurl}}/cats.csv)
          	
 Birthwt data is available [here]({{page.dataurl}}/birthwt.csv)
 
+## Socrative
 
-### Requirements
+We will use Socrative to work through exercises during the workshop  				
+
+Student login: [https://b.socrative.com/login/student/](https://b.socrative.com/login/student/)		  
+
+classroom: HHUCRA83F
+
+## Slack
+
+We will use Slack to communicate during the workshop. The AARUG slack group is also 
+a valuable resource for hearing about R-related events and announcements and receiving help
+on your R code. 
+
+Request to join the AARUG slack group: [http://annarborrusergroup.github.io/slack/](http://annarborrusergroup.github.io/slack/)
+			
+
+
+## Requirements
 
 *These lessons assume no prior knowledge of the skills or tools*, but working
 through this lesson requires working copies of the software described below.
