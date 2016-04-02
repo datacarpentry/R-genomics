@@ -1,0 +1,159 @@
+---
+title: "Common Statistical Techniques in R"
+output: html_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(MASS)
+library(dplyr)
+library(ggplot2)
+knitr::opts_chunk$set(comment = '')
+```
+
+------------
+
+> ## Learning Objectives
+>
+> * To become familiar with common statistical functions available in R
+> * Summary Statistics
+> * t-test
+> * Linear Regression
+> * Logistic Regression
+
+------------
+
+## Summary Statistics
+
+R is a language for statisticians so many of the more common statistical methods and techniques are available in base R.  There is a wide variety of these functions, some we've seen before, e.g. `mean`.  Others summary statistic functions include `sd` to calculate standard deviations, `min` to calculate minimums and `max` to calculate maximums.
+
+```{r}
+mean(x = birthwt$bwt)
+sd(x = birthwt$bwt)
+min(birthwt$bwt)
+max(birthwt$bwt)
+```
+
+------------
+
+Some other useful metrics of your data are based on quantiles. We often are interested in calculating the median of our data, but we can calculate any quantile of the data with the `quantile` function.
+
+```{r}
+median(x = birthwt$bwt)
+quantile(x = birthwt$bwt, 0.5)
+quantile(x = birthwt$bwt, probs = c(0.05, 0.95))
+```
+
+The `summary` function is also very useful, but can also be a little confusing.  `summary` will return different things depending on what type of argument we pass.  If we pass a data vector, it will return a quick summary of distribution of the data.  We'll use it later to summarize the results of linear models.
+
+```{r}
+summary(object = birthwt$bwt)
+```
+
+------------
+
+> ### Challenge
+> 
+> What are the first and third quartile of mother's age (`age`) in the `birthwt` data set?
+> 
+
+------------
+
+## Student's t-test
+
+A t-test is a fundamental statistical hypothesis test most commonly used for testing the location of the mean of a population.  It can be used to compare the means of two populations.
+
+The assumption we make when using a t-test is that our sample is randomly sampled from a population that follows a normal distribution, with population average $\mu$ ("mu").  
+
+In the single sample case, we can test whether there is evidence that the mean of our sample is different than some hypothesized value, called the null hypothesis.  
+
+For example, if I think that the average birthweight in the US is about 3200g, I can test whether or not our sample is different from the overall US population with a t-test.
+
+```{r}
+t.test(x = birthwt$bwt, mu = 3200)
+```
+
+------------
+
+
+If we want to compare whether 2 samples have the same mean (i.e. they come from the same distribution), we can a *2-sample t-test*.  The null hypothesis in this situation is that the two samples come from populations with equal means.
+
+For example, we can test whether infants' birthweight is different based on the smoking status of the mother:
+
+```{r}
+hx_smoking <- birthwt %>% filter(smoke == 1)
+no_hx_smoking <- birthwt %>% filter(smoke == 0)
+
+test_smoking <- t.test(x = hx_smoking$bwt, y = no_hx_smoking$bwt)
+test_smoking
+```
+
+------------
+
+> ### Challenge
+> What is the p-value of the 2-sample t-test comparing the birth weight of infants whose mother had a history of hypertension (`ht`)?
+> 
+
+------------
+
+### Simple Linear Regression
+
+```{r, echo = FALSE, message = FALSE, fig.width = 4, fig.height = 4, fig.align = 'center'}
+
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point() + 
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE) + 
+  theme_bw()
+
+```
+
+Linear regression is one of the most commonly used methods in all of statistics.  It is works for a large variety of applications and offers highly interpretable results.  It was the first regression method discovered and belongs to one of the most important families of models, generalized linear models.
+
+Simple linear regression estimates the linear relationship between two variables, an outcome variable *y*, and an explanatory variable *x*.  
+
+To fit a linear regression in *R*, we can use the `lm()` function (think _linear model_).  We use the formula notation, `y~x` where `y` is the name of your outcome variable, and `x` is the name of your explanatory variable, both are unquoted.  The easiest way to view the results interactively is with the `summary()` function.
+
+```{r}
+bwt_fit <- lm(formula = bwt ~ age, data = birthwt)
+summary(bwt_fit)
+```
+
+------------
+
+In this case, the `summary` function returns an object that provides a lot of interesting information when printed out.  It also stores that information as part of the object, things like the terms used in the model, the coefficients of the model estimates, and the residuals of the model. This is nice if we want to do something programmatic with the results. 
+  
+------------
+
+### Multiple Linear Regression
+
+We aren't restricted to just one explanatory variable in linear regression.  We can test the effect of a linear relationship between multiple explanatory variables _simultaneously_.  In the `lm` function, we just add extra variable names in the formula separated by `+`'s.
+
+```{r}
+bwt_fit <- lm(formula = bwt ~ age + ui, data = birthwt)
+summary(bwt_fit)
+```
+
+------------
+
+> ### Challenge
+> 
+> Fit a linear regression estimating the relationship between the outcome, birth weight (`bwt`) and explanatory variables age (`age`), mother's smoking status during pregnancy (`smoke`), history of hypertension (`ht`), the number of previous premature labors (`ptl`), and presence of uterine irritability (`ui`).  What is the estimate of the effect of uterine irritability on birth weight?
+> 
+
+------------
+
+If an explanatory variable is not binary (coded as 0s or 1s), we can still include it in the model.  The `lm` function understands factors to be categorical variables automatically and will output the estimates with a reference category.
+
+```{r}
+bwt_fit <- lm(formula = bwt ~ age + ui + smoke + ht + ptl + as.factor(race), data = birthwt)
+summary(bwt_fit)
+```
+
+------------
+
+The `lm` function also can estimate interactions between explanatory variables.  This is useful if we think that the linear relationship between our outcome y and a variable x1 is _different_ depending on the variable x2.  This can be accomplished by connecting two variables in the formula with a `*` instead of a `+`.
+
+> ### Challenge 
+> Fit a linear regression model estimating the relationship between the outcome, birth weight (`bwt`) and explanatory variables history of hypertension (`ht`), the number of previous premature labors (`ptl`), presence of uterine irritability (`ui`), and an interaction between age (`age`) and mother's smoking status during pregnancy (`smoke`)
+ 
+ 
+
