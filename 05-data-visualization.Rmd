@@ -188,7 +188,7 @@ The ggplot2 theme system handles non-data plot elements such as:
 * Facet label backround
 * Legend appearance
 
-There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status. The size of the points can be adjusted within the geom_point but does not need to be included in aes() since the value is not mapping to a variable.
+There are built-in themes we can use, or we can adjust specific elements. We can add additional aesthetics by mapping them to other variables in our dataframe. For example, the color of the boxplots will reflect low birth weight.
 
 ```{r, fig.align='center'}
 ggplot(birthwt) +
@@ -197,6 +197,21 @@ ggplot(birthwt) +
     ylab("Mother's age") +
     theme_dark()
 ```
+
+###Facets
+
+Facets display subsets of the dataset in different panels. Let's use the `facet_grid` function to lay out panels in a grid. Each panel will have the same geometric objects.
+
+```{r}, fig.align='center'}
+ggplot(birthwt) +
+    geom_point(aes(x = age, y = bwt)) +
+    xlab("Mother's age") +
+    ylab("Birth weight") +
+    facet_grid(. ~ low) +
+    theme_linedraw()
+```
+
+Here we have two panels one for each factor level of `low`. The panels are layed out in columns because the expression `. ~ low` 
 
 ###Writing figures to file
 
