@@ -99,7 +99,7 @@ test_smoking
 
 ```{r, echo = FALSE, message = FALSE, fig.width = 4, fig.height = 4, fig.align = 'center'}
 
-ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+ggplot(birthwt, aes(x = lwt, y = bwt)) +
   geom_point() + 
   geom_smooth(method = 'lm', formula = y ~ x, se = FALSE) + 
   theme_bw()
@@ -145,7 +145,8 @@ If an explanatory variable is not binary (coded as 0s or 1s), we can still inclu
 
 ```{r}
 bwt_fit <- lm(formula = bwt ~ age + ui + smoke + ht + ptl + as.factor(race), data = birthwt)
-summary(bwt_fit)
+summary_fit <- summary(bwt_fit)
+summary_fit['coefficients']
 ```
 
 ------------
@@ -153,7 +154,22 @@ summary(bwt_fit)
 The `lm` function also can estimate interactions between explanatory variables.  This is useful if we think that the linear relationship between our outcome y and a variable x1 is _different_ depending on the variable x2.  This can be accomplished by connecting two variables in the formula with a `*` instead of a `+`.
 
 > ### Challenge 
-> Fit a linear regression model estimating the relationship between the outcome, birth weight (`bwt`) and explanatory variables history of hypertension (`ht`), the number of previous premature labors (`ptl`), presence of uterine irritability (`ui`), and an interaction between age (`age`) and mother's smoking status during pregnancy (`smoke`)
- 
- 
+> Fit a linear regression model estimating the relationship between the outcome, birth weight (`bwt`) and explanatory variables history of hypertension (`ht`), the number of previous premature labors (`ptl`), presence of uterine irritability (`ui`), and an interaction between age (`age`) and mother's smoking status during pregnancy (`smoke`). 
 
+```{r}
+
+bwt_fit <- lm(formula = bwt ~ ht + ptl + ui + age*smoke, data = birthwt)
+lm_summary <- summary(bwt_fit)
+lm_summary['coefficients']
+
+```
+ 
+ ## Logistic Regression
+
+If we are analyzing a binary outcome, we can use *logistic regression*.  Logistic regression uses the linear model framework, but makes different assumptions about the distribution of the outcome.  So we can look for associations between binary outcome variables and multiple explanatory variables.
+
+```{r}
+smoke_fit <- glm(formula = smoke ~ bwt + age + ht , data = birthwt, family = binomial )
+glm_summary <- summary(smoke_fit)
+glm_summary$coefficients
+```
