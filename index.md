@@ -28,7 +28,7 @@ AARUG Beginner R Workshop
 1. [Lesson 01 Introduction to R](01-intro-to-R.html)
 2. [Lesson 02 Starting with data](02-starting-with-data.html)
 3. [Lesson 03 R Markdown](03-rmarkdown.html)
-4. [Lesson 04 Aggregating and analyzing data with dplyr](04-dplyr.html)
+4. [Lesson 04 Manipulating and Analyzing Data with dplyr](04-dplyr.html)
 5. [Lesson 05 Data visualisation with ggplot2](05-data-visualization.html)
 <!-- 6. [Lesson 06 Stats models](06-stats-models.html)
  -->
