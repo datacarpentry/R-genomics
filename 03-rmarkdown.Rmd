@@ -1,0 +1,76 @@
+---
+title: Literate Programming with RMarkdown
+---
+
+------------
+
+> ## Learning Objectives
+>
+> * understand why literate programming is useful
+> * create and edit an RMarkdown file
+> * understand the different output types
+> * know how to manipulate some common chunk options
+
+------------
+
+# What is R Markdown?
+R Markdown is a special file format which allows us to combine text, code, _and the output of that code_ in a single file. This is an incredibly powerful way to share research and data explorations in an easily-readable way.
+
+RMarkdown is an extended version of the Markdown (`.md`) file format, which is an easy way to make nicely formatted text documents without endlessly tinkering with the formatting (as you might with LaTeX). The software community loves Markdown because in addition to being straightforward, it has good support for inserting pieces of code, which can be a pain in other formats.
+
+RMarkdown takes this a step further by allowing you to _run_ the code in your document, and having the output appear below the code that made it.
+
+(If you've used ipython/Jupyter notebooks before, R Markdown will feel similar.)
+
+All the lessons in this workshop were created with R Markdown!
+
+
+# Installation
+R Markdown is an _R package_, an add-on for R that gives some new functionality. There's thousands of packages available for R, and most are available through CRAN, the "Comprehensive R Archive Network". This is a global network of servers which each contain copies of all the approved packages. To install a package from CRAN, we use the `install.packages` command.
+
+Run the following code to install RMarkdown. You may be prompted to choose a mirror; the RStudio mirror is a good choice.
+
+```{r, eval = FALSE}
+install.packages("rmarkdown")
+```
+
+You only need to do this once per computer; even if you close RStudio, this package will still be available.
+
+
+# My First Rmd
+
+Rstudio makes it easy to create a new RMarkdown file, and it even starts with a demo file that shows off most of the basic features of the `Rmd` format. In the upper-left corner, click the "new file" icon and select RMarkdown. A window should appear to help you configure this file initially. There's a lot of options (R Markdown can do so much!), but for now, make sure your name is in the "Author" field, and change the "Title" to be something like "AARUG Workshop".
+
+Before we delve into what each of these pieces mean, let's "knit" the document so we can see what kind of output RMarkdown produces. Above the file, press the `knit` button, the one that looks like a ball of yarn.
+
+You should see a new pane open in RStudio that shows R "knitting" the document, and when it's done, a pop-up will appear showing the knitted output.
+
+This new output being displayed is an `html` file; look in the file browser pane, and you'll see a `.html` file next to your `.Rmd` file (may need to refresh), because RStudio automatically saved this output when the document finished knitting.
+
+Let's look at the individual pieces in this document:
+
+### Header
+This is the section at the top, with three dashes before and after. This lists some metadata about the object. The title, date, and author form the start of the output document, and the `output:` line instructs the knitting process to generate an html file.
+
+### Section Titles
+You can enlarge text be preceding it with one or more pound signs (`#`). This is mainly useful for organizing a document into sections. The more pound signs, the smaller the text, so when you make sub-section you should add at least one more pound sign than used in the parent sections' title.
+
+### Link
+Notice the link in the first section, wrapped in angle brackets (`<`, `>`). This makes that text a clickable link.
+
+### Bold/Italic Text
+The double-asterisks surrounding the word "Knit" in the second paragraph cause that piece of text to be bold. This phrase can be multiple words, but should not have spaces immediately on the inside of the asterisks. You can make text italix by similarly wrapping in underscores (`_`).
+
+### Code Chunks
+This is the real meat of the document! An R Markdown code chunk is a section which starts and ends with triple-backticks (\`, not `'`). After the initial set, the curly-bracketed section which starts with `{r` is what forces this to be ran as R code; without this piece, the section would get formatted like code, but would not be executed when knitting. The phrase after the `r` is the _chunk name_. Chunks do not need to be named, but no two chunks can have the same name. Naming chunks can help keep code organized and make it easier to track down the source of errors when they occur.
+
+### Chunk Otions
+As the second default section discusses, we can hide the code in a code chunk by placing a comma after out chunk name and setting an option `echo=FALSE`. The code will still execute, and its output will be inserted in the knitted document, but it will not be shown.
+
+Similarly, you can set `eval=FALSE` to avoid running a code chunk.
+
+
+# Digging Deeper
+There's a lot more to RMarkdown than just this; as the demo document shows, you can visit <http://rmarkdown.rstudio.com> to learn more.
+
+We'll be using R Markdown for the rest of this workshop to keep a running log of what we're learning. This will allow you to walk away with a knit document which has not only the code commands you've learned to use, but the output of those commands and some explanatory text. That's literate programming!
