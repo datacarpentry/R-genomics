@@ -1,10 +1,14 @@
 ---
-title: Manipulating and Analyzing Data with dplyr
+title: Herding cats with dplyr
 ---
 
 ------------
 
-# About plyr
+```{r loading, echo = FALSE}
+cats <- read.csv("data/cats.csv")
+```
+
+# `dplyr`
 
 Bracket subsetting is handy, but it can be cumbersome and difficult to read,
 especially for complicated operations. Enter `dplyr`!
@@ -32,177 +36,135 @@ The first two `dplyr` commands we'll use help us to subset our data by rows and 
 
 ### `select`
 The first command we'll use is `select`, which allows us to choose columns from our dataset. Let's use our `cats` dataset and select only the `coat` column; we did this previously with
-```{r, eval=FALSE}
+
+```{r}
 cats[, "coat"]
 ```
 
 With dplyr, we don't need to enclose our column names in quotes
-```{r, eval=FALSE}
+
+```{r}
 select(cats, coat)
 ```
 
 Notice how the output differs slightly; all the main `dplyr` verbs behave consistently in that their inputs and outputs are both `data.frame`s, rather than returning a simple vector as the bracket-indexing method did.
 
 We can select more columns by giving `select` additional arguments, and our output `data.frame` will have columns according to the order of our arguments
-```{r, eval=FALSE}
+
+```{r}
 select(cats, coat, cat_id)
 ```
 
 ### `filter`
 So where `select` allowed us to select _columns_, `filter` operated on _rows_. Say we want to see the all the cats with black coats; we saw earlier how to use that using bracket-indexing:
-```{r, eval=FALSE}
+
+```{r}
 cats[cats$coat == "black", ]
 ```
 
 In dplyr, this looks like
-```{r, eval=FALSE}
+
+```{r}
 filter(cats, coat == "black")
 ```
 
 Notice we don't have to use the `$` operator to tell `filter` where the `coat` column is; it's smart enough to assume we want the `coat` column from the `data.frame` we passed in.
 
 
+## Pipes
+Before we talk about chaining `dplyr` operations, we need to introduce a tool that simplifies this chaining. Enter the "magrittr pipe", or just "pipe", which looks like `%>%`. It comes from the `magrittr` package and is loaded when you load `dplyr` into you environment (e.g. `library(dplyr)`).
 
-<!-- ### Pipes -->
+The pipe is a binary operator (like `+` or `*`) which takes the ouput of a command and "pipes" it into another one. It can be used with most functions (it's not specific to `dplyr` functions). As an example, recall we can round a number like this
 
-<!-- But what if you wanted to select and filter? There are three ways to do this: -->
-<!-- use intermediate steps, nested functions, or pipes. With the intermediate steps, -->
-<!-- you essentially create a temporary data frame and use that as input to the next -->
-<!-- function. This can clutter up your workspace with lots of objects. You can also -->
-<!-- nest functions (i.e. one function inside of another).  This is handy, but can be -->
-<!-- difficult to read if too many functions are nested as the process from inside -->
-<!-- out. The last option, pipes, are a fairly recent addition to R. Pipes let you -->
-<!-- take the output of one function and send it directly to the next, which is -->
-<!-- useful when you need to many things to the same data set.  Pipes in R look like -->
-<!-- `%>%` and are made available via the `magrittr` package installed as -->
-<!-- part of `dplyr`. -->
+```{r}
+round(1.23456789, 3)
+```
 
-<!-- ```{r, purl = FALSE} -->
-<!-- metadata %>% -->
-<!--   filter(cit == "plus") %>% -->
-<!--   select(sample, generation, clade) -->
-<!-- ``` -->
+We can use a pipe operator to acheive the same thing
 
-<!-- In the above we use the pipe to send the `metadata` data set first through -->
-<!-- `filter`, to keep rows where `cit` was equal to 'plus', and then through `select` to -->
-<!-- keep the `sample` and `generation` and `clade` columns. When the data frame is being passed to the -->
-<!-- `filter()` and `select()` functions through a pipe, we don't need to include it -->
-<!-- as an argument to these functions anymore. -->
+```{r}
+1.23456789 %>% round(3)
+```
 
-<!-- If we wanted to create a new object with this smaller version of the data we -->
-<!-- could do so by assigning it a new name: -->
+The pipe takes care of making sure the output of the expression on the left-hand-side (a simple numeric, in this case) is inserted as the first argument of the expressing on the right-hand-side. We can also pipe into other argument positions by using a period as a placeholder
 
-<!-- ```{r, purl = FALSE} -->
-<!-- meta_citplus <- metadata %>% -->
-<!--   filter(cit == "plus") %>% -->
-<!--   select(sample, generation, clade) -->
+```{r}
+3 %>% round(1.23456789, .)
+```
 
-<!-- meta_citplus -->
-<!-- ``` -->
-
-<!-- > ### Challenge {.challenge} -->
-<!-- > -->
-<!-- > Using pipes, subset the data to include rows where the clade is 'Cit+'. Retain columns -->
-<!-- > `sample`, `cit`, and `genome_size.` -->
-
-<!-- ### Mutate -->
-
-<!-- Frequently you'll want to create new columns based on the values in existing -->
-<!-- columns, for example to do unit conversions or find the ratio of values in two -->
-<!-- columns. For this we'll use `mutate()`. -->
-
-<!-- To create a new column of genome size in bp: -->
-
-<!-- ```{r, purl = FALSE, eval=FALSE} -->
-<!-- metadata %>% -->
-<!--   mutate(genome_bp = genome_size *1e6) -->
-<!-- ``` -->
-
-<!-- If this runs off your screen and you just want to see the first few rows, you -->
-<!-- can use a pipe to view the `head()` of the data (pipes work with non-dplyr -->
-<!-- functions too, as long as the `dplyr` or `magrittr` packages are loaded). -->
-
-<!-- ```{r, purl = FALSE, eval=FALSE} -->
-<!-- metadata %>% -->
-<!--   mutate(genome_bp = genome_size *1e6) %>% -->
-<!--   head -->
-<!-- ``` -->
-
-<!-- The row has a NA value for clade, so if we wanted to remove those we could -->
-<!-- insert a `filter()` in this chain: -->
-
-<!-- ```{r, purl = FALSE, eval=FALSE} -->
-<!-- metadata %>% -->
-<!--   mutate(genome_bp = genome_size *1e6) %>% -->
-<!--   filter(!is.na(clade)) %>% -->
-<!--   head -->
-<!-- ``` -->
-
-<!-- `is.na()` is a function that determines whether something is or is not an `NA`. -->
-<!-- The `!` symbol negates it, so we're asking for everything that is not an `NA`. -->
-
-<!-- ### Split-apply-combine data analysis and the summarize() function -->
-
-<!-- Many data analysis tasks can be approached using the "split-apply-combine" -->
-<!-- paradigm: split the data into groups, apply some analysis to each group, and -->
-<!-- then combine the results. `dplyr` makes this very easy through the use of the -->
-<!-- `group_by()` function. `group_by()` splits the data into groups upon which some -->
-<!-- operations can be run. For example, if we wanted to group by citrate-using mutant status and find the -->
-<!-- number of rows of data for each status, we would do: -->
-
-<!-- ```{r, purl = FALSE} -->
-<!-- metadata %>% -->
-<!--   group_by(cit) %>% -->
-<!--   tally() -->
-<!-- ``` -->
-
-<!-- There are several different summary statistics that can be generated from our data. The R base package provides many built-in functions such as `mean`, `median`, `min`, `max`, and `range`.  By default, all **R functions operating on vectors that contains missing data will return NA**. It's a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove). -->
-
-<!-- `group_by()` is often used together with `summarize()` which collapses each -->
-<!-- group into a single-row summary of that group. `summarize()` can then be used to apply a function such as those that compute simple stats to give an overview for the group. So to view mean `genome_size` by mutant status: -->
-
-<!-- ```{r, purl = FALSE} -->
-<!-- metadata %>% -->
-<!--   group_by(cit) %>% -->
-<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE)) -->
-<!-- ``` -->
-
-<!-- You can group by multiple columns too: -->
-
-<!-- ```{r, purl = FALSE} -->
-<!-- metadata %>% -->
-<!--   group_by(cit, clade) %>% -->
-<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE)) -->
-
-<!-- ``` -->
-
-<!-- Looks like for one of these clones, the clade is missing. We could then discard those rows using `filter()`: -->
-
-<!-- ```{r, purl = FALSE, eval=FALSE} -->
-<!-- metadata %>% -->
-<!--   group_by(cit, clade) %>% -->
-<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE)) %>% -->
-<!--   filter(!is.na(clade)) -->
-<!-- ``` -->
-
-<!-- All of a sudden this isn't running of the screen anymore. That's because `dplyr` -->
-<!-- has changed our `data.frame` to a `tbl_df`. This is a data structure that's very -->
-<!-- similar to a data frame; for our purposes the only difference is that it won't -->
-<!-- automatically show tons of data going off the screen. -->
-
-<!-- You can also summarize multiple variables at the same time: -->
-
-<!-- ```{r, purl = FALSE, eval=FALSE} -->
-<!-- metadata %>% -->
-<!--   group_by(cit, clade) %>% -->
-<!--   summarize(mean_size = mean(genome_size, na.rm = TRUE), -->
-<!--             min_generation = min(generation)) -->
-
-<!-- ``` -->
+These are contrived examples, and I don't suggest using pipes for simple operations like rounding. The pipes really become useful when chaining together multiple operations in sequence, as we'll do with our `dplyr` functions.
 
 
+## Combining Select & Filter
+Remember how we used `filter` to select only the black cats? What if we only want to see the ID's of those cats, rather than all the info about them? We've already seen we can use `select` to pick out certain columns. We can use that to select the `cat_id` column from our `filter`ed dataset like so
 
-<!-- [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) -->
+```{r}
+select(filter(cats, coat == "black"), cat_id)
+```
 
-<!-- *Much of this lesson was copied or adapted from Jeff Hollister's [materials](http://usepa.github.io/introR/2015/01/14/03-Clean/)* -->
+That might not look too bad now, but what if we wanted to do another operation on that output? We'd add another layer of nesting, and having to read that line from the inside-out can quickly become annoying. We can use the pipe operator to clean that up
+
+```{r}
+filter(cats, coat == "black") %>% select(cat_id)
+```
+
+We could even add another pipe to feed `cats` into `filter`; it isn't necessary, but it makes it even easier to see what we're operating on in this chain of commands. We'll combine this with some line breaks to really make this easy to read:
+
+```{r}
+cats %>%
+  filter(coat == "black") %>%
+  select(cat_id)
+```
+
+
+## More `dplyr` Verbs
+The two dplyr "verbs" we've used so far, `select` and `filter`, are useful, but only allow us to subset out dataset; to look at some smaller piece of it. The next verbs will allow us to gain new insight from the data by doing computations on it.
+
+### `mutate`
+
+First, the `mutate` function. `mutate` allows us to create a new variable in a `data.frame` from an expression. Say we want to make a new weight column that rounds the original weights of these cats to whole numbers; `mutate` allows us to do this
+
+```{r}
+cats %>% mutate(rounded_weight = round(weight))
+```
+
+Notice the output here had all the same columns we started with, plus this new column tacked onto the end. We could have also replaced a column with these new values by replacing `rounded_weight` with a pre-existing column name in our `mutate` call.
+
+### `summarize`
+
+While `mutate` creates new columns, it's often useful to summarize multiple rows into a single value. Say we want to find the mean weight of all these cats; enter `summarize`! Like `mutate`, the arguments to summarize (after the `data.frame` we want to operate on) are expressions. We can combine `summarize` with the `mean` function to get a mean weight for our collection of cats like so:
+
+```{r}
+cats %>% summarize(mean_weight = mean(weight))
+```
+
+Notice how we have only a single value returned, but it's still in a `data.frame` format. This is subtle, but important; all these basic `dplyr` verbs take in `data.frame`s and also return `data.frame`s. This consistency helps make long chains of `dplyr` operations possible.
+
+
+### `group_by`
+
+A very common data analysis task is to do operations like we did above, but to do them on a group-by-group basis. To do this with `dplyr`, we'll use the `group_by` function.
+
+Let's look at the mean weights of our cats, grouping up by coat. This will give us the mean weight of the black cats, mean weight of the calico cats, etc. We can do this by inserting a `group_by` function into our earlier expression for computing mean weight:
+
+```{r}
+cats %>%
+  group_by(coat) %>%
+  summarize(mean_weight = mean(weight))
+```
+
+Ta-da!
+
+We can also use `mutate` on a per-group basis. Let's make a new column which centers our weights around zero; this can be done by subtracting the group's mean weight from each cat's weight:
+
+```{r}
+cats %>%
+  group_by(coat) %>%
+  mutate(centered_weight = weight - mean(weight))
+```
+
+# Going further
+
+This is an introductory look at `dplyr`, just enough to make you dangerous. As you continue your R journey I suggest looking into the other awesome things you can do with this package!
+
 
