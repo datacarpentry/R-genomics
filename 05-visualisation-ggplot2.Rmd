@@ -1,8 +1,5 @@
 ---
-layout: topic
 title: Data visualisation with ggplot2
-subtitle: Visualising data in R with ggplot2 package
-minutes: 60
 ---
 
 <!---
