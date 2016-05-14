@@ -25,9 +25,8 @@ cats$sex <- sample(c("male", "female"), size = 400, prob = c(.44, .56), replace 
 # age & weight
 cats <- cats %>% 
   mutate(
-    age    = rnorm(nrow(cats), mean = 4.3, sd = 4.6),
-    age    = ifelse(age < 0, 0.4, age),
-    weight = rnorm(nrow(cats), mean = (age / 10) * 9, sd = 1)
+    age    = rnorm(nrow(cats), mean = 4.3, sd = 1.6) + .7,
+    weight = rnorm(nrow(cats), mean = (age / 10) * 12, sd = 1) + .4
   )
 
 # is the cat fixed?
@@ -95,7 +94,7 @@ cats$cat_id <- 1:nrow(cats)
 
 cats <- mutate_each(cats, funs(d = round(., 3)), wander_dist, age, weight)
 
-cats_small <- sample_n(cats, 25) %>% select(-address_full)
+cats_small <- sample_n(cats, 10) %>% select(-address_full)
 
 write.csv(cats, "data/herding-cats.csv", row.names = FALSE)
 write.csv(cats_small, "data/herding-cats-small.csv", row.names = FALSE)
