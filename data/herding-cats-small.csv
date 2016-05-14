@@ -1,4 +1,4 @@
-"street","coats","sex","age","weight","fixed","wander_dist","roamer","cat_id"
+"street","coat","sex","age","weight","fixed","wander_dist","roamer","cat_id"
 "Los Robles Way","tabby","female",0.4,0.115,0,0,"no",321
 "242 Harding Ave","maltese","female",13.599,14.809,1,0.033,"no",250
 "201 Hollywood Ave","brown","female",3.152,0.732,1,0,"no",219

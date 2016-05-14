@@ -1,4 +1,4 @@
-"address_full","street","coats","sex","age","weight","fixed","wander_dist","roamer","cat_id"
+"address_full","street","coat","sex","age","weight","fixed","wander_dist","roamer","cat_id"
 "15 Fillmer Ave Los Gatos 95030","15 Fillmer Ave","brown","male",6.008,3.348,1,0.115,"yes",1
 "244 Harding Ave Los Gatos 95030","244 Harding Ave","tabby","male",9.623,6.603,1,0.129,"yes",2
 "16570 Marchmont Dr Los Gatos 95032","16570 Marchmont Dr","maltese","female",1.657,3,0,0,"yes",3

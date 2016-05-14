@@ -14,10 +14,10 @@ cats <- read.csv("data/herding-cats.csv", stringsAsFactors = FALSE)
 # traits ------------------------------------------------------------------
 
 # give them some colors
-coats <- c("brown", "calico", "tabby", "black", "maltese")
+coat <- c("brown", "calico", "tabby", "black", "maltese")
 probs <- c(.33, .16, .24, .18, .09)
 
-cats$coats <- sample(coats, size = 400, prob = probs, replace = TRUE)
+cats$coat <- sample(coat, size = 400, prob = probs, replace = TRUE)
 
 # sex
 cats$sex <- sample(c("male", "female"), size = 400, prob = c(.44, .56), replace = TRUE)
