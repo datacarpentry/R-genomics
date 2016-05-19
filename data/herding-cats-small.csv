@@ -1,0 +1,11 @@
+"street","coat","sex","age","weight","fixed","wander_dist","roamer","cat_id"
+"Los Robles Way","tabby","female",3.003,3.993,0,0.04,"no",321
+"242 Harding Ave","maltese","female",8.234,12.368,1,0.033,"no",250
+"201 Hollywood Ave","brown","female",4.601,3.947,1,0.076,"no",219
+"140 Robin Way","black","female",7.172,8.053,1,0.03,"no",182
+"135 Charles St","calico","male",4.66,6.193,1,0.085,"yes",107
+"130 Vista Del Campo","tabby","female",3.796,3.86,1,0.085,"no",234
+"115 Via Santa Maria","brown","male",6.917,5.626,1,0.097,"yes",196
+"303 Harding Ave","brown","male",3.713,3.982,1,0.033,"no",311
+"16982 Kennedy Rd","black","female",2.851,3.291,0,0.065,"no",130
+"16528 Marchmont Dr","maltese","female",4.594,6.994,0,0.059,"no",349
