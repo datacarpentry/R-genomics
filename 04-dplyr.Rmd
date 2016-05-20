@@ -5,22 +5,32 @@ title: Herding cats with dplyr
 ------------
 
 ```{r loading, echo = FALSE}
-cats <- read.csv("data/cats.csv")
+cats <- read.csv("data/herding-cats-small.csv")
 ```
 
 # `dplyr`
 
-Bracket subsetting is handy, but it can be cumbersome and difficult to read,
-especially for complicated operations. Enter `dplyr`!
+80% of the work involved with data analysis involves cleaning and shaping the data until it's in the state you need. Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. Enter `dplyr`!
 
 `dplyr` is a package for making data manipulation easier. (It does a lot more too, but this is what we'll focus on).
+
+Unlike the subsetting commands we've already worked on, `dplyr` is designed to be highly expressive, and highly readable. It's structured around a set of verbs, or grammar of data manipulation. The core functions we'll talk about are below:
+
+- `select`
+- `arrange`
+- `filter`
+- `group_by`
+- `mutate`
+- `summarise/summarize`
+
+## Getting the package
 
 ```{r, eval = FALSE}
 install.packages("dplyr")
 ```
 Again, you may be asked to choose a CRAN mirror; RStudio is a good choice.
 
-Now unlike the `rmarkdown` package, we'll be using `dplyr` in the console. In order to do that, we need to _load_ the package into our environment so we can access functions from `dplyr`. We do this with the `library` command:
+Unlike the `rmarkdown` package, we'll be using `dplyr` in the console. In order to do that, we need to _load_ the package into our environment so we can access functions from `dplyr`. We do this with the `library` command:
 
 ```{r, message = FALSE}
 library("dplyr")
@@ -28,7 +38,6 @@ library("dplyr")
 
 You only need to install a package once per computer, but you need to load it
 every time you open a new R session and want to use that package.
-
 
 ## Subsetting Data
 
@@ -47,7 +56,7 @@ With dplyr, we don't need to enclose our column names in quotes
 select(cats, coat)
 ```
 
-Notice how the output differs slightly; all the main `dplyr` verbs behave consistently in that their inputs and outputs are both `data.frame`s, rather than returning a simple vector as the bracket-indexing method did.
+Notice how the output differs slightly; all the main `dplyr` verbs behave consistently in that their inputs and outputs are both `data.frame`s, rather than returning a simple vector as the bracket-indexing method did. All of the main "verbs" we'll talk about will return a data.frame as their result.
 
 We can select more columns by giving `select` additional arguments, and our output `data.frame` will have columns according to the order of our arguments
 
@@ -70,23 +79,81 @@ filter(cats, coat == "black")
 
 Notice we don't have to use the `$` operator to tell `filter` where the `coat` column is; it's smart enough to assume we want the `coat` column from the `data.frame` we passed in.
 
+### `arrange`
+Maybe you have a set of observations in your data that you want to organize by their value.  `arrange` allows us to change the order of rows in our dataset based on their values.
+
+```{r}
+arrange(cats, coat)
+
+# you can include additional columns to help sort the data
+arrange(cats, coat, sex)
+```
+
+### `mutate`
+
+One common task in working with data is updating/cleaning some of the values in columns. `mutate` allows us to do this relatively easily. Let's say I don't want a lot of decimal places in one of my measurements. I can use `mutate` to update my existing variable:
+
+```{r}
+mutate(cats, weight = round(weight, 2))
+```
+
+Another common task is generating a new column based on values that are already in the dataset you are working on. `mutate` helps us do this, and tacks a new column to the end of our data.frame.
+
+```{r}
+# let's say you want to add two variables together
+mutate(cats, new_variable = age + weight)
+
+# you can include as many new variables as you want, separated by a comma
+mutate(cats, new_var_1 = age + weight, new_var_2 = age * weight)
+```
+
 
 ## Pipes
-Before we talk about chaining `dplyr` operations, we need to introduce a tool that simplifies this chaining. Enter the "magrittr pipe", or just "pipe", which looks like `%>%`. It comes from the `magrittr` package and is loaded when you load `dplyr` into you environment (e.g. `library(dplyr)`).
+You'll often find yourself needing to use multiple functions in a row to organize some data that you're working on. This can sometimes lead to dense code that is difficult to read.
 
-The pipe is a binary operator (like `+` or `*`) which takes the ouput of a command and "pipes" it into another one. It can be used with most functions (it's not specific to `dplyr` functions). As an example, recall we can round a number like this
+```{r}
+# for example
+sort(round(sqrt(cats$age * 2), 3))
+```
 
+In the code above, I have multiple steps to get my result, but you have to read what's going on from the inside out. This can be cumbersome, especially if you need to understand how one function's output influences the next operation.
+
+### Using Pipes
+
+`dplyr` includes a special operator designed to make code *flow* and appear more readable.
+
+It's written as `%>%`, and you can call it the "pipe" operator.
+
+Our example above can be re-written as:
+```{r}
+cats$age * 2 %>% 
+  sqrt() %>%
+  round(3) %>%
+  sort()
+```
+
+Instead of being nested within a bunch of commands, you can see read the code as a series of statements:
+  1. Multiply `cats$age` by 2, *then*
+  2. Take the square-root of these values, *then*
+  3. Round the result to the 3rd digit, *then*
+  4. Sort the values in ascending order
+
+I encourage you to think of the `%>%` as short-hand for "then", when reading code that uses it!
+
+"Pipe" operators are found in other languages; they get their name from the idea that your code can be thought of as a "pipeline". 
+
+Let's look at another example.
 ```{r}
 round(1.23456789, 3)
 ```
 
-We can use a pipe operator to acheive the same thing
+We can use a pipe operator to acheive the same thing.
 
 ```{r}
 1.23456789 %>% round(3)
 ```
 
-The pipe takes care of making sure the output of the expression on the left-hand-side (a simple numeric, in this case) is inserted as the first argument of the expressing on the right-hand-side. We can also pipe into other argument positions by using a period as a placeholder
+The pipe takes care of making sure the output of the expression on the left-hand-side (a simple numeric, in this case) is inserted as the first argument of the expressing on the right-hand-side. We can also pipe into other argument positions by using a period as a placeholder.
 
 ```{r}
 3 %>% round(1.23456789, .)
@@ -96,15 +163,19 @@ These are contrived examples, and I don't suggest using pipes for simple operati
 
 
 ## Combining Select & Filter
+
+The pipe is really helpful when combined with the data-manipulation of `dplyr`. 
 Remember how we used `filter` to select only the black cats? What if we only want to see the ID's of those cats, rather than all the info about them? We've already seen we can use `select` to pick out certain columns. We can use that to select the `cat_id` column from our `filter`ed dataset like so
 
 ```{r}
+# reading from the inside out
 select(filter(cats, coat == "black"), cat_id)
 ```
 
-That might not look too bad now, but what if we wanted to do another operation on that output? We'd add another layer of nesting, and having to read that line from the inside-out can quickly become annoying. We can use the pipe operator to clean that up
+That might not look too bad now, but what if we wanted to do another operation on that output? We'd add another layer of nesting, and having to read that line from the inside-out can quickly become annoying. We can use the pipe operator to clean that up.
 
 ```{r}
+# reading from left to right
 filter(cats, coat == "black") %>% select(cat_id)
 ```
 
@@ -115,20 +186,6 @@ cats %>%
   filter(coat == "black") %>%
   select(cat_id)
 ```
-
-
-## More `dplyr` Verbs
-The two dplyr "verbs" we've used so far, `select` and `filter`, are useful, but only allow us to subset out dataset; to look at some smaller piece of it. The next verbs will allow us to gain new insight from the data by doing computations on it.
-
-### `mutate`
-
-First, the `mutate` function. `mutate` allows us to create a new variable in a `data.frame` from an expression. Say we want to make a new weight column that rounds the original weights of these cats to whole numbers; `mutate` allows us to do this
-
-```{r}
-cats %>% mutate(rounded_weight = round(weight))
-```
-
-Notice the output here had all the same columns we started with, plus this new column tacked onto the end. We could have also replaced a column with these new values by replacing `rounded_weight` with a pre-existing column name in our `mutate` call.
 
 ### `summarize`
 
