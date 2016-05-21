@@ -1,0 +1,9 @@
+"cat_id","coat","weight","likes_string"
+1,"calico",2.1,TRUE
+2,"black",5,FALSE
+3,"tabby",3.2,TRUE
+4,"grey",6,TRUE
+5,"black",4,TRUE
+6,"orange",3.7,FALSE
+7,"calico",4.4,TRUE
+8,"tabby",3.8,TRUE

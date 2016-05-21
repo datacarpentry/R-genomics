@@ -1,0 +1,401 @@
+"address_full","street","coat","sex","age","weight","fixed","wander_dist","roamer","cat_id"
+"15 Fillmer Ave Los Gatos 95030","15 Fillmer Ave","brown","male",5.594,5.016,1,0.115,"yes",1
+"244 Harding Ave Los Gatos 95030","244 Harding Ave","tabby","male",6.852,6.314,1,0.129,"yes",2
+"16570 Marchmont Dr Los Gatos 95032","16570 Marchmont Dr","maltese","female",4.081,2.652,0,0.129,"yes",3
+"100 Stonybrook Rd Los Gatos 95032","100 Stonybrook Rd","tabby","female",3.806,3.413,1,0.107,"yes",4
+"266 Kennedy Rd Los Gatos 95032","266 Kennedy Rd","calico","male",5.164,6.82,1,0.039,"no",5
+"249 Cerro Chico Los Gatos 95030","249 Cerro Chico","black","male",3.284,4.013,1,0.017,"no",6
+"128 Pinta Ct Los Gatos 95030","128 Pinta Ct","black","female",3.829,3.545,1,0.085,"no",7
+"16890 Fillmer Ave Los Gatos 95030","16890 Fillmer Ave","calico","male",7.658,8.251,0,0.037,"no",8
+"119 Harding Ave ","","tabby","male",4.397,7.214,0,0.027,"no",9
+"133 Vista Del Campo Los Gatos 95030","133 Vista Del Campo","calico","female",3.531,3.237,1,0.098,"yes",10
+"231 Harding Ave Los Gatos 95030","231 Harding Ave","black","male",3.404,3.66,1,0.092,"no",11
+"9 Hollywood Ave Los Gatos 95030","9 Hollywood Ave","brown","female",3.191,4.812,1,0.032,"no",12
+"109 Via Santa Maria Los Gatos 95030","109 Via Santa Maria","tabby","female",3.339,5.147,1,0.059,"yes",13
+"24 Hollywood Ave Los Gatos 95030","24 Hollywood Ave","brown","female",6.193,7.795,1,0.093,"yes",14
+"233 Cerro Chico Los Gatos 95030","233 Cerro Chico","brown","female",8.916,10.834,1,0.058,"no",15
+"331 Los Gatos Blvd Los Gatos 95032","331 Los Gatos Blvd","tabby","male",3.277,1.17,1,0.138,"yes",16
+"121 Harding Ave Los Gatos 95030","121 Harding Ave","brown","female",3.394,5.637,1,0.027,"no",17
+"110 Stonybrook Rd Los Gatos 95032","110 Stonybrook Rd","black","female",4.304,6.71,1,0.012,"no",18
+"213 Harding Ave Los Gatos 95030","213 Harding Ave","brown","male",4.526,5.805,1,0.01,"no",19
+"40 Fillmer Ave Los Gatos 95030","40 Fillmer Ave","brown","male",2.58,2.991,1,0.027,"no",20
+"310 Los Gatos Blvd Los Gatos 95032","310 Los Gatos Blvd","brown","male",5.815,5.4,1,0.041,"no",21
+"16630 Kennedy Rd Los Gatos 95032","16630 Kennedy Rd","brown","male",5.011,6.377,0,0.103,"yes",22
+"17011 Los Cerritos Los Gatos 95030","17011 Los Cerritos","brown","female",5.231,5.267,0,0.048,"no",23
+"107 Vista Del Monte Los Gatos 95030","107 Vista Del Monte","maltese","female",5.461,7.181,1,0.017,"no",24
+"304 Harding Ave Los Gatos 95030","304 Harding Ave","brown","male",4.644,7.338,1,0.004,"no",25
+"103 Cardinal Ln Los Gatos 95032","103 Cardinal Ln","brown","female",5.986,7.287,1,0.04,"no",26
+"20 Hollywood Ave Los Gatos 95030","20 Hollywood Ave","maltese","female",3.883,4.441,1,0.042,"no",27
+"16952 Kennedy Rd Los Gatos 95032","16952 Kennedy Rd","brown","male",7.454,10.711,0,0.062,"no",28
+"116 Harding Ave Los Gatos 95030","116 Harding Ave","brown","male",6.818,9.78,1,0.021,"no",29
+"106 Worcester Loop Los Gatos 95030","106 Worcester Loop","calico","male",5.743,6.667,1,0.099,"yes",30
+"111 Worcester Ln Los Gatos 95030","111 Worcester Ln","brown","female",5.836,7.301,1,0.049,"no",31
+"127 Vista Del Monte Los Gatos 95030","127 Vista Del Monte","tabby","female",5.671,6.963,1,0.046,"no",32
+"16828 Kennedy Rd Los Gatos 95032","16828 Kennedy Rd","brown","female",3.618,4.275,0,0.082,"no",33
+"105 Vista Del Campo Los Gatos 95030","105 Vista Del Campo","black","female",1.821,2.203,1,0.033,"no",34
+"125 Wheeler Ave Los Gatos 95030","125 Wheeler Ave","tabby","male",6.699,7.987,1,0.038,"no",35
+"346 Los Gatos Blvd ","","tabby","female",5.134,6.652,0,0.098,"yes",36
+"159 Vista Del Monte Los Gatos 95030","159 Vista Del Monte","brown","female",4.295,4.642,1,0.035,"no",37
+"140 Stonybrook Rd Los Gatos 95032","140 Stonybrook Rd","brown","female",6.525,7.903,1,0.04,"no",38
+"30 Fillmer Ave Los Gatos 95030","30 Fillmer Ave","tabby","male",6.666,5.754,1,0.128,"yes",39
+"121 Harding Ave Los Gatos 95030","121 Harding Ave","black","female",5.704,5.457,1,0.038,"no",40
+"127 Wheeler Ave Los Gatos 95030","127 Wheeler Ave","brown","male",5.318,6.96,1,0.096,"yes",41
+"108 Pinta Ct Los Gatos 95030","108 Pinta Ct","black","female",1.893,2.82,1,0.025,"no",42
+"62 Fillmer Ave Los Gatos 95030","62 Fillmer Ave","black","female",5.525,4.791,1,0.114,"yes",43
+"16940 Kennedy Rd Los Gatos 95032","16940 Kennedy Rd","brown","female",4.916,3.248,0,0.085,"yes",44
+"60 Fillmer Ave Los Gatos 95030","60 Fillmer Ave","brown","male",3.486,2.83,1,0.099,"yes",45
+"17011 Los Cerritos Los Gatos 95030","17011 Los Cerritos","tabby","male",6.186,9.131,0,0.039,"no",46
+"183 Vista Del Monte Los Gatos 95030","183 Vista Del Monte","black","female",5.584,6.289,1,0.053,"no",47
+"119 Wheeler Ave Los Gatos 95030","119 Wheeler Ave","brown","male",5.167,6.142,1,0.01,"no",48
+"16491 S Kennedy Rd Los Gatos 95030","16491 S Kennedy Rd","tabby","male",4.125,6.166,0,0.035,"no",49
+"306 Los Gatos Blvd Los Gatos 95032","306 Los Gatos Blvd","brown","female",7.53,6.736,1,0.142,"yes",50
+"300 Harding Ave Los Gatos 95030","300 Harding Ave","brown","female",4.813,6.5,1,0.026,"no",51
+"16514 Marchmont Dr Los Gatos 95032","16514 Marchmont Dr","brown","male",7.73,9.818,0,0.036,"no",52
+"21 Fillmer Ave Los Gatos 95030","21 Fillmer Ave","brown","female",3.034,2.756,1,0.031,"no",53
+"322 Kennedy Rd Los Gatos 95032","322 Kennedy Rd","brown","male",3.249,3.641,1,0.037,"no",54
+"106 Robin Way Los Gatos 95032","106 Robin Way","brown","female",6.336,5.334,1,0.07,"no",55
+"16772 Littlefield Ln Los Gatos 95032","16772 Littlefield Ln","tabby","female",4.11,7.536,0,0.016,"no",56
+"103 Cardinal Ln Los Gatos 95032","103 Cardinal Ln","tabby","female",1.666,2.458,0,0.095,"yes",57
+"244 Cerro Chico Los Gatos 95030","244 Cerro Chico","tabby","male",4.087,5.867,1,0.032,"no",58
+"128 Nina Ct Los Gatos 95030","128 Nina Ct","brown","female",4.692,5.228,1,0.036,"no",59
+"139 Harding Ave Los Gatos 95030","139 Harding Ave","brown","female",5.576,8.301,1,0.012,"no",60
+"109 Bond Ct Los Gatos 95030","109 Bond Ct","black","female",3.363,4.285,1,0.034,"no",61
+"237 Harding Ave Los Gatos 95030","237 Harding Ave","brown","female",4.366,5.273,1,0.061,"no",62
+"159 Cardinal Ln Los Gatos 95032","159 Cardinal Ln","brown","female",4.755,4.045,1,0.126,"yes",63
+"16542 Marchmont Dr Los Gatos 95032","16542 Marchmont Dr","calico","female",5.031,7.739,0,0.04,"no",64
+"16998 Kennedy Rd Los Gatos 95032","16998 Kennedy Rd","calico","female",4.131,3.76,0,0.056,"no",65
+"237 Cerro Chico Los Gatos 95030","237 Cerro Chico","maltese","female",7.448,8.453,1,0.03,"no",66
+"123 Pinta Ct Los Gatos 95030","123 Pinta Ct","maltese","male",5.168,3.481,1,0.112,"yes",67
+"328 Harding Ave Los Gatos 95030","328 Harding Ave","tabby","female",4.496,4.598,1,0.046,"no",68
+"100 Hollywood Ave Los Gatos 95030","100 Hollywood Ave","brown","male",6.532,8.419,1,0.022,"no",69
+"112 Pinta Ct Los Gatos 95030","112 Pinta Ct","brown","female",3.37,3.105,1,0.051,"no",70
+"147 Wheeler Ave Los Gatos 95030","147 Wheeler Ave","brown","male",4.196,6.102,1,0.032,"no",71
+"135 Cardinal Ln Los Gatos 95032","135 Cardinal Ln","maltese","male",2.821,3.354,1,0.027,"no",72
+"16706 Littlefield Ln Los Gatos 95032","16706 Littlefield Ln","tabby","male",6.196,8.484,0,0.03,"no",73
+"16646 Kennedy Rd Los Gatos 95032","16646 Kennedy Rd","black","female",6.534,8.986,0,0.039,"no",74
+"136 Vista Del Monte Los Gatos 95030","136 Vista Del Monte","black","male",6.974,9.477,1,0.055,"no",75
+"135 Vista Del Monte Los Gatos 95030","135 Vista Del Monte","calico","female",4.462,5.042,1,0.043,"no",76
+"120 Nina Ct Los Gatos 95030","120 Nina Ct","black","male",0,3,1,0,"no",77
+"140 Vista Del Monte Los Gatos 95030","140 Vista Del Monte","black","female",7.169,7.114,1,0.036,"no",78
+"139 Vista Del Monte Los Gatos 95030","139 Vista Del Monte","tabby","female",3.696,1.958,1,0.078,"yes",79
+"143 Vista Del Monte Los Gatos 95030","143 Vista Del Monte","calico","male",6.672,8.406,1,0.03,"no",80
+"148 Vista Del Monte Los Gatos 95030","148 Vista Del Monte","black","female",5.226,6.499,1,0.053,"no",81
+"324 Los Gatos Blvd Los Gatos 95032","324 Los Gatos Blvd","maltese","female",5.364,6.522,1,0.025,"no",82
+"112 Robin Way Los Gatos 95032","112 Robin Way","brown","male",3.145,2.33,1,0.049,"no",83
+"16660 Littlefield Ln Los Gatos 95032","16660 Littlefield Ln","tabby","male",7.608,11.419,0,0.001,"no",84
+"16755 Kennedy Rd Los Gatos 95032","16755 Kennedy Rd","brown","female",1.821,2.205,0,0.027,"no",85
+"306 Kennedy Rd Los Gatos 95032","306 Kennedy Rd","calico","female",5.14,6.692,1,0.029,"no",86
+"115 Harding Ave Los Gatos 95030","115 Harding Ave","tabby","male",5.731,7.09,1,0.001,"no",87
+"175 Vista Del Monte Los Gatos 95030","175 Vista Del Monte","brown","female",6.581,7.412,1,0.047,"no",88
+"320 Harding Ave Los Gatos 95030","320 Harding Ave","maltese","male",2.802,2.056,1,0.061,"no",89
+"134 Harding Ave Los Gatos 95030","134 Harding Ave","brown","female",2.927,1.448,1,0.115,"yes",90
+"233 Harding Ave Los Gatos 95030","233 Harding Ave","brown","female",7.927,9.67,1,0.027,"no",91
+"190 Vista Del Monte Los Gatos 95030","190 Vista Del Monte","black","female",5.131,7.341,1,0.037,"no",92
+"229 Harding Ave Los Gatos 95030","229 Harding Ave","black","female",4.769,7.412,1,0.045,"no",93
+"128 Pinta Ct Los Gatos 95030","128 Pinta Ct","calico","male",5.449,7.321,1,0.023,"no",94
+"120 Pinta Ct Los Gatos 95030","120 Pinta Ct","brown","male",5.295,7.32,1,0.05,"no",95
+"341 Los Gatos Blvd Los Gatos 95032","341 Los Gatos Blvd","calico","male",6.303,9.226,1,0.041,"no",96
+"39 Fillmer Ave Los Gatos 95030","39 Fillmer Ave","tabby","male",2.9,2.224,1,0.041,"no",97
+"16854 Kennedy Rd Los Gatos 95032","16854 Kennedy Rd","calico","male",6.604,7.54,0,0.077,"no",98
+"116 Harding Ave Los Gatos 95030","116 Harding Ave","tabby","female",3.442,6.409,1,0.014,"no",99
+"16570 Kennedy Rd Los Gatos 95032","16570 Kennedy Rd","brown","male",5.053,7.185,0,0.041,"no",100
+"15 Hollywood Ave Los Gatos 95030","15 Hollywood Ave","calico","female",5.341,3.688,1,0.069,"yes",101
+"110 Stonybrook Rd Los Gatos 95032","110 Stonybrook Rd","maltese","male",4.402,6.479,1,0.012,"no",102
+"111 Worcester Ln Los Gatos 95030","111 Worcester Ln","brown","female",5.737,8.311,1,0.034,"no",103
+"115 Isabelle Ct Los Gatos 95030","115 Isabelle Ct","brown","female",5.585,9.292,1,0.025,"no",104
+"117 Isabelle Ct Los Gatos 95030","117 Isabelle Ct","calico","male",7.188,8.915,1,0.02,"no",105
+"16880 Fillmer Ave Los Gatos 95030","16880 Fillmer Ave","brown","female",5.494,5.4,0,0.058,"no",106
+"135 Charles St Los Gatos 95032","135 Charles St","calico","male",4.66,6.193,1,0.085,"yes",107
+"17055 Los Robles Way Los Gatos 95030","17055 Los Robles Way","tabby","female",3.122,5.082,0,0.056,"no",108
+"6 Gem Ave Los Gatos 95030","6 Gem Ave","brown","female",5.901,6.692,1,0.124,"yes",109
+"1 Gem Ave Los Gatos 95030","1 Gem Ave","tabby","male",4.802,8.265,1,0.008,"no",110
+"312 Harding Ave Los Gatos 95030","312 Harding Ave","calico","female",5.814,6.715,1,0.054,"no",111
+"16520 S Kennedy Rd Los Gatos 95030","16520 S Kennedy Rd","brown","male",1.332,1.522,0,0.046,"no",112
+"310 Los Gatos Blvd Los Gatos 95032","310 Los Gatos Blvd","brown","female",4.34,7.081,1,0.052,"no",113
+"100 Pinta Ct Los Gatos 95030","100 Pinta Ct","brown","female",3.284,2.166,1,0.117,"yes",114
+"365 Los Gatos Blvd Los Gatos 95032","365 Los Gatos Blvd","black","male",6.761,6.411,1,0.076,"yes",115
+"43 Fillmer Ave Los Gatos 95030","43 Fillmer Ave","maltese","female",3.379,3.697,1,0.016,"no",116
+"110 Vista Del Campo Los Gatos 95030","110 Vista Del Campo","tabby","female",4.787,6.123,1,0.041,"no",117
+"16625 Englewood Ave Los Gatos 95032","16625 Englewood Ave","black","female",3.658,5.387,0,0.028,"no",118
+"8 Hollywood Ave Los Gatos 95030","8 Hollywood Ave","brown","male",7.315,8.911,1,0.064,"no",119
+"308 Harding Ave Los Gatos 95030","308 Harding Ave","tabby","male",5.733,5.281,1,0.113,"yes",120
+"134 Vista Del Campo Los Gatos 95030","134 Vista Del Campo","brown","male",5.713,6.982,1,0.035,"no",121
+"16700 Kennedy Rd Los Gatos 95032","16700 Kennedy Rd","tabby","female",3,2.9,0,0.054,"no",122
+"115 Vista Del Campo Los Gatos 95030","115 Vista Del Campo","brown","male",3.39,4.512,1,0.07,"no",123
+"17150 Los Robles Way Los Gatos 95030","17150 Los Robles Way","black","female",6.164,4.403,0,0.05,"no",124
+"107 Worcester Ln Los Gatos 95030","107 Worcester Ln","calico","female",3.013,2.836,1,0.031,"no",125
+"16892 Kennedy Rd Los Gatos 95032","16892 Kennedy Rd","calico","female",6.294,5.441,0,0.053,"no",126
+"250 Cerro Chico Los Gatos 95030","250 Cerro Chico","brown","female",7.698,8.382,1,0.069,"no",127
+"130 Stonybrook Rd Los Gatos 95032","130 Stonybrook Rd","brown","male",5.482,6.535,1,0.017,"no",128
+"129 Wheeler Ave Los Gatos 95030","129 Wheeler Ave","maltese","male",5.028,4.878,1,0.027,"no",129
+"16982 Kennedy Rd Los Gatos 95032","16982 Kennedy Rd","black","female",2.851,3.291,0,0.065,"no",130
+"104 Vista Del Monte Los Gatos 95030","104 Vista Del Monte","brown","female",4.37,5.093,1,0.004,"no",131
+"16870 Fillmer Ave Los Gatos 95030","16870 Fillmer Ave","maltese","male",1.798,0.518,0,0,"yes",132
+"128 Harding Ave Los Gatos 95030","128 Harding Ave","brown","male",5.163,5.127,1,0.044,"no",133
+"233 Cerro Chico Los Gatos 95030","233 Cerro Chico","tabby","female",3.947,5.87,1,0.063,"no",134
+"104 Via Santa Maria Los Gatos 95030","104 Via Santa Maria","calico","female",4.004,5.515,1,0.041,"no",135
+"201 Cerro Chico Los Gatos 95030","201 Cerro Chico","tabby","male",6.044,8.15,1,0.011,"no",136
+"116 Nina Ct Los Gatos 95030","116 Nina Ct","maltese","male",7.012,7.768,1,0.05,"no",137
+"208 Cerro Chico Los Gatos 95030","208 Cerro Chico","tabby","male",6.596,10.245,1,0.014,"no",138
+"122 Yosemite Way Los Gatos 95030","122 Yosemite Way","tabby","female",4.339,4.839,1,0.071,"no",139
+"16510 Kennedy Rd Los Gatos 95032","16510 Kennedy Rd","brown","female",4.982,5.084,0,0.096,"yes",140
+"17075 Los Robles Way Los Gatos 95030","17075 Los Robles Way","tabby","male",4.05,6.271,0,0.052,"no",141
+"136 Via Santa Maria Los Gatos 95030","136 Via Santa Maria","tabby","female",5.068,5.338,1,0.06,"no",142
+"90 Hollywood Ave Los Gatos 95030","90 Hollywood Ave","maltese","female",5.769,5.583,0,0.136,"yes",143
+"245 Cerro Chico Los Gatos 95030","245 Cerro Chico","black","female",2.405,1.264,1,0.069,"no",144
+"150 Whitney Ave Los Gatos 95030","150 Whitney Ave","black","male",4.418,5.065,1,0.055,"no",145
+"17110 Los Robles Way Los Gatos 95030","17110 Los Robles Way","calico","female",3.813,1.652,0,0.105,"yes",146
+"208 Harding Ave Los Gatos 95030","208 Harding Ave","tabby","male",5.798,7.193,1,0.001,"no",147
+"16450 Kennedy Rd Los Gatos 95032","16450 Kennedy Rd","tabby","female",5.559,5.529,0,0.074,"no",148
+"108 Via Santa Maria Los Gatos 95030","108 Via Santa Maria","brown","female",3.335,2.992,0,0.096,"yes",149
+"30 Hollywood Ave Los Gatos 95030","30 Hollywood Ave","brown","female",4.037,3.313,1,0.07,"no",150
+"12 Fillmer Ave Los Gatos 95030","12 Fillmer Ave","black","female",5.724,7.114,1,0.034,"no",151
+"Harding Ave Los Gatos 95030","Harding Ave","brown","female",4.416,4.21,0,0.066,"yes",152
+"234 Harding Ave Los Gatos 95030","234 Harding Ave","tabby","female",5.836,6.369,1,0.092,"yes",153
+"126 Vista Del Campo Los Gatos 95030","126 Vista Del Campo","black","female",1.799,1.079,1,0.07,"no",154
+"107 Vista Del Monte Los Gatos 95030","107 Vista Del Monte","black","male",4.868,5.038,1,0.001,"no",155
+"16500 Marchmont Dr Los Gatos 95032","16500 Marchmont Dr","maltese","male",8.923,10.631,0,0.064,"no",156
+"144 Vista Del Monte Los Gatos 95030","144 Vista Del Monte","tabby","male",5.958,10.085,1,0.01,"no",157
+"236 Harding Ave Los Gatos 95030","236 Harding Ave","tabby","male",5.592,5.436,1,0.079,"yes",158
+"124 Nina Ct Los Gatos 95030","124 Nina Ct","tabby","female",3.598,3.68,1,0.001,"no",159
+"241 Cerro Chico Los Gatos 95030","241 Cerro Chico","tabby","male",7.435,9.295,1,0.031,"no",160
+"17077 Los Robles Way Los Gatos 95030","17077 Los Robles Way","black","male",2.709,3.639,0,0.053,"no",161
+"16725 Kennedy Rd Los Gatos 95032","16725 Kennedy Rd","tabby","male",8.127,10.214,0,0.039,"no",162
+"109 Via Santa Maria Los Gatos 95030","109 Via Santa Maria","black","female",5.039,4.016,1,0.068,"yes",163
+"204 Cerro Chico Los Gatos 95030","204 Cerro Chico","calico","female",4.954,6.58,1,0.047,"no",164
+"248 Harding Ave Los Gatos 95030","248 Harding Ave","brown","female",0.959,3,1,0,"no",165
+"114 Yosemite Way Los Gatos 95030","114 Yosemite Way","tabby","male",3.379,5.39,1,0.016,"no",166
+"16880 Kennedy Rd Los Gatos 95032","16880 Kennedy Rd","brown","female",4.652,2.986,0,0.078,"no",167
+"16904 Kennedy Rd Los Gatos 95032","16904 Kennedy Rd","black","male",4.719,6.934,0,0.028,"no",168
+"349 Los Gatos Blvd Los Gatos 95032","349 Los Gatos Blvd","black","male",5.261,3.96,1,0.117,"yes",169
+"16556 Marchmont Dr Los Gatos 95032","16556 Marchmont Dr","brown","male",6.25,8.115,0,0.031,"no",170
+"316 Harding Ave Los Gatos 95030","316 Harding Ave","brown","male",5.619,5.869,1,0.04,"no",171
+"128 Yosemite Way Los Gatos 95030","128 Yosemite Way","maltese","female",3.467,6.159,1,0.061,"no",172
+"340 Los Gatos Blvd Los Gatos 95032","340 Los Gatos Blvd","brown","male",4.833,4.953,1,0.111,"yes",173
+"141 Wheeler Ave Los Gatos 95030","141 Wheeler Ave","tabby","female",3.117,4.732,1,0.001,"no",174
+"160 Robin Way Los Gatos 95032","160 Robin Way","black","female",4.271,5.26,1,0.008,"no",175
+"16837 Kennedy Rd Los Gatos 95032","16837 Kennedy Rd","brown","female",5.31,6.308,0,0.034,"no",176
+"124 Pinta Ct Los Gatos 95030","124 Pinta Ct","tabby","female",5.877,7.962,1,0.02,"no",177
+"143 Cardinal Ln Los Gatos 95032","143 Cardinal Ln","black","male",5.864,7.852,1,0.04,"no",178
+"129 Cardinal Ln Los Gatos 95032","129 Cardinal Ln","black","female",6.672,7.342,1,0.005,"no",179
+"16722 Littlefield Ln Los Gatos 95032","16722 Littlefield Ln","black","male",5.374,7.1,0,0.035,"no",180
+"112 Vista Del Monte Los Gatos 95030","112 Vista Del Monte","brown","male",6.114,6.323,0,0.114,"yes",181
+"140 Robin Way Los Gatos 95032","140 Robin Way","black","female",7.172,8.053,1,0.03,"no",182
+"120 Vista Del Campo Los Gatos 95030","120 Vista Del Campo","tabby","male",6.107,7.889,1,0.013,"no",183
+"100 Via Santa Maria Los Gatos 95030","100 Via Santa Maria","calico","male",8.243,10.394,1,0.042,"no",184
+"24 Hollywood Ave Los Gatos 95030","24 Hollywood Ave","brown","female",3.439,5.074,1,0.004,"no",185
+"100 Bond Ct Los Gatos 95030","100 Bond Ct","tabby","male",2.319,0.306,1,0,"yes",186
+"139 Pinta Ct Los Gatos 95030","139 Pinta Ct","calico","female",5.89,8.624,1,0.06,"no",187
+"17121 Los Robles Way Los Gatos 95030","17121 Los Robles Way","tabby","female",4.295,1.411,0,0.127,"yes",188
+"104 Pinta Ct Los Gatos 95030","104 Pinta Ct","brown","male",3.795,2.516,1,0.093,"yes",189
+"Hollywood Ave Los Gatos 95030","Hollywood Ave","calico","male",4.431,4.927,0,0.083,"yes",190
+"16566 Kennedy Rd Los Gatos 95032","16566 Kennedy Rd","black","male",5.075,4.821,0,0.044,"no",191
+"120 Stonybrook Rd Los Gatos 95032","120 Stonybrook Rd","black","female",5.194,4.64,0,0.1,"yes",192
+"133 Harding Ave Los Gatos 95030","133 Harding Ave","tabby","female",1.541,3.061,1,0.021,"no",193
+"126 Robin Way Los Gatos 95032","126 Robin Way","black","female",4.448,5.541,1,0.023,"no",194
+"132 Nina Ct Los Gatos 95030","132 Nina Ct","tabby","male",4.526,5.059,1,0.04,"no",195
+"115 Via Santa Maria Los Gatos 95030","115 Via Santa Maria","brown","male",6.917,5.626,1,0.097,"yes",196
+"16621 Kennedy Rd Los Gatos 95032","16621 Kennedy Rd","brown","female",5.715,6.761,0,0.038,"no",197
+"105 Vista Del Campo Los Gatos 95030","105 Vista Del Campo","brown","female",5.632,6.648,1,0.031,"no",198
+"42 Fillmer Ave Los Gatos 95030","42 Fillmer Ave","maltese","female",4.447,6.201,1,0.036,"no",199
+"16928 Kennedy Rd Los Gatos 95032","16928 Kennedy Rd","calico","female",5.336,5.912,0,0.036,"no",200
+"251 Littlefield Ln Los Gatos 95032","251 Littlefield Ln","black","female",4.631,6.854,1,0.056,"no",201
+"324 Harding Ave Los Gatos 95030","324 Harding Ave","black","male",4.857,4.828,1,0.06,"no",202
+"85 Hollywood Ave Los Gatos 95030","85 Hollywood Ave","maltese","male",4.651,5.235,1,0.047,"no",203
+"110 Cardinal Ln Los Gatos 95032","110 Cardinal Ln","black","female",4.565,4.467,1,0.067,"no",204
+"120 Cardinal Ln Los Gatos 95032","120 Cardinal Ln","brown","male",2.054,2.415,1,0.047,"no",205
+"16699 Kennedy Rd Los Gatos 95032","16699 Kennedy Rd","maltese","female",6.339,7.986,0,0.103,"yes",206
+"*no Site Address* Los Gatos 95030","*no Site Address*","brown","male",3.069,4.433,0,0.045,"no",207
+"225 Cerro Chico Los Gatos 95030","225 Cerro Chico","brown","female",5.324,7.524,1,0.003,"no",208
+"16570 Marchmont Dr Los Gatos 95032","16570 Marchmont Dr","black","female",5.661,8.01,0,0.022,"no",209
+"300 Kennedy Rd Los Gatos 95032","300 Kennedy Rd","brown","male",3.904,2.173,1,0.086,"yes",210
+"318 Los Gatos Blvd Los Gatos 95032","318 Los Gatos Blvd","calico","male",4.531,4.895,1,0.009,"no",211
+"16630 Kennedy Rd Los Gatos 95032","16630 Kennedy Rd","brown","male",4.068,4.015,0,0.046,"no",212
+"119 Vista Del Campo Los Gatos 95030","119 Vista Del Campo","maltese","female",5.404,6.429,1,0.023,"no",213
+"110 Harding Ave Los Gatos 95030","110 Harding Ave","calico","female",2.981,3.852,1,0.045,"no",214
+"207 Harding Ave Los Gatos 95030","207 Harding Ave","calico","male",7.451,8.169,1,0.037,"no",215
+"129 Vista Del Campo Los Gatos 95030","129 Vista Del Campo","tabby","male",5.885,6.808,1,0.022,"no",216
+"17041 Los Robles Way Los Gatos 95030","17041 Los Robles Way","maltese","female",3.898,5.294,0,0.022,"no",217
+"100 Worcester Loop Los Gatos 95030","100 Worcester Loop","brown","female",5.781,5.923,1,0.034,"no",218
+"201 Hollywood Ave Los Gatos 95030","201 Hollywood Ave","brown","female",4.601,3.947,1,0.076,"no",219
+"102 Worcester Ln Los Gatos 95030","102 Worcester Ln","calico","male",6.391,6.443,1,0.037,"no",220
+"106 Worcester Loop Los Gatos 95030","106 Worcester Loop","black","female",4.151,4.098,1,0.021,"no",221
+"110 Worcester Loop Los Gatos 95030","110 Worcester Loop","calico","female",5.53,7.199,1,0.047,"no",222
+"107 Bella Vista Ct Los Gatos 95032","107 Bella Vista Ct","black","female",4.392,4.586,1,0.04,"no",223
+"105 Via Santa Maria Los Gatos 95030","105 Via Santa Maria","tabby","male",3.522,3.161,1,0.022,"no",224
+"124 Yosemite Way Los Gatos 95030","124 Yosemite Way","tabby","female",3.52,4.7,1,0.052,"no",225
+"136 Harding Ave Los Gatos 95030","136 Harding Ave","black","female",3.052,4.282,1,0.007,"no",226
+"202 Hollywood Ave Los Gatos 95030","202 Hollywood Ave","maltese","male",4.521,5.463,1,0.035,"no",227
+"16650 Kennedy Rd Los Gatos 95032","16650 Kennedy Rd","brown","female",5.686,6.847,0,0.037,"no",228
+"209 Cerro Chico Los Gatos 95030","209 Cerro Chico","tabby","male",6.784,8.81,1,0.02,"no",229
+"304 Charles St Los Gatos 95032","304 Charles St","brown","female",5.238,7.126,1,0.034,"no",230
+"133 Vista Del Campo Los Gatos 95030","133 Vista Del Campo","tabby","female",4.549,5.738,1,0.049,"no",231
+"130 Robin Way Los Gatos 95032","130 Robin Way","calico","female",4.898,2.71,0,0.118,"yes",232
+"219 Harding Ave Los Gatos 95030","219 Harding Ave","tabby","female",5.604,7.401,1,0.025,"no",233
+"130 Vista Del Campo Los Gatos 95030","130 Vista Del Campo","tabby","female",3.796,3.86,1,0.085,"no",234
+"24 Fillmer Ave Los Gatos 95030","24 Fillmer Ave","calico","female",8.954,11.044,1,0.003,"no",235
+"16661 Kennedy Rd Los Gatos 95032","16661 Kennedy Rd","brown","male",3.763,4.286,0,0.078,"no",236
+"260 Kennedy Rd Los Gatos 95032","260 Kennedy Rd","brown","female",7.645,10.267,1,0.004,"no",237
+"160 Wheeler Ave Los Gatos 95030","160 Wheeler Ave","tabby","female",2.138,3.351,1,0.049,"no",238
+"115 Vista Del Monte Los Gatos 95030","115 Vista Del Monte","brown","female",6.252,8.405,1,0.039,"no",239
+"314 Los Gatos Blvd Los Gatos 95032","314 Los Gatos Blvd","black","male",4.021,5.509,1,0.001,"no",240
+"142 Via Santa Maria Los Gatos 95030","142 Via Santa Maria","calico","female",4.772,5.614,1,0.034,"no",241
+"301 Littlefield Ln Los Gatos 95032","301 Littlefield Ln","maltese","female",4.059,4.35,0,0.118,"yes",242
+"16620 Kennedy Rd Los Gatos 95032","16620 Kennedy Rd","brown","male",6.009,8.326,0,0.016,"no",243
+"112 Yosemite Way Los Gatos 95030","112 Yosemite Way","brown","female",4.308,3.593,1,0.096,"yes",244
+"4 Gem Ave Los Gatos 95030","4 Gem Ave","tabby","female",3.843,4.5,1,0.013,"no",245
+"314 Kennedy Rd Los Gatos 95032","314 Kennedy Rd","tabby","female",2.353,2.505,1,0.023,"no",246
+"217 Cerro Chico Los Gatos 95030","217 Cerro Chico","brown","male",3.022,4.432,1,0.046,"no",247
+"1 Charles St Los Gatos 95032","1 Charles St","tabby","female",3.914,3.651,1,0.06,"no",248
+"112 Nina Ct Los Gatos 95030","112 Nina Ct","tabby","female",3.571,4.619,1,0.025,"no",249
+"242 Harding Ave Los Gatos 95030","242 Harding Ave","maltese","female",8.234,12.368,1,0.033,"no",250
+"109 Worcester Ln Los Gatos 95030","109 Worcester Ln","calico","female",4.05,2.549,1,0.049,"no",251
+"163 Vista Del Monte Los Gatos 95030","163 Vista Del Monte","brown","male",5.401,7.448,1,0.051,"no",252
+"105 Worcester Ln Los Gatos 95030","105 Worcester Ln","brown","male",5.535,3.666,1,0.13,"yes",253
+"171 Vista Del Monte Los Gatos 95030","171 Vista Del Monte","brown","male",5.691,8.419,1,0.06,"no",254
+"132 Whitney Ave Los Gatos 95030","132 Whitney Ave","black","female",6.078,8.059,1,0.01,"no",255
+"111 Vista Del Monte Los Gatos 95030","111 Vista Del Monte","brown","female",3.021,1.269,0,0.121,"yes",256
+"16640 Kennedy Rd Los Gatos 95032","16640 Kennedy Rd","tabby","male",5.718,5.584,0,0.056,"no",257
+"Causey Ln Los Gatos 95032","Causey Ln","calico","male",2.325,0.297,0,0,"yes",258
+"16644 Kennedy Rd Los Gatos 95032","16644 Kennedy Rd","brown","female",7.826,8.669,0,0.044,"no",259
+"127 Vista Del Monte Los Gatos 95030","127 Vista Del Monte","tabby","female",6.323,9.18,1,0.038,"no",260
+"120 Vista Del Monte Los Gatos 95030","120 Vista Del Monte","brown","female",4.488,3.662,1,0.086,"yes",261
+"114 Nina Ct Los Gatos 95030","114 Nina Ct","brown","female",4.095,1.434,1,0.055,"yes",262
+"128 Vista Del Monte Los Gatos 95030","128 Vista Del Monte","brown","female",3.292,4.11,1,0.049,"no",263
+"131 Vista Del Monte Los Gatos 95030","131 Vista Del Monte","brown","male",5.207,7.282,1,0.047,"no",264
+"108 Vista Del Monte Los Gatos 95030","108 Vista Del Monte","brown","male",5.346,7.465,1,0.041,"no",265
+"20 Hollywood Ave Los Gatos 95030","20 Hollywood Ave","tabby","female",4.6,6.354,1,0.051,"no",266
+"45 Hollywood Ave Los Gatos 95030","45 Hollywood Ave","calico","female",4.73,4.757,1,0.069,"no",267
+"147 Vista Del Monte Los Gatos 95030","147 Vista Del Monte","calico","female",4.224,4.511,1,0.061,"no",268
+"152 Vista Del Monte Los Gatos 95030","152 Vista Del Monte","maltese","male",4.017,5.698,1,0.063,"yes",269
+"151 Vista Del Monte Los Gatos 95030","151 Vista Del Monte","brown","female",3.2,2.905,1,0.097,"yes",270
+"156 Vista Del Monte Los Gatos 95030","156 Vista Del Monte","brown","male",4.98,6.155,1,0.044,"no",271
+"155 Vista Del Monte Los Gatos 95030","155 Vista Del Monte","brown","female",5.913,7.464,1,0.026,"no",272
+"15 Fillmer Ave Los Gatos 95030","15 Fillmer Ave","maltese","female",3.346,1.213,1,0.105,"no",273
+"123 Cardinal Ln Los Gatos 95032","123 Cardinal Ln","calico","male",6.143,7.732,1,0.047,"no",274
+"136 Robin Way Los Gatos 95032","136 Robin Way","tabby","female",4.781,5.908,1,0.102,"yes",275
+"212 Harding Ave Los Gatos 95030","212 Harding Ave","maltese","male",5.673,8.371,1,0.038,"no",276
+"300 Charles St Los Gatos 95032","300 Charles St","calico","male",4.738,5.99,1,0.001,"no",277
+"304 Harding Ave Los Gatos 95030","304 Harding Ave","black","female",5.041,5.507,0,0.099,"yes",278
+"249 Cerro Chico Los Gatos 95030","249 Cerro Chico","brown","male",4.307,5.818,1,0.044,"no",279
+"327 Los Gatos Blvd Los Gatos 95032","327 Los Gatos Blvd","brown","female",3.343,3.999,1,0.041,"no",280
+"105 Fillmer Ave Los Gatos 95030","105 Fillmer Ave","tabby","female",4.77,5.569,1,0.052,"no",281
+"2 Gem Ave Los Gatos 95030","2 Gem Ave","black","male",5.041,5.501,1,0.09,"yes",282
+"127 Harding Ave Los Gatos 95030","127 Harding Ave","brown","female",6.083,7.749,1,0.045,"no",283
+"16890 Fillmer Ave Los Gatos 95030","16890 Fillmer Ave","tabby","female",4.646,3.237,0,0.117,"yes",284
+"119 Vista Del Monte Los Gatos 95030","119 Vista Del Monte","brown","male",6.068,7.617,1,0.056,"no",285
+"103 Worcester Ln Los Gatos 95030","103 Worcester Ln","black","male",5.118,6.553,1,0.085,"yes",286
+"17000 Hollywood Ave Los Gatos 95030","17000 Hollywood Ave","black","female",3.048,1.238,0,0.122,"yes",287
+"116 Pinta Ct Los Gatos 95030","116 Pinta Ct","black","female",9.492,9.955,1,0.06,"no",288
+"136 Wheeler Ave Los Gatos 95030","136 Wheeler Ave","tabby","female",8.05,9.679,1,0.016,"no",289
+"246 Harding Ave ","","calico","female",4.983,6.38,0,0.037,"no",290
+"302 Los Gatos Blvd Los Gatos 95032","302 Los Gatos Blvd","black","female",6.406,5.976,1,0.108,"yes",291
+"229 Cerro Chico Los Gatos 95030","229 Cerro Chico","brown","female",3.578,3.696,1,0.078,"yes",292
+"214 Harding Ave Los Gatos 95030","214 Harding Ave","brown","female",3.456,3.677,1,0.043,"no",293
+"209 Harding Ave Los Gatos 95030","209 Harding Ave","brown","male",5.306,5.591,1,0.075,"no",294
+"123 Vista Del Monte Los Gatos 95030","123 Vista Del Monte","calico","female",5.417,7.188,1,0.03,"no",295
+"118 Robin Way Los Gatos 95032","118 Robin Way","tabby","male",5.872,6.756,1,0.032,"no",296
+"146 Robin Way Los Gatos 95032","146 Robin Way","brown","female",4.039,5.15,1,0.062,"no",297
+"213 Harding Ave Los Gatos 95030","213 Harding Ave","tabby","female",5.37,6.357,1,0.027,"no",298
+"100 Vista Del Monte Los Gatos 95030","100 Vista Del Monte","brown","female",3.424,2.409,1,0.064,"no",299
+"100 Stonybrook Rd Los Gatos 95032","100 Stonybrook Rd","brown","female",5.14,5.052,1,0.065,"no",300
+"316 Los Gatos Blvd ","","tabby","male",4.682,7.238,0,0.063,"no",301
+"7 Fillmer Ave Los Gatos 95030","7 Fillmer Ave","brown","male",7.292,8.739,1,0.086,"yes",302
+"172 Vista Del Monte Los Gatos 95030","172 Vista Del Monte","tabby","male",4.965,5.592,1,0.033,"no",303
+"112 Worcester Ln Los Gatos 95030","112 Worcester Ln","tabby","female",6.654,8.56,1,0.023,"no",304
+"101 Pinta Ct Los Gatos 95030","101 Pinta Ct","tabby","male",4.457,5.507,1,0.093,"yes",305
+"16515 S Kennedy Rd Los Gatos 95030","16515 S Kennedy Rd","tabby","female",7.708,9.13,0,0.046,"no",306
+"105 Bond Ct Los Gatos 95030","105 Bond Ct","calico","male",4.391,4.699,1,0.048,"no",307
+"124 Harding Ave Los Gatos 95030","124 Harding Ave","black","male",4.938,3.793,1,0.053,"no",308
+"112 Bond Ct Los Gatos 95030","112 Bond Ct","maltese","male",4.279,4.827,1,0.045,"no",309
+"221 Cerro Chico Los Gatos 95030","221 Cerro Chico","maltese","female",4.912,4.031,1,0.075,"no",310
+"303 Harding Ave Los Gatos 95030","303 Harding Ave","brown","male",3.713,3.982,1,0.033,"no",311
+"17100 Los Robles Way Los Gatos 95030","17100 Los Robles Way","brown","male",7.137,9.219,0,0.037,"no",312
+"130 Harding Ave Los Gatos 95030","130 Harding Ave","black","female",7.245,7.76,1,0.031,"no",313
+"231 Harding Ave Los Gatos 95030","231 Harding Ave","tabby","female",4.214,4.743,1,0.022,"no",314
+"125 Vista Del Campo Los Gatos 95030","125 Vista Del Campo","black","female",5.865,6.39,1,0.03,"no",315
+"220 Cerro Chico Los Gatos 95030","220 Cerro Chico","tabby","male",4.925,6.255,1,0.024,"no",316
+"218 Harding Ave Los Gatos 95030","218 Harding Ave","tabby","male",5.89,8.57,1,0.026,"no",317
+"140 Via Santa Maria Los Gatos 95030","140 Via Santa Maria","black","male",7.972,10.233,1,0.042,"no",318
+"*no Site Address* Los Gatos 00000","*no Site Address*","tabby","male",3.803,5.715,0,0.032,"no",319
+"220 Hollywood Ave Los Gatos 95030","220 Hollywood Ave","black","male",5.336,6.734,1,0.04,"no",320
+"Los Robles Way Los Gatos 95030","Los Robles Way","tabby","female",3.003,3.993,0,0.04,"no",321
+"104 Bella Vista Ct Los Gatos 95032","104 Bella Vista Ct","calico","female",6.198,7.818,1,0.088,"no",322
+"16701 Kennedy Rd Los Gatos 95032","16701 Kennedy Rd","tabby","female",3.341,3.5,0,0.074,"no",323
+"203 Hollywood Ave Los Gatos 95030","203 Hollywood Ave","brown","male",4.573,5.149,1,0.072,"no",324
+"323 Harding Ave Los Gatos 95030","323 Harding Ave","black","female",4.22,2.887,1,0.059,"no",325
+"16845 Kennedy Rd Los Gatos 95032","16845 Kennedy Rd","black","female",2.548,3.147,0,0.1,"yes",326
+"16756 Littlefield Ln Los Gatos 95032","16756 Littlefield Ln","brown","female",6.162,7.686,0,0.037,"no",327
+"16964 Kennedy Rd Los Gatos 95032","16964 Kennedy Rd","black","male",6.207,7.197,0,0.091,"no",328
+"17200 Los Robles Way Los Gatos 95030","17200 Los Robles Way","maltese","female",2.737,2.187,0,0.109,"yes",329
+"105 Stonybrook Rd Los Gatos 95032","105 Stonybrook Rd","black","male",6.041,8.265,1,0.034,"no",330
+"334 Los Gatos Blvd Los Gatos 95032","334 Los Gatos Blvd","brown","female",3.256,3.297,1,0.048,"no",331
+"16865 Kennedy Rd Los Gatos 95032","16865 Kennedy Rd","brown","male",1.965,1.564,0,0.113,"yes",332
+"16911 Kennedy Rd Los Gatos 95032","16911 Kennedy Rd","tabby","male",6.078,8.524,0,0.039,"no",333
+"135 Pinta Ct Los Gatos 95030","135 Pinta Ct","tabby","female",6.158,6.866,1,0.065,"no",334
+"131 Pinta Ct Los Gatos 95030","131 Pinta Ct","calico","female",5.362,6.408,1,0.033,"no",335
+"159 Vista Del Monte Los Gatos 95030","159 Vista Del Monte","brown","male",4.465,5.764,1,0.022,"no",336
+"325 Harding Ave Los Gatos 95030","325 Harding Ave","tabby","female",2.391,3.898,1,0.022,"no",337
+"205 Cerro Chico Los Gatos 95030","205 Cerro Chico","black","female",5.395,6.399,1,0.044,"no",338
+"16887 Kennedy Rd Los Gatos 95032","16887 Kennedy Rd","brown","male",6.835,9.675,0,0.036,"no",339
+"380 Los Gatos Blvd Los Gatos 95032","380 Los Gatos Blvd","tabby","male",5.894,8.274,1,0.02,"no",340
+"16952 Kennedy Rd Los Gatos 95032","16952 Kennedy Rd","tabby","female",7.066,8.102,0,0.071,"no",341
+"16740 Littlefield Ln Los Gatos 95032","16740 Littlefield Ln","black","female",6.649,7.49,0,0.054,"no",342
+"331 Los Gatos Blvd Los Gatos 95032","331 Los Gatos Blvd","black","male",4.821,6.277,1,0.042,"no",343
+"266 Kennedy Rd Los Gatos 95032","266 Kennedy Rd","black","female",3.915,6.358,1,0.059,"no",344
+"16641 Kennedy Rd Los Gatos 95032","16641 Kennedy Rd","brown","male",3.707,6.689,0,0.027,"no",345
+"346 Los Gatos Blvd ","","calico","female",4.071,3.911,0,0.051,"no",346
+"150 Cardinal Ln Los Gatos 95032","150 Cardinal Ln","calico","female",3.053,3.794,1,0.033,"no",347
+"Littlefield Ln Los Gatos 95030","Littlefield Ln","calico","male",4.203,2.801,0,0.097,"no",348
+"16528 Marchmont Dr Los Gatos 95032","16528 Marchmont Dr","maltese","female",4.594,6.994,0,0.059,"no",349
+"16575 Kennedy Rd Los Gatos 95032","16575 Kennedy Rd","black","female",4.365,6.431,0,0.045,"no",350
+"125 Via Santa Maria Los Gatos 95030","125 Via Santa Maria","brown","male",4.828,5.124,1,0.056,"no",351
+"17101 Los Robles Way Los Gatos 95030","17101 Los Robles Way","black","male",5.986,6.911,0,0.028,"no",352
+"Worcester Loop Los Gatos 95030","Worcester Loop","black","female",7.5,9.605,0,0.01,"yes",353
+"Los Robles Way Los Gatos 95030","Los Robles Way","tabby","female",3.219,4.034,0,0.083,"no",354
+"144 Whitney Ave Los Gatos 95030","144 Whitney Ave","brown","female",3.824,4.85,1,0.056,"yes",355
+"109 Vista Del Campo Los Gatos 95030","109 Vista Del Campo","tabby","male",4.224,4.304,1,0.023,"no",356
+"16771 Kennedy Rd Los Gatos 95032","16771 Kennedy Rd","brown","male",2.985,2.492,0,0.084,"no",357
+"100 Cardinal Ln Los Gatos 95032","100 Cardinal Ln","tabby","male",6.037,5.057,0,0.134,"yes",358
+"186 Vista Del Monte Los Gatos 95030","186 Vista Del Monte","brown","female",5.845,8.653,1,0.073,"no",359
+"108 Bond Ct Los Gatos 95030","108 Bond Ct","black","male",5.778,7.458,1,0.046,"no",360
+"105 Worcester Loop Los Gatos 95030","105 Worcester Loop","brown","female",6.149,6.976,1,0.004,"no",361
+"16912 Kennedy Rd Los Gatos 95032","16912 Kennedy Rd","brown","female",3.503,4.21,0,0.096,"yes",362
+"119 Harding Ave ","","tabby","female",5.509,6.323,0,0.094,"yes",363
+"16680 Kennedy Rd Los Gatos 95032","16680 Kennedy Rd","brown","female",3.547,3.575,0,0.069,"no",364
+"244 Harding Ave Los Gatos 95030","244 Harding Ave","black","female",4.643,5.872,1,0.07,"no",365
+"125 Wheeler Ave Los Gatos 95030","125 Wheeler Ave","brown","male",3.651,4.799,1,0.025,"no",366
+"118 Yosemite Way Los Gatos 95030","118 Yosemite Way","tabby","female",3.107,3.811,1,0.012,"no",367
+"240 Cerro Chico Los Gatos 95030","240 Cerro Chico","tabby","female",1.986,1.688,1,0.032,"no",368
+"2 Charles St Los Gatos 95032","2 Charles St","tabby","male",6.791,4.229,0,0.148,"yes",369
+"240 Harding Ave Los Gatos 95030","240 Harding Ave","brown","male",5.623,6.351,1,0.046,"no",370
+"16711 Kennedy Rd Los Gatos 95032","16711 Kennedy Rd","black","female",6.215,7.021,0,0.063,"no",371
+"34 Fillmer Ave Los Gatos 95030","34 Fillmer Ave","tabby","female",5.492,5.914,1,0.044,"no",372
+"40 Fillmer Ave Los Gatos 95030","40 Fillmer Ave","brown","male",5.477,4.792,1,0.025,"no",373
+"16680 Littlefield Ln Los Gatos 95032","16680 Littlefield Ln","brown","female",6.569,9.59,0,0.069,"no",374
+"25 Fillmer Ave Los Gatos 95030","25 Fillmer Ave","tabby","female",5.871,4.742,1,0.121,"yes",375
+"149 Cardinal Ln Los Gatos 95032","149 Cardinal Ln","brown","male",3.994,1.227,1,0.12,"yes",376
+"47 Fillmer Ave Los Gatos 95030","47 Fillmer Ave","calico","female",9.051,9.32,1,0.001,"yes",377
+"337 Los Gatos Blvd Los Gatos 95032","337 Los Gatos Blvd","tabby","male",4.708,5.036,1,0.03,"no",378
+"350 Los Gatos Blvd Los Gatos 95032","350 Los Gatos Blvd","brown","female",5.056,7.362,1,0.047,"no",379
+"16586 Marchmont Dr Los Gatos 95032","16586 Marchmont Dr","black","male",5.194,7.728,0,0.001,"no",380
+"16899 Kennedy Rd Los Gatos 95032","16899 Kennedy Rd","brown","female",3.299,4.266,0,0.063,"no",381
+"36 Hollywood Ave Los Gatos 95030","36 Hollywood Ave","black","female",4.224,7.796,1,0.014,"no",382
+"9 Hollywood Ave Los Gatos 95030","9 Hollywood Ave","brown","female",5.077,5.394,1,0.103,"yes",383
+"16715 Littlefield Ln Los Gatos 95032","16715 Littlefield Ln","tabby","female",0.65,3,0,0,"yes",384
+"333 Los Gatos Blvd Los Gatos 95032","333 Los Gatos Blvd","calico","female",5.452,5.996,1,0.106,"yes",385
+"51 Fillmer Ave Los Gatos 95030","51 Fillmer Ave","tabby","male",5.854,4.025,1,0.108,"yes",386
+"18 Fillmer Ave Los Gatos 95030","18 Fillmer Ave","maltese","female",2.96,2.291,1,0.053,"no",387
+"16840 Kennedy Rd Los Gatos 95032","16840 Kennedy Rd","brown","female",3.532,5.641,0,0.053,"no",388
+"49 Fillmer Ave Los Gatos 95030","49 Fillmer Ave","tabby","male",4.333,4.572,1,0.014,"no",389
+"16828 Kennedy Rd Los Gatos 95032","16828 Kennedy Rd","tabby","male",5.499,5.648,0,0.037,"no",390
+"56 Fillmer Ave Los Gatos 95030","56 Fillmer Ave","brown","male",5.484,7.26,1,0.005,"no",391
+"16861 Fillmer Ave Los Gatos 95030","16861 Fillmer Ave","tabby","female",1.445,0.377,0,0,"no",392
+"141 Via Santa Maria Los Gatos 95030","141 Via Santa Maria","tabby","male",7.398,8.895,1,0.03,"no",393
+"132 Pinta Ct Los Gatos 95030","132 Pinta Ct","brown","male",4.722,5.704,1,0.085,"yes",394
+"200 Hollywood Ave Los Gatos 95030","200 Hollywood Ave","brown","male",5.829,7.858,1,0.01,"no",395
+"111 Yosemite Way Los Gatos 95030","111 Yosemite Way","black","male",6.164,7.165,1,0.057,"no",396
+"367 Los Gatos Blvd Los Gatos 95032","367 Los Gatos Blvd","calico","male",6.886,7.953,1,0.111,"yes",397
+"306 Templeton Ln Los Gatos 95032","306 Templeton Ln","tabby","female",5.377,6.325,1,0.029,"no",398
+"16683 Kennedy Rd Los Gatos 95032","16683 Kennedy Rd","brown","female",1.834,0.095,0,0,"yes",399
+"16785 Kennedy Rd Los Gatos 95032","16785 Kennedy Rd","brown","female",4.035,4.073,0,0.094,"yes",400

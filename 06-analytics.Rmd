@@ -1,0 +1,239 @@
+---
+title: "Common Statistical Techniques in R"
+output: html_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(MASS)
+library(dplyr)
+library(ggplot2)
+knitr::opts_chunk$set(comment = '', fig.height = 8, fig.width = 10, fig.align = 'center')
+```
+
+------------
+
+> ## Learning Objectives
+>
+> * To become familiar with common statistical functions available in R
+> * Linear Regression
+> * Logistic Regression
+> * K-Means Clustering
+
+------------
+
+### Simple Linear Regression
+
+```{r, echo = FALSE, message = FALSE}
+
+library(dplyr)
+library(ggplot2)
+
+cats <- read.csv('data/herding-cats.csv') %>% tbl_df
+
+ggplot(cats, aes(x = weight, y = wander_dist)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE, size = 3) + 
+  theme_bw(base_size = 18)
+```
+
+Linear regression is one of the most commonly used methods in all of statistics.  It is used for a large variety of applications and offers highly interpretable results.  It was the first regression method discovered and belongs to one of the most important families of models, generalized linear models.
+
+Simple linear regression estimates the linear relationship between two variables, an outcome variable *y*, and an explanatory variable *x*.  
+
+To fit a linear regression in *R*, we can use the `lm()` function (think _linear model_).  We use the formula notation, `y~x` where `y` is the name of your outcome variable, and `x` is the name of your explanatory variable, both are unquoted.  The easiest way to view the results interactively is with the `summary()` function.
+
+```{r}
+weight_fit <- lm(formula = wander_dist ~ weight, data = cats)
+summary(weight_fit)
+```
+
+------------
+
+In this case, the `summary` function returns an object that provides a lot of interesting information when printed out.  It also stores that information as part of the object, things like the terms used in the model, the coefficients of the model estimates, and the residuals of the model. This is nice if we want to do something programmatic with the results. 
+  
+------------
+
+### Multiple Linear Regression
+
+We aren't restricted to just one explanatory variable in linear regression.  We can test the effect of a linear relationship between multiple explanatory variables _simultaneously_.  In the `lm` function, we just add extra variable names in the formula separated by `+`'s.
+
+```{r}
+wander_fit <- lm(formula = wander_dist ~ weight + age , data = cats)
+summary(wander_fit)
+```
+
+------------
+
+> ### Challenge
+> 
+> Fit a model predicting wander_dist and include weight, age, and fixed as predictors. What is the estimate for the effect of being fixed on the wandering distance?
+> 
+
+```{r}
+wander_fit <- lm(formula = wander_dist ~ weight + age + fixed, data = cats)
+summary(wander_fit)
+```
+------------
+
+If an explanatory variable is not binary (coded as 0s or 1s), we can still include it in the model.  The `lm` function understands factors to be categorical variables automatically and will output the estimates with a reference category.
+
+```{r}
+wander_fit <- lm(formula = wander_dist ~ weight + age + factor(coat) + sex, data = cats)
+summary_fit <- summary(wander_fit)
+summary_fit['coefficients']
+```
+
+> ### Challenge
+> What command will return the r-squared value from the summary_lm_fit object after running these commands:
+> 
+> wander_fit <- lm(formula = wander_dist ~ weight + age + fixed, data = cats)
+> summary_lm_fit <- summary(wander_fit)
+
+
+------------
+
+The `lm` function also can estimate interactions between explanatory variables.  This is useful if we think that the linear relationship between our outcome y and a variable x1 is _different_ depending on the variable x2.  This can be accomplished by connecting two variables in the formula with a `*` instead of a `+`.
+
+> ### Challenge 
+> Fit a linear regression model estimating the relationship between the outcome, wandering distance (`wander_dist`) and explanatory variables age (`age`), weight (`weight`), with an interaction between age and weight. What is the coefficient associated with the interaction between age and weight?
+>
+
+```{r}
+wander_fit <- lm(formula = wander_dist ~ weight * age, data = cats)
+summary(wander_fit)
+```
+
+## Logistic Regression
+
+If we are analyzing a binary outcome, we can use *logistic regression*.  Logistic regression uses the linear model framework, but makes different assumptions about the distribution of the outcome.  So we can look for associations between binary outcome variables and multiple explanatory variables.
+
+```{r}
+ggplot(cats, aes(x = roamer, y = wander_dist)) + 
+  geom_boxplot(width = 0.5)
+```
+
+------------
+
+For logistic regression, we use the `glm` function.  It takes formula and data arguments like the `lm` function, but we also need to specify a family.  For logistic, we pass binomial as the family, which tells the `glm` function that we have a binary outcome, and we want to use the logit link function. 
+
+```{r}
+roamer_fit <- glm(formula = roamer ~ wander_dist, data = cats, family = binomial )
+```
+
+------------
+
+We can use the `summary` function to extract important information from the object that `glm` returns, just like with the `lm` function
+
+```{r}
+glm_summary <- summary(roamer_fit)
+glm_summary
+```
+
+> ### Challenge
+> 
+
+```{r}
+roamer_fit <- glm(formula = roamer ~ wander_dist + weight, data = cats, family = binomial )
+summary(roamer_fit)
+```
+------------
+
+We can look at the effects of multiple covariates on our binary outcome with logistic regression, just like with linear regression.  We just add as many variable names as we'd like to the right side of the formula argument, separated by `+` symbols.
+
+```{r}
+ggplot(cats, aes(x = weight, y = wander_dist, color = roamer)) + 
+  geom_point(size = 2) +
+  geom_smooth(method = 'lm', se = FALSE, size = 3) +
+  theme_bw(base_size = 18)
+
+# cats$roamer <- relevel(cats$roamer, ref = 'yes')
+roamer_fit <- glm(formula = roamer ~ wander_dist + weight, data = cats, family = binomial )
+glm_summary <- summary(roamer_fit)
+glm_summary
+
+names(glm_summary)
+glm_summary$coefficients
+glm_summary$null.deviance
+glm_summary$deviance
+glm_summary$aic
+```
+
+------------
+
+We can also use the model objects to predict on unobserved values.  We just need to pass a data frame with all of the terms used in the original model to the `predict` function.  The `predict` function will return values in a few different ways.  The default value of the `type` argument is "link" and will return things on the same scale as the linear predictors.  This is often not what we want.  If we pass "response" to the `type` argument, we'll get predicted values on the same scale as the response.  In the logistic case, this is the predicted probability.
+
+```{r}
+new_cats <- data.frame(wander_dist = c(0.15, 0.10, 0.05),
+                       weight = c(2, 6, 12))
+new_cats
+
+predicted_logit <- predict(object = roamer_fit, newdata = new_cats)
+predicted_logit
+
+predicted_probs <- predict(object = roamer_fit, newdata = new_cats, type = 'response')
+predicted_probs
+```
+
+------------
+
+We can then predict whether each cat is a roamer or not based on the predicted probabilty from our model.  We need to assign a cut-off probability.
+
+```{r}
+new_cats$predicted_prob <- predicted_probs
+new_cats <- new_cats %>% mutate(roamer = ifelse(predicted_prob > 0.5, 'yes', 'no'))
+
+ggplot(cats, aes(x = weight, y = wander_dist, color = roamer, group = roamer)) + 
+  geom_point(size = 2) +
+  geom_point(data = new_cats, aes(x = weight, y = wander_dist, color = roamer), size = 8) +
+  theme_bw(base_size = 18)
+```
+
+------------
+
+## K-means Clustering
+
+Another popular machine learning technique is k-means clustering.  It seeks to group your data into a fixed number of clusters based on a measure of distance.  An important pre-processing step to clustering is the center and scale your data.
+
+```{r}
+cats <- cats %>% 
+  mutate(scale_weight = scale(weight),
+         scale_wander = scale(wander_dist),
+         scale_age = scale(age))
+```
+
+------------
+
+We use the `kmeans` function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument `nstart`, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.
+
+```{r}
+cats_cluster <- 
+  kmeans(x = cats %>% select(scale_weight, scale_wander, scale_age), 
+         centers = 3,
+         nstart = 20)
+str(cats_cluster)
+cats_cluster$centers
+```
+
+------------
+
+We can use `ggplot` to visualize the clusters.
+
+```{r}
+cats$cluster <- factor(cats_cluster$cluster)
+cluster_centers <- as.data.frame(cats_cluster$centers)
+
+ggplot(data = cats) + 
+  geom_point(aes(x = scale_age, y = scale_weight, color = cluster), size = 4) + 
+  geom_point(data = cluster_centers, aes(x = scale_age, y = scale_weight), color = 'black', size  = 8) +
+  theme_bw(base_size = 18)
+
+ggplot(data = cats) + 
+  geom_point(aes(x = scale_age, y = scale_wander, color = cluster), size = 4) + 
+  geom_point(data = cluster_centers, aes(x = scale_age, y = scale_wander), color = 'black', size  = 8) +
+  theme_bw(base_size = 18)
+
+ggplot(data = cats) + 
+  geom_point(aes(x = scale_weight, y = scale_wander, color = cluster), size = 4) + 
+  geom_point(data = cluster_centers, aes(x = scale_weight, y = scale_wander), color = 'black', size  = 8) +
+  theme_bw(base_size = 18)
+```
