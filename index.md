@@ -1,14 +1,12 @@
 ---
 layout: lesson
 root: .
-lastupdated: August 14, 2016
-contributors: ["Kate Hertweck", "Susan McClatchey", "Tracy Teal", "Ryan Williams"]
-maintainers: ["Tracy Teal"]
-domain: Genomics
+lastupdated: March 28, 2016
+contributors: ["Kate Hertweck", "Susan McClatchey", "Tracy Teal", "Ryan Williams", "Michelle Berry", "Ellis Valentiner", "Rob Weyant", "Clayton Yochum"]
 topic: R
 software: R
-dataurl:
-status: Under Development
+dataurl: https://raw.githubusercontent.com/AnnArborRUserGroup/AARUG-R-workshop/gh-pages/data
+
 ---
 
 <!-- USING THIS LESSON TEMPLATE -->
@@ -17,48 +15,49 @@ status: Under Development
 <!-- THE LESSON INFORMATION -->
 
 
-#Data Carpentry {{ page.topic }} for {{ page.domain }}
+AARUG Beginner R Workshop
 =======
 
-Data Carpentry's aim is to teach researchers basic concepts, skills,
-and tools for working more effectively with data.
-The lessons below were designed for those interested
-in working with {{page.domain %}} data in {{page.topic %}}.
-
-
-**Content Contributors: {{page.contributors | join: ', ' %}}**
-
-
-**Lesson Maintainers: {{page.maintainers | join: ', ' %}}**
-
-
-**Lesson status: {{ page.status }}**
-
-<!--
-  [Information on Lesson Status Categories]()
--->
 
 <!-- ###### INDEX OF LESSONS ON THIS TOPIC ###### -->
 
 ## Lessons:
 
 
-1. [Lesson 00 Before we start](00-before-we-start.html)
-2. [Lesson 01 Introduction to R](01-intro-to-R.html)
-3. [Lesson 02 Starting with data](02-starting-with-data.html)
-4. [Lesson 03 Introducing `data.frame`](03-data-frames.html)
-5. [Lesson 04 Aggregating and analyzing data with dplyr](04-dplyr.html)
-6. [Lesson 05 Data visualisation with ggplot2](05-data-visualization.html)
+0. [Lesson 00 Before we start](00-before-we-start.html)
+1. [Lesson 01 Introduction to R](01-intro-to-R.html)
+2. [Lesson 02 Starting with data](02-starting-with-data.html)
+3. [Lesson 03 R Markdown](03-rmarkdown.html)
+4. [Lesson 04 Herding Cats with dplyr](04-dplyr.html)
+5. [Lesson 05 Data visualisation with ggplot2](05-data-visualization.html)
+6. [Lesson 06 Statistics](06-statistics.html)
 
 ## Data
 
-Data files for the lesson are available here: [{{page.dataurl %}}]({{page.dataurl %}})
+Cats data is available [here]({{page.dataurl}}/cats.csv)
+         	
+Birthwt data is available [here]({{page.dataurl}}/birthwt.csv)
+
+## Socrative
+
+We will use Socrative to work through exercises during the workshop  				
+
+Student login: [https://b.socrative.com/login/student/](https://b.socrative.com/login/student/)		  
+
+classroom: HHUCRA83F
+
+## Slack
+
+We will use Slack to communicate during the workshop. The AARUG slack group is also 
+a valuable resource for hearing about R-related events and announcements and receiving help
+on your R code. 
+
+Request to join the AARUG slack group: [http://annarborrusergroup.github.io/slack/](http://annarborrusergroup.github.io/slack/)
+			
 
 
-### Requirements
+## Requirements
 
-Data Carpentry's teaching is hands-on, so participants are encouraged to use
-their own computers to insure the proper setup of tools for an efficient workflow.
 *These lessons assume no prior knowledge of the skills or tools*, but working
 through this lesson requires working copies of the software described below.
 To most effectively use these materials, please make sure to install everything
@@ -77,4 +76,8 @@ To most effectively use these materials, please make sure to install everything
 {% include anySetup.html %}
 {% endif %}
 
-<p><strong>Twitter</strong>: @datacarpentry
+## Contributors:
+Lesson plans were adapted from [Software Carpentry](http://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) lessons    
+
+Contributors include: {{page.contributors | join: ', ' %}}
+

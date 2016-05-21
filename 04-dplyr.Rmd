@@ -1,218 +1,227 @@
 ---
-layout: topic
-title: Aggregating and analyzing data with dplyr
-author: Data Carpentry contributors
+title: Herding cats with dplyr
 ---
-
-```{r, echo=FALSE, purl=FALSE, message = FALSE}
-# source("setup.R")
-metadata <- read.csv("data/Ecoli_metadata.csv")
-```
 
 ------------
 
-# Data manipulation using dplyr
-
-Bracket subsetting is handy, but it can be cumbersome and difficult to read,
-especially for complicated operations. Enter `dplyr`. 
-
-`dplyr` is a package for
-making data manipulation easier.
-
-Packages in R are basically sets of additional functions that let you do more
-stuff in R. The functions we've been using, like `str()`, come built into R;
-packages give you access to more functions. You need to install a package and
-then load it to be able to use it.
-
-```{r, eval = FALSE, purl = FALSE}
-install.packages("dplyr") ## install
+```{r loading, echo = FALSE}
+cats <- read.csv("data/herding-cats-small.csv")
 ```
 
-You might get asked to choose a CRAN mirror -- this is basically asking you to
-choose a site to download the package from. The choice doesn't matter too much;
-I'd recommend choosing the RStudio mirror.
+# `dplyr`
 
-```{r, message = FALSE, purl = FALSE}
-library("dplyr")          ## load
+80% of the work involved with data analysis involves cleaning and shaping the data until it's in the state you need. Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. Enter `dplyr`!
+
+`dplyr` is a package for making data manipulation easier. (It does a lot more too, but this is what we'll focus on).
+
+Unlike the subsetting commands we've already worked on, `dplyr` is designed to be highly expressive, and highly readable. It's structured around a set of verbs, or grammar of data manipulation. The core functions we'll talk about are below:
+
+- `select`
+- `arrange`
+- `filter`
+- `group_by`
+- `mutate`
+- `summarise/summarize`
+
+## Getting the package
+
+```{r, eval = FALSE}
+install.packages("dplyr")
+```
+Again, you may be asked to choose a CRAN mirror; RStudio is a good choice.
+
+Unlike the `rmarkdown` package, we'll be using `dplyr` in the console. In order to do that, we need to _load_ the package into our environment so we can access functions from `dplyr`. We do this with the `library` command:
+
+```{r, message = FALSE}
+library("dplyr")
 ```
 
 You only need to install a package once per computer, but you need to load it
 every time you open a new R session and want to use that package.
 
-## What is dplyr?
+## Subsetting Data
 
-The package `dplyr` is a fairly new (2014) package that tries to provide easy
-tools for the most common data manipulation tasks. It is built to work directly
-with data frames. The thinking behind it was largely inspired by the package
-`plyr` which has been in use for some time but suffered from being slow in some
-cases.` dplyr` addresses this by porting much of the computation to C++. An
-additional feature is the ability to work with data stored directly in an
-external database. The benefits of doing this are that the data can be managed
-natively in a relational database, queries can be conducted on that database,
-and only the results of the query returned.
+The first two `dplyr` commands we'll use help us to subset our data by rows and columns.
 
-This addresses a common problem with R in that all operations are conducted in
-memory and thus the amount of data you can work with is limited by available
-memory. The database connections essentially remove that limitation in that you
-can have a database of many 100s GB, conduct queries on it directly and pull
-back just what you need for analysis in R.
+### `select`
+The first command we'll use is `select`, which allows us to choose columns from our dataset. Let's use our `cats` dataset and select only the `coat` column; we did this previously with
 
-### Selecting columns and filtering rows
-
-We're going to learn some of the most common `dplyr` functions: `select()`,
-`filter()`, `mutate()`, `group_by()`, and `summarize()`. To select columns of a
-data frame, use `select()`. The first argument to this function is the data
-frame (`metadata`), and the subsequent arguments are the columns to keep.
-
-```{r, results = 'hide', purl = FALSE}
-select(metadata, sample, clade, cit, genome_size)
+```{r}
+cats[, "coat"]
 ```
 
-To choose rows, use `filter()`:
+With dplyr, we don't need to enclose our column names in quotes
 
-```{r, purl = FALSE}
-filter(metadata, cit == "plus")
+```{r}
+select(cats, coat)
 ```
 
-### Pipes
+Notice how the output differs slightly; all the main `dplyr` verbs behave consistently in that their inputs and outputs are both `data.frame`s, rather than returning a simple vector as the bracket-indexing method did. All of the main "verbs" we'll talk about will return a data.frame as their result.
 
-But what if you wanted to select and filter? There are three ways to do this:
-use intermediate steps, nested functions, or pipes. With the intermediate steps,
-you essentially create a temporary data frame and use that as input to the next
-function. This can clutter up your workspace with lots of objects. You can also
-nest functions (i.e. one function inside of another).  This is handy, but can be
-difficult to read if too many functions are nested as the process from inside
-out. The last option, pipes, are a fairly recent addition to R. Pipes let you
-take the output of one function and send it directly to the next, which is
-useful when you need to many things to the same data set.  Pipes in R look like
-`%>%` and are made available via the `magrittr` package installed as
-part of `dplyr`.
+We can select more columns by giving `select` additional arguments, and our output `data.frame` will have columns according to the order of our arguments
 
-```{r, purl = FALSE}
-metadata %>%
-  filter(cit == "plus") %>%
-  select(sample, generation, clade)
+```{r}
+select(cats, coat, cat_id)
 ```
 
-In the above we use the pipe to send the `metadata` data set first through
-`filter`, to keep rows where `cit` was equal to 'plus', and then through `select` to
-keep the `sample` and `generation` and `clade` columns. When the data frame is being passed to the
-`filter()` and `select()` functions through a pipe, we don't need to include it
-as an argument to these functions anymore.
+### `filter`
+So where `select` allowed us to select _columns_, `filter` operated on _rows_. Say we want to see the all the cats with black coats; we saw earlier how to use that using bracket-indexing:
 
-If we wanted to create a new object with this smaller version of the data we
-could do so by assigning it a new name:
-
-```{r, purl = FALSE}
-meta_citplus <- metadata %>%
-  filter(cit == "plus") %>%
-  select(sample, generation, clade)
-
-meta_citplus
+```{r}
+cats[cats$coat == "black", ]
 ```
 
-> ### Challenge {.challenge}
->
-> Using pipes, subset the data to include rows where the clade is 'Cit+'. Retain columns
-> `sample`, `cit`, and `genome_size.`
+In dplyr, this looks like
 
-### Mutate
-
-Frequently you'll want to create new columns based on the values in existing
-columns, for example to do unit conversions or find the ratio of values in two
-columns. For this we'll use `mutate()`.
-
-To create a new column of genome size in bp:
-
-```{r, purl = FALSE, eval=FALSE}
-metadata %>%
-  mutate(genome_bp = genome_size *1e6)
+```{r}
+filter(cats, coat == "black")
 ```
 
-If this runs off your screen and you just want to see the first few rows, you
-can use a pipe to view the `head()` of the data (pipes work with non-dplyr
-functions too, as long as the `dplyr` or `magrittr` packages are loaded).
+Notice we don't have to use the `$` operator to tell `filter` where the `coat` column is; it's smart enough to assume we want the `coat` column from the `data.frame` we passed in.
 
-```{r, purl = FALSE, eval=FALSE}
-metadata %>%
-  mutate(genome_bp = genome_size *1e6) %>%
-  head
+### `arrange`
+Maybe you have a set of observations in your data that you want to organize by their value.  `arrange` allows us to change the order of rows in our dataset based on their values.
+
+```{r}
+arrange(cats, coat)
+
+# you can include additional columns to help sort the data
+arrange(cats, coat, sex)
 ```
 
-The row has a NA value for clade, so if we wanted to remove those we could
-insert a `filter()` in this chain:
+### `mutate`
 
-```{r, purl = FALSE, eval=FALSE}
-metadata %>%
-  mutate(genome_bp = genome_size *1e6) %>%
-  filter(!is.na(clade)) %>%
-  head
+One common task in working with data is updating/cleaning some of the values in columns. `mutate` allows us to do this relatively easily. Let's say I don't want a lot of decimal places in one of my measurements. I can use `mutate` to update my existing variable:
+
+```{r}
+mutate(cats, weight = round(weight, 2))
 ```
 
-`is.na()` is a function that determines whether something is or is not an `NA`.
-The `!` symbol negates it, so we're asking for everything that is not an `NA`.
+Another common task is generating a new column based on values that are already in the dataset you are working on. `mutate` helps us do this, and tacks a new column to the end of our data.frame.
 
-### Split-apply-combine data analysis and the summarize() function
+```{r}
+# let's say you want to add two variables together
+mutate(cats, new_variable = age + weight)
 
-Many data analysis tasks can be approached using the "split-apply-combine"
-paradigm: split the data into groups, apply some analysis to each group, and
-then combine the results. `dplyr` makes this very easy through the use of the
-`group_by()` function. `group_by()` splits the data into groups upon which some
-operations can be run. For example, if we wanted to group by citrate-using mutant status and find the
-number of rows of data for each status, we would do:
-
-```{r, purl = FALSE}
-metadata %>%
-  group_by(cit) %>%
-  tally()
-```
-
-There are several different summary statistics that can be generated from our data. The R base package provides many built-in functions such as `mean`, `median`, `min`, `max`, and `range`.  By default, all **R functions operating on vectors that contains missing data will return NA**. It's a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
-
-`group_by()` is often used together with `summarize()` which collapses each
-group into a single-row summary of that group. `summarize()` can then be used to apply a function such as those that compute simple stats to give an overview for the group. So to view mean `genome_size` by mutant status:
-
-```{r, purl = FALSE}
-metadata %>%
-  group_by(cit) %>%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE))
-```
-
-You can group by multiple columns too:
-
-```{r, purl = FALSE}
-metadata %>%
-  group_by(cit, clade) %>%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE))
-
-```
-
-Looks like for one of these clones, the clade is missing. We could then discard those rows using `filter()`:
-
-```{r, purl = FALSE, eval=FALSE}
-metadata %>%
-  group_by(cit, clade) %>%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE)) %>%
-  filter(!is.na(clade))
-```
-
-All of a sudden this isn't running of the screen anymore. That's because `dplyr`
-has changed our `data.frame` to a `tbl_df`. This is a data structure that's very
-similar to a data frame; for our purposes the only difference is that it won't
-automatically show tons of data going off the screen.
-
-You can also summarize multiple variables at the same time:
-
-```{r, purl = FALSE, eval=FALSE}
-metadata %>%
-  group_by(cit, clade) %>%
-  summarize(mean_size = mean(genome_size, na.rm = TRUE),
-            min_generation = min(generation))
-
+# you can include as many new variables as you want, separated by a comma
+mutate(cats, new_var_1 = age + weight, new_var_2 = age * weight)
 ```
 
 
+## Pipes
+You'll often find yourself needing to use multiple functions in a row to organize some data that you're working on. This can sometimes lead to dense code that is difficult to read.
 
-[Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+```{r}
+# for example
+sort(round(sqrt(cats$age * 2), 3))
+```
 
-*Much of this lesson was copied or adapted from Jeff Hollister's [materials](http://usepa.github.io/introR/2015/01/14/03-Clean/)*
+In the code above, I have multiple steps to get my result, but you have to read what's going on from the inside out. This can be cumbersome, especially if you need to understand how one function's output influences the next operation.
+
+### Using Pipes
+
+`dplyr` includes a special operator designed to make code *flow* and appear more readable.
+
+It's written as `%>%`, and you can call it the "pipe" operator.
+
+Our example above can be re-written as:
+```{r}
+cats$age * 2 %>% 
+  sqrt() %>%
+  round(3) %>%
+  sort()
+```
+
+Instead of being nested within a bunch of commands, you can see read the code as a series of statements:
+  1. Multiply `cats$age` by 2, *then*
+  2. Take the square-root of these values, *then*
+  3. Round the result to the 3rd digit, *then*
+  4. Sort the values in ascending order
+
+I encourage you to think of the `%>%` as short-hand for "then", when reading code that uses it!
+
+"Pipe" operators are found in other languages; they get their name from the idea that your code can be thought of as a "pipeline". 
+
+Let's look at another example.
+```{r}
+round(1.23456789, 3)
+```
+
+We can use a pipe operator to acheive the same thing.
+
+```{r}
+1.23456789 %>% round(3)
+```
+
+The pipe takes care of making sure the output of the expression on the left-hand-side (a simple numeric, in this case) is inserted as the first argument of the expressing on the right-hand-side. We can also pipe into other argument positions by using a period as a placeholder.
+
+```{r}
+3 %>% round(1.23456789, .)
+```
+
+These are contrived examples, and I don't suggest using pipes for simple operations like rounding. The pipes really become useful when chaining together multiple operations in sequence, as we'll do with our `dplyr` functions.
+
+
+## Combining Select & Filter
+
+The pipe is really helpful when combined with the data-manipulation of `dplyr`. 
+Remember how we used `filter` to select only the black cats? What if we only want to see the ID's of those cats, rather than all the info about them? We've already seen we can use `select` to pick out certain columns. We can use that to select the `cat_id` column from our `filter`ed dataset like so
+
+```{r}
+# reading from the inside out
+select(filter(cats, coat == "black"), cat_id)
+```
+
+That might not look too bad now, but what if we wanted to do another operation on that output? We'd add another layer of nesting, and having to read that line from the inside-out can quickly become annoying. We can use the pipe operator to clean that up.
+
+```{r}
+# reading from left to right
+filter(cats, coat == "black") %>% select(cat_id)
+```
+
+We could even add another pipe to feed `cats` into `filter`; it isn't necessary, but it makes it even easier to see what we're operating on in this chain of commands. We'll combine this with some line breaks to really make this easy to read:
+
+```{r}
+cats %>%
+  filter(coat == "black") %>%
+  select(cat_id)
+```
+
+### `summarize`
+
+While `mutate` creates new columns, it's often useful to summarize multiple rows into a single value. Say we want to find the mean weight of all these cats; enter `summarize`! Like `mutate`, the arguments to summarize (after the `data.frame` we want to operate on) are expressions. We can combine `summarize` with the `mean` function to get a mean weight for our collection of cats like so:
+
+```{r}
+cats %>% summarize(mean_weight = mean(weight))
+```
+
+Notice how we have only a single value returned, but it's still in a `data.frame` format. This is subtle, but important; all these basic `dplyr` verbs take in `data.frame`s and also return `data.frame`s. This consistency helps make long chains of `dplyr` operations possible.
+
+
+### `group_by`
+
+A very common data analysis task is to do operations like we did above, but to do them on a group-by-group basis. To do this with `dplyr`, we'll use the `group_by` function.
+
+Let's look at the mean weights of our cats, grouping up by coat. This will give us the mean weight of the black cats, mean weight of the calico cats, etc. We can do this by inserting a `group_by` function into our earlier expression for computing mean weight:
+
+```{r}
+cats %>%
+  group_by(coat) %>%
+  summarize(mean_weight = mean(weight))
+```
+
+Ta-da!
+
+We can also use `mutate` on a per-group basis. Let's make a new column which centers our weights around zero; this can be done by subtracting the group's mean weight from each cat's weight:
+
+```{r}
+cats %>%
+  group_by(coat) %>%
+  mutate(centered_weight = weight - mean(weight))
+```
+
+# Going further
+
+This is an introductory look at `dplyr`, just enough to make you dangerous. As you continue your R journey I suggest looking into the other awesome things you can do with this package!
+
+

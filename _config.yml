@@ -1,3 +1,3 @@
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
+
+exclude: ['other-lessons']
+
