@@ -114,7 +114,7 @@ same time as the `-` key) will write ` <- ` in a single keystroke.
 Objects can be given any name such as `x`, `current_temperature`, or
 `subject_id`. You want your object names to be explicit and not too long. They
 cannot start with a number (`2x` is not valid but `x2` is). R is case sensitive
-(e.g., `genome_length_mb` is different from `genome_length_mb`). There are some names that
+(e.g., `Genome_length_mb` is different from `genome_length_mb`). There are some names that
 cannot be used because they represent the names of fundamental functions in R
 (e.g., `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
