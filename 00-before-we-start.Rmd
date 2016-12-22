@@ -13,11 +13,11 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 > ## Learning Objectives
 >
-> * Articulating motivations for this lesson
-> * Introduce participants to the RStudio interface
-> * Set up participants to have a working directory with a `data/` folder inside
-> * Introduce R syntax
-> * Point to relevant information on how to get help, and understand how to ask well formulated questions
+> * Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.
+> * Create an R project. 
+> * Organize files and directories for a set of analyses as an R Project.
+> * Use the built-in RStudio help interface to search for more information on R functions.
+
 
 ------------
 
