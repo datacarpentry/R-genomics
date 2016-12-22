@@ -9,11 +9,13 @@ minutes: 30
 metadata <- read.csv('./data/Ecoli_metadata.csv')
 ```
 
-> ## Learning Objectives {.objectives}
+> ## Learning Objectives 
 >
-> * Basic plots 
-> * Advanced plots (introducing `ggplot`)
-> * Writing images (and other things) to file
+* Describe the features of R’s plotting packages (i.e. know the difference between base R and ggplot plotting approaches).
+* Create simple scatterplots, histograms, and boxplots in R.
+* Customize the aesthetics of an existing plot.
+* Build complex and customized plots from data in a data frame.
+* Export plots from RStudio to standard graphical file formats.
 
 # Basic plots in R
 
