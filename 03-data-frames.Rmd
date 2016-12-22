@@ -18,9 +18,10 @@ metadata <- read.csv("data/Ecoli_metadata.csv")
 
 > ## Learning Objectives
 >
-> * understand the concept of a `data.frame`
-> * using sequences to index data
-> * know how to access any element of a `data.frame`
+> * Extract values from a vector in R.
+> * Perform operations on columns in a data frame.
+> * Subset data in a data frame.
+
 
 ------------
 <!--
