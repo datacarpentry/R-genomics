@@ -13,8 +13,16 @@ metadata <- read.csv("data/Ecoli_metadata.csv")
 
 # Data manipulation using dplyr
 
-Bracket subsetting is handy, but it can be cumbersome and difficult to read,
-especially for complicated operations. Enter `dplyr`. 
+# Learning Objectives
+* Describe what the dplyr package in R is used for.
+* Apply common dplyr functions to manipulate data in R.
+* Employ the ‘pipe’ operator to link together a sequence of functions.
+* Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
+* Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+
+Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. 
+
+Enter `dplyr`. 
 
 `dplyr` is a package for
 making data manipulation easier.
