@@ -10,10 +10,11 @@ minutes: 20
 
 > ## Learning Objectives
 >
-> * load external data (CSV files) in memory using the survey table
->  (`Ecoli_metadata.csv`) as an example
-> * explore the structure and the content of the data in R
-> * understand what are factors and how to manipulate them
+> * Load external tabular data from a .csv file into R.
+> * Describe what an R data frame is.
+> * Summarize the contents of a data frame in R.
+> * Manipulate categorical data in R using factors.
+
 
 ------------
 
