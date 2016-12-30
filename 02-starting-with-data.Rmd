@@ -37,11 +37,13 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 
 
-The metadata file required for this lesson can be downlaoded by clicking on this [link](./data/Ecoli_metadata.csv)
 
-- First, make sure you are in the correct working directory by typing `getwd()`.
-- Second, create a new directory within this working directory called `data`
-- Third, move the downloaded file into this directory
+
+The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
+
+- First, make sure you are in the correct working directory by typing `getwd()`
+- Second, create a new subdirectory within this working directory called `data`
+- Third, move the just-downloaded `Ecoli_metadata.csv` file into this `data` directory
 
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
