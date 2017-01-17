@@ -165,20 +165,32 @@ The `!` symbol negates it, so we're asking for everything that is not an `NA`.
 Many data analysis tasks can be approached using the "split-apply-combine"
 paradigm: split the data into groups, apply some analysis to each group, and
 then combine the results. `dplyr` makes this very easy through the use of the
-`group_by()` function. `group_by()` splits the data into groups upon which some
-operations can be run. For example, if we wanted to group by citrate-using mutant status and find the
-number of rows of data for each status, we would do:
+`group_by()` function, which splits the data into groups. When the data is
+grouped in this way `summarize()` can be used to collapse each group into
+a single-row summary.  `summarize()` does this by applying an aggregating
+or summary function to each group. For example, if we wanted to group by 
+citrate-using mutant status and find the number of rows of data for each 
+status, we would do:
 
 ```{r, purl = FALSE}
 metadata %>%
   group_by(cit) %>%
-  tally()
+  summarize(n())
 ```
 
-There are several different summary statistics that can be generated from our data. The R base package provides many built-in functions such as `mean`, `median`, `min`, `max`, and `range`.  By default, all **R functions operating on vectors that contains missing data will return NA**. It's a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
+Here the summary function used was `n()` to find the count for each
+group. We can also apply many other functions  to individual columns
+to get other summary statistics.
+For example, in the R base package we can use built-in functions like
+`mean`, `median`, `min`, and `max`.  By default, all **R functions
+operating on vectors that contains missing data will return NA**.
+It's a way to make sure that users know they have missing
+data, and make a conscious decision on how to deal with it. When
+dealing with simple statistics like the mean, the easiest way to
+ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for
+remove).
 
-`group_by()` is often used together with `summarize()` which collapses each
-group into a single-row summary of that group. `summarize()` can then be used to apply a function such as those that compute simple stats to give an overview for the group. So to view mean `genome_size` by mutant status:
+So to view mean `genome_size` by mutant status:
 
 ```{r, purl = FALSE}
 metadata %>%
