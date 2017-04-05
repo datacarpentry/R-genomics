@@ -1,8 +1,5 @@
 ---
-layout: topic
 title: More on data frames
-author: Data Carpentry contributors
-minutes: 30
 ---
 
 ```{r, echo=FALSE, purl=FALSE, message = FALSE}

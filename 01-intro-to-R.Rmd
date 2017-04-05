@@ -1,8 +1,5 @@
 ---
-layout: topic
 title: Introduction to R
-author: Data Carpentry contributors
-minutes: 45
 ---
 
 ```{r, echo=FALSE, purl=FALSE}

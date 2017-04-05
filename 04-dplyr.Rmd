@@ -1,7 +1,5 @@
 ---
-layout: topic
 title: Aggregating and analyzing data with dplyr
-author: Data Carpentry contributors
 ---
 
 ```{r, echo=FALSE, purl=FALSE, message = FALSE}
