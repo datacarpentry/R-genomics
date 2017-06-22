@@ -77,7 +77,7 @@ boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
 
 More recently, R users have moved away from base graphic options and towards a plotting package called [`ggplot2`](http://docs.ggplot2.org/) that adds a lot of functionality to the basic plots seen above. The syntax takes some getting used to but it's extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
 
-`ggplot` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let's start by loading the `ggplot2` library.
+`ggplot2` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let's start by loading the `ggplot2` library.
 
 ```{r}
 library(ggplot2)
@@ -85,10 +85,10 @@ library(ggplot2)
 
 The `ggplot()` function is used to initialize the basic graph structure, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator.
 
-We will start with a blank plot and will find that you will get an error, because you need to add layers.
+We will start with a blank plot and will add layers as we go along.
 
 ```{r, eval=FALSE}
-ggplot(metadata) # note the error 
+ggplot(metadata)
 ```
 
 Geometric objects are the actual marks we put on a plot. Examples include:
