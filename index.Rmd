@@ -61,9 +61,9 @@ underlying statistical computing environment, but using R alone is no
 fun. RStudio is a graphical integrated development environment (IDE) that makes
 using R much easier and more interactive. You need to install R before you
 install RStudio. After installing both programs, you will need to install the
-**`tidyverse`** package from within RStudio. Follow the instructions below for
-your operating system, and then follow the instructions to install
-**`tidyverse`** and **`RSQLite`**.
+**`tidyverse`** package from within RStudio. In the sections below are the instructions
+for installing R and R Studio on your operating system, as well as instructions for 
+then installing **`tidyverse`** and **`RSQLite`**.
 
 #### Windows
 
