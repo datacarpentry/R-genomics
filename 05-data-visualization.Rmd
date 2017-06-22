@@ -11,7 +11,7 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 
 > ## Learning Objectives 
 >
-* Describe the features of R’s plotting packages (i.e. know the difference between base R and ggplot plotting approaches).
+* Describe the plotting features of base R and the ggplot package.
 * Create simple scatterplots, histograms, and boxplots in R.
 * Customize the aesthetics of an existing plot.
 * Build complex and customized plots from data in a data frame.
