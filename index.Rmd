@@ -29,7 +29,7 @@ how to work with databases directly from R.
 ## Chapters
 
 1. [Before we start](00-before-we-start.html)
-2. [Introduction to R](01-intro-to-r.html)
+2. [Introduction to R](01-intro-to-R.html)
 3. [Starting with data](02-starting-with-data.html)
 4. [Data frames](03-data-frames.html)
 5. [The dplyr package](04-dplyr.html)
@@ -61,9 +61,9 @@ underlying statistical computing environment, but using R alone is no
 fun. RStudio is a graphical integrated development environment (IDE) that makes
 using R much easier and more interactive. You need to install R before you
 install RStudio. After installing both programs, you will need to install the
-**`tidyverse`** package from within RStudio. Follow the instructions below for
-your operating system, and then follow the instructions to install
-**`tidyverse`** and **`RSQLite`**.
+**`tidyverse`** package from within RStudio. In the sections below are the instructions
+for installing R and R Studio on your operating system, as well as instructions for 
+then installing **`tidyverse`** and **`RSQLite`**.
 
 #### Windows
 
