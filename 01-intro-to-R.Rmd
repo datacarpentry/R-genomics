@@ -13,11 +13,11 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 > ## Learning Objectives
 >
-> * Assign names to objects in R.
+> * Assign names to objects in R with <- and =.
 > * Solve mathematical operations in R.
-> * Describe what a function is in R. Describe what vectors are and how they are manipulated in R.
-> * Inspect the content of vectors in R and manipulate their content.
-
+> * Describe what a function is in R. 
+> * Describe what vectors are and how they are manipulated in R.
+> * Inspect the content of vectors in R and manipulate their content with class and str.
 
 ------------
 
