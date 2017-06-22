@@ -17,7 +17,6 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 > * Solve mathematical operations in R.
 > * Describe what a function is in R. Describe what vectors are and how they are manipulated in R.
 > * Inspect the content of vectors in R and manipulate their content.
-> * Employ logical subsetting (i.e. TRUE, FALSE) to extract data from a vector.
 
 
 ------------
