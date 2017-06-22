@@ -8,7 +8,7 @@ minutes: 15
 ```{r, echo=FALSE, purl=FALSE}
 knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 ```
-
+Hi.
 ------------
 
 > ## Learning Objectives
