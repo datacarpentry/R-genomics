@@ -29,7 +29,7 @@ how to work with databases directly from R.
 ## Chapters
 
 1. [Before we start](00-before-we-start.html)
-2. [Introduction to R](01-intro-to-r.html)
+2. [Introduction to R](01-intro-to-R.html)
 3. [Starting with data](02-starting-with-data.html)
 4. [Data frames](03-data-frames.html)
 5. [The dplyr package](04-dplyr.html)
