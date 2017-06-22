@@ -47,7 +47,7 @@ The metadata file required for this lesson can be [downloaded directly here](htt
 Use R to download the file by giving the `download.file()` function the link address for the file, and where you want to put this file. If you see and error in response to `download.file()`, you may need to change the directory `"~/Downloads/portal_data_joined.csv"`
 
 ```{r, eval=TRUE,  purl=FALSE}
-download.file("https://ndownloader.figshare.com/files/2292169",
+download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv",
               "~/Downloads/portal_data_joined.csv")
 ```
 - First, make sure you are in the correct working directory by typing `getwd()`
