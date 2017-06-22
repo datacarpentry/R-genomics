@@ -184,7 +184,8 @@ dput(head(iris)) # iris is an example data.frame that comes with R
 If the object is larger, provide either the raw file (i.e., your CSV file) with
 your script up to the point of the error (and after removing everything that is
 not relevant to your issue). Alternatively, in particular if your questions is
-not related to a `data.frame`, you can save any R object to a file:
+not related to a `data.frame`, you can save any R object to a file. Note: for this
+example, the folder "/tmp" needs to already exist.
 
 ```{r, eval=FALSE}
 saveRDS(iris, file="/tmp/iris.rds")
