@@ -13,10 +13,12 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 
 > ## Learning Objectives
 >
-> * Familiarize participants with R syntax
-> * Understand the concepts of objects and assignment
-> * Understand the concepts of vector and data types
-> * Get exposed to a few functions
+> * Assign names to objects in R.
+> * Solve mathematical operations in R.
+> * Describe what a function is in R. Describe what vectors are and how they are manipulated in R.
+> * Inspect the content of vectors in R and manipulate their content.
+> * Employ logical subsetting (i.e. TRUE, FALSE) to extract data from a vector.
+
 
 ------------
 
@@ -114,7 +116,7 @@ same time as the `-` key) will write ` <- ` in a single keystroke.
 Objects can be given any name such as `x`, `current_temperature`, or
 `subject_id`. You want your object names to be explicit and not too long. They
 cannot start with a number (`2x` is not valid but `x2` is). R is case sensitive
-(e.g., `genome_length_mb` is different from `genome_length_MB`). There are some names that
+(e.g., `Genome_length_mb` is different from `genome_length_mb`). There are some names that
 cannot be used because they represent the names of fundamental functions in R
 (e.g., `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
@@ -130,24 +132,8 @@ for function names. It's important to be consistent in the styling of your code
 guides are [Hadley Wickham's](http://adv-r.had.co.nz/Style.html) and
 [Google's](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml).
 
-When assigning a value to an object, R does not print anything. You can force it to
-print the value by using parentheses or by typing the name. 
-
-```
-x <- 3
-```
-nothing prints out 
-
-```
-(x <- 3)
-```
-prints out value
-
-```
-x <- 3
-x
-```
-prints out value
+When assigning a value to an object, R does not print anything. You can force to
+print the value by using parentheses or by typing the name:
 
 
 ## Functions

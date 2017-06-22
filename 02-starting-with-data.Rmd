@@ -10,10 +10,11 @@ minutes: 20
 
 > ## Learning Objectives
 >
-> * load external data (CSV files) in memory using the survey table
->  (`Ecoli_metadata.csv`) as an example
-> * explore the structure and the content of the data in R
-> * understand what are factors and how to manipulate them
+> * Load external tabular data from a .csv file into R.
+> * Describe what an R data frame is.
+> * Summarize the contents of a data frame in R.
+> * Manipulate categorical data in R using factors.
+
 
 ------------
 
@@ -36,17 +37,19 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 | genome_size      | size in Mbp (made up data for this lesson) |
 
 
-We're going to download the data through R. 
 
-```{r, eval=TRUE,  purl=FALSE}
-download.file("http://datacarpentry.github.io/R-genomics/data/Ecoli_metadata.csv", "Ecoli_metadata.csv")
-```
 
+
+The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
+
+- First, make sure you are in the correct working directory by typing `getwd()`
+- Second, create a new subdirectory within this working directory called `data`
+- Third, move the just-downloaded `Ecoli_metadata.csv` file into this `data` directory
 
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
 ```{r, eval=TRUE,  purl=FALSE}
-metadata <- read.csv('Ecoli_metadata.csv')
+metadata <- read.csv('data/Ecoli_metadata.csv')
 ```
 
 This statement doesn't produce any output because assignment doesn't display
@@ -57,7 +60,7 @@ Alternatively, wrapping an assignment in parentheses will perform the assignment
 and display it at the same time.
 
 ```{r, eval = TRUE, purl = FALSE}
-(metadata <- read.csv('Ecoli_metadata.csv'))
+(metadata <- read.csv('data/Ecoli_metadata.csv'))
 ```
 
 Wow... that was a lot of output. At least it means the data loaded properly. Let's check the top (the first 6 lines) of this `data.frame` using the function `head()`:
@@ -126,7 +129,7 @@ objects besides `data.frame`.
 
 ### Challenge
 
-Based on the list of functions above to assess data structure, can you answer the following questions?
+Based on the give table of functions to asses data structure, can you answer the following questions?
 
 * What is the class of the object `metadata`?
 * How many rows and how many columns are in this object?
