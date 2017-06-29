@@ -389,6 +389,11 @@ div.tocify {
 </tbody>
 </table>
 <p>The metadata file required for this lesson can be <a href="https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv">downloaded directly here</a> or <a href="./data/Ecoli_metadata.csv">viewed in Github</a>.</p>
+<div id="or" class="section level3">
+<h3>OR</h3>
+<p>Use R to download the file by giving the <code>download.file()</code> function the link address for the file, and where you want to put this file. If you see and error in response to <code>download.file()</code>, you may need to change the directory <code>&quot;~/Downloads/portal_data_joined.csv&quot;</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv&quot;</span>,
+              <span class="st">&quot;~/Downloads/portal_data_joined.csv&quot;</span>)</code></pre>
 <ul>
 <li>First, make sure you are in the correct working directory by typing <code>getwd()</code></li>
 <li>Second, create a new subdirectory within this working directory called <code>data</code></li>
@@ -441,6 +446,7 @@ div.tocify {
 ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63</code></pre>
 <p>We’ve just done two very useful things. 1. We’ve read our data in to R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.</p>
 </div>
+</div>
 <div id="what-are-data-frames" class="section level1">
 <h1>What are data frames?</h1>
 <p><code>data.frame</code> is the <em>de facto</em> data structure for most tabular data and what we use for statistics and plotting.</p>
@@ -476,16 +482,18 @@ div.tocify {
 <li>Names:
 <ul>
 <li><code>names()</code> - returns the column names (synonym of <code>colnames()</code> for <code>data.frame</code> objects)</li>
-</ul></li>
 <li><code>rownames()</code> - returns the row names</li>
-<li>Summary:</li>
+</ul></li>
+<li>Summary:
+<ul>
 <li><code>str()</code> - structure of the object and information about the class, length and content of each column</li>
 <li><code>summary()</code> - summary statistics for each column</li>
+</ul></li>
 </ul>
 <p>Note: most of these functions are “generic”, they can be used on other types of objects besides <code>data.frame</code>.</p>
 <div id="challenge" class="section level3">
 <h3>Challenge</h3>
-<p>Based on the give table of functions to asses data structure, can you answer the following questions?</p>
+<p>Based on the given table of functions to asses data structure, can you answer the following questions?</p>
 <ul>
 <li>What is the class of the object <code>metadata</code>?</li>
 <li>How many rows and how many columns are in this object?</li>
