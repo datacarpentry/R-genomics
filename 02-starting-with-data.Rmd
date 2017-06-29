@@ -48,7 +48,7 @@ Use R to download the file by giving the `download.file()` function the link add
 
 ```{r, eval=TRUE,  purl=FALSE}
 download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv",
-              "~/Downloads/portal_data_joined.csv")
+              "data/Ecoli_metadata.csv")
 ```
 - First, make sure you are in the correct working directory by typing `getwd()`
 - Second, create a new subdirectory within this working directory called `data`
