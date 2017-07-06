@@ -21,7 +21,7 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers", and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of R's plotting packages.
 
-When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as hisotgrams, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We'll test a few of these out here on the `genome_size` vector from our metadata.
+When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as histograms, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We'll test a few of these out here on the `genome_size` vector from our metadata.
 
 
 ```{r simplestats}
@@ -29,8 +29,8 @@ genome_size <- metadata$genome_size
 
 ```
 
-## Scatterplot
-Let's start with a **scatterplot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don't have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.
+## Scatter plot
+Let's start with a **scatter plot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don't have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.
 
 ```{r scatter-plot1, fig.align='center'}
 plot(genome_size)
@@ -69,7 +69,7 @@ Similar to the scatterplots above, we can pass in arguments to add in extras lik
 
 ```{r, fig.align='center'}
 boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
-        main="Average expression differences between celltypes", ylab="Expression")
+        main="Average expression differences between cell types", ylab="Expression")
 ```
 
 
@@ -136,7 +136,7 @@ ggplot(metadata) +
 
 ## Histogram
 
-To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument. 
+To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually have a default statistic that can be changed via the `stat` argument. 
 
 ```{r, eval=FALSE}
 ggplot(metadata) +
@@ -154,7 +154,7 @@ ggplot(metadata) +
 
 ## Boxplot
 
-Now that we have all the required information on let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
+Now that we have all the required information on, let's try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
 
 ```{r, fig.align='center'}
 ggplot(metadata) +
@@ -171,9 +171,9 @@ ggplot(metadata) +
 
 ## Writing figures to file
 
-There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png`.
+There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular functions include `pdf()`, `png()`.
 
-Initialize a plot that will be written directly to a file using `pdf`, `png` etc. Within the function you will need to specify a name for your image, and the with and height (optional). Then create a plot using the usual functions in R. Finally, close the file using the `dev.off()` function. There are also `bmp`, `tiff`, and `jpeg` functions, though the jpeg function has proven less stable than the others.
+Initialize a plot that will be written directly to a file using `pdf()`, `png()` etc. Within the function you will need to specify a name for your image, and the width and height arguments (optional). Then create a plot using the usual functions in R. Finally, close the file using the `dev.off()` function. There are also `bmp()`, `tiff()`, and `jpeg()` functions, though the `jpeg()` function has proven less stable than the others.
 
 
 ```{r, eval=FALSE}
@@ -197,4 +197,4 @@ dev.off()
 
 Resources:
 ---------
-We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definitive book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
