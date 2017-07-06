@@ -51,14 +51,14 @@ You can get output from R simply by typing in math in the console
 We can also comment what it is we're doing
 
 ```{r, purl=FALSE}
-# I am adding 3 and 5. R is fun!
+# I'm adding 3 and 5. R is fun!
 3+5
 ```
 
-What happens if we do that same command with the # sign in the front?
+What happens if we do that same command without the # sign in the front?
 
 ```{r, purl=FALSE, eval=FALSE}
-I am adding 3 and 5. R is fun!
+I'm adding 3 and 5. R is fun!
 3+5
 ```
 
