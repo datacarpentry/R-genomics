@@ -10,11 +10,10 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 ```
 
 > ## Learning Objectives 
->
-* Describe the features of R’s plotting packages (i.e. know the difference between base R and ggplot plotting approaches).
 * Create simple scatterplots, histograms, and boxplots in R.
+* Compare the plotting features of base R and the ggplot2 package.
 * Customize the aesthetics of an existing plot.
-* Build complex and customized plots from data in a data frame.
+* Create plots from data in a data frame.
 * Export plots from RStudio to standard graphical file formats.
 
 # Basic plots in R
@@ -56,7 +55,7 @@ Another way to visualize the distribution of genome sizes is to use a histogram,
 hist(genome_size)
 ```
 
-##Boxplot
+## Boxplot
 
 Using additional information from our metadata, we can use plots to compare values between the different citrate mutant status using a **boxplot**. A boxplot provides a graphical view of the median, quartiles, maximum, and minimum of a data set. 
 
@@ -77,7 +76,7 @@ boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
 
 More recently, R users have moved away from base graphic options and towards a plotting package called [`ggplot2`](http://docs.ggplot2.org/) that adds a lot of functionality to the basic plots seen above. The syntax takes some getting used to but it's extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
 
-`ggplot` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let's start by loading the `ggplot2` library.
+`ggplot2` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let's start by loading the `ggplot2` library.
 
 ```{r}
 library(ggplot2)
@@ -85,10 +84,10 @@ library(ggplot2)
 
 The `ggplot()` function is used to initialize the basic graph structure, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator.
 
-We will start with a blank plot and will find that you will get an error, because you need to add layers.
+We will start with a blank plot and will add layers as we go along.
 
 ```{r, eval=FALSE}
-ggplot(metadata) # note the error 
+ggplot(metadata)
 ```
 
 Geometric objects are the actual marks we put on a plot. Examples include:
@@ -169,12 +168,15 @@ ggplot(metadata) +
 
 ```
 
-## Writing figures to file
+# Writing figures to file
 
-There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png`.
+There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. 
 
-Initialize a plot that will be written directly to a file using `pdf`, `png` etc. Within the function you will need to specify a name for your image, and the with and height (optional). Then create a plot using the usual functions in R. Finally, close the file using the `dev.off()` function. There are also `bmp`, `tiff`, and `jpeg` functions, though the jpeg function has proven less stable than the others.
+The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png()`, which are functions that initialize a plot that will be written directly to a file in the `pdf` or `png` format, respectively. Within the function you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file you need to:
 
+1. Initialize the plot using the function that corresponds to the type of file you want to make: `pdf("filename")`
+2. Write the code that makes the plot.
+3. Close the connection to the new file (with your plot) using `dev.off()`.
 
 ```{r, eval=FALSE}
 pdf("figure/boxplot.pdf")
@@ -197,4 +199,4 @@ dev.off()
 
 Resources:
 ---------
-We have only scratched the surface here. To learn more, see the [ggplot reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).

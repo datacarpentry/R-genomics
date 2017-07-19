@@ -1,14 +1,9 @@
 ---
 layout: topic
-title: More on data frames
+title: Using data in data frames
 author: Data Carpentry contributors
 minutes: 30
 ---
-
-```{r, echo=FALSE, purl=FALSE, message = FALSE}
-# source("setup.R")
-metadata <- read.csv("data/Ecoli_metadata.csv")
-```
 
 ```{r, echo=FALSE, purl=TRUE}
 ## The data.frame class
@@ -18,132 +13,120 @@ metadata <- read.csv("data/Ecoli_metadata.csv")
 
 > ## Learning Objectives
 >
-> * Extract values from a vector in R.
+> * Extract values from vectors and data frames.
 > * Perform operations on columns in a data frame.
-> * Subset data in a data frame.
+> * Append columns to a data frame.
+> * Create subsets of a data frame.
 
 
 ------------
-<!--
-# What are data frames?
 
-`data.frame` is the _de facto_ data structure for most tabular data and what we
-use for statistics and plotting.
+In this lesson you will learn how to extract and manipulate data stored in data frames in R. We will work with the *E. coli* metadata file that we used previously. Be sure to read this file into a dataframe named `metadata`, if you haven't already done so.
 
-A `data.frame` is a collection of vectors of identical lengths. Each vector
-represents a column, and each vector can be of a different data type (e.g.,
-characters, integers, factors). The `str()` function is useful to inspect the
-data types of the columns.
-
-A `data.frame` can be created by the functions `read.csv()` or `read.table()`, in
-other words, when importing spreadsheets from your hard drive (or the web).
-
-By default, `data.frame` converts (= coerces) columns that contain characters
-(i.e., text) into the `factor` data type. Depending on what you want to do with
-the data, you may want to keep these columns as `character`. To do so,
-`read.csv()` and `read.table()` have an argument called `stringsAsFactors` which
-can be set to `FALSE`:
-
-```{r, eval=FALSE, purl=FALSE}
-some_data <- read.csv("data/some_file.csv", stringsAsFactors=FALSE)
+```{r, eval=TRUE,  purl=FALSE}
+metadata <- read.csv('data/Ecoli_metadata.csv')
 ```
 
-<!--- talk about colClasses argument?, row names?  --->
+Because the columns of a data frame are vectors, we will first learn how to extract elements from vectors and then learn how to apply this concept to select rows and columns from a data frame.  
 
-<!--
-
-You can also create `data.frame` manually with the function `data.frame()`. This
-function can also take the argument `stringsAsFactors`. Compare the output of
-these examples, and compare the difference between when the data are being read
-as `character` and when they are being as `factor`.
-
-```{r, results='show', purl=TRUE}
-example_data <- data.frame(animal=c("dog", "cat", "sea cucumber", "sea urchin"),
-                           feel=c("furry", "furry", "squishy", "spiny"),
-                           weight=c(45, 8, 1.1, 0.8))
-str(example_data)
-example_data <- data.frame(animal=c("dog", "cat", "sea cucumber", "sea urchin"),
-                           feel=c("furry", "furry", "squishy", "spiny"),
-                           weight=c(45, 8, 1.1, 0.8), stringsAsFactors=FALSE)
-str(example_data)
-```
-
--->
-
-# Indexing and sequences (within a vector)
+# Extracting values with indexing and sequences
 
 ```{r, echo=FALSE, purl=TRUE}
 ## Indexing and sequences
 ```
 
-If we want to extract one or several values from a vector, we must provide one
-or several indices in square brackets, just as we do in math. 
+## Vectors
+
+Let's create a vector containing the first ten letters of the alphabet.
+
+```{r, purl=FALSE, eval=FALSE}
+ten_letters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
+```
+
+In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math. R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that's what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that's simpler for computers to do.
+
+So, to extract the 2nd element of `ten_letters` we type:
+ 
+```{r, purl=FALSE, eval=FALSE}
+ten_letters[2]
+```
+
+We can extract multiple elements at a time by specifying mulitple indices inside the square brackets as a vector. Notice how you can use `:` to make a vector of all integers two numbers. 
+
+```{r, purl=FALSE, eval=FALSE}
+ten_letters[c(1,7)]
+
+ten_letters[3:6]
+
+ten_letters[10:1]
+
+ten_letters[c(2, 8:10)]
+
+```
+
+Quick exercise / formative assessment: Select every other element in `ten_letters`.
+
+What if we were dealing with a much longer vector? We can use the `seq()` function to quickly create sequences of numbers.
+
+```{r, purl=FALSE, eval=FALSE}
+seq(1, 10, by = 2)
+seq(20, 4, by = -3)
+```
 
 <!--
-For instance:
-
-```{r, results='show', purl=FALSE, eval=FALSE}
-expression[2] # what level of expression is in the second element of the vector?
-expression[c(3, 2)]
-expression[2:4]
-expression[c(3,2, 2:4)] # combining both what do you get?
-```
+  Consider including:
+  # Create sequences between two numbers, given the number of values (length.out = number of values)
+  seq(1, 10, length.out = 2)
+  seq(20, 4, length.out = 3)
+  
+  and discuss why they differ.
 -->
 
-R indexes start at 1. Programming languages like Fortran, MATLAB, and R start
-counting at 1, because that's what human beings typically do. Languages in the C
-family (including C++, Java, Perl, and Python) count from 0 because that's
-simpler for computers to do.
-
-<!--
-`:` is a special function that creates numeric vectors of integer in increasing
-or decreasing order, test `1:10` and `10:1` for instance. The function `seq()`
-(for __seq__uence) can be used to create more complex patterns:
-
-```{r, results='show', purl=FALSE, eval=FALSE}
-seq(1, 10, by=2)
-seq(5, 10, length.out=3)       # equal breaks of sequence into vector length = length.out
-seq(50, by=5, length.out=10)   # sequence 50 by 5 until you hit vector length = length.out
-seq(1, 8, by=3)                # sequence by 3 until you hit 8
-```
--->
+> ## Exercise
+> 
+> Fill in the blank to select the even elements of ten_letters using the seq() function.
+>
+> ten_letters[____________]
+> 
+> > ## Solution
+> > ten_letters[seq(2, 10, by = 2)]
+> {: .solution}
+{: .challenge}
 
 
-Our metadata data frame has rows and columns (it has 2 dimensions), if we want to
+## Data frames
+
+The metadata data frame has rows and columns (it has 2 dimensions), if we want to
 extract some specific data from it, we need to specify the "coordinates" we want
 from it. Row numbers come first, followed by column numbers (i.e. [row, column]).
 
 ```{r, purl=FALSE, eval=FALSE}
-metadata[1, 2]   # first element in the 2nd column of the data frame
-metadata[1, 6]   # first element in the 6th column
-metadata[1:3, 7] # first three elements in the 7th column
-metadata[3, ]    # the 3rd element for all columns
-metadata[, 7]    # the entire 7th column
-head_meta <- metadata[1:6, ] # metadata[1:6, ] is equivalent to head(metadata)
+metadata[1, 2]   # 1st element in the 2nd column 
+metadata[1, 6]   # 1st element in the 6th column
+metadata[1:3, 7] # First three elements in the 7th column
+metadata[3, ]    # 3rd element for all columns
+metadata[, 7]    # Entire 7th column
 ```
 
-<!--
-### Challenge
 
-1. The function `nrow()` on a `data.frame` returns the number of rows. Use it,
-   in conjuction with `seq()` to create a new `data.frame` called
-   `meta_by_2` that includes every other row of the survey data frame
-   starting at row 2 (2, 4, 6, ...)
+> ## Challenge
+> 
+> The function `nrow()` on a `data.frame` returns the number of rows. For example, try typing nrow(metadata)`.
+> Use `nrow()` and `seq()` to create a new data frame called `meta_by_2` that includes all even numbered rows of `metadata`.
+> 
+> ## Solution
+> > meta_data[seq(2, nrow(metadata), by = 2, ]
+> > 
+> >
+> {: .solution}
+{: .challenge}
 
+For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. Sometimes the column number for a particular variable can change if your analysis adds or removes columns. The best practice when working with columns in a data frame is to refer to them by name. This also makes your code easier to read and your intentions clearer.
 
-```{r, purl=FALSE}
-meta_by_2 <- metadata[seq(2, nrow(metadata), by=2), ]
-```
---->
+There are two ways to select a column by name from a data frame:
 
-# Indexing and sequences (within a `data.frame`)
-
-For larger datasets, it can be tricky to remember the column number that
-corresponds to a particular variable. (Are species names in column 5 or 7? oh,
-right... they are in column 6). In some cases, in which column the variable will
-be can change if the script you are using adds or removes columns. It's
-therefore often better to use column names to refer to a particular variable,
-and it makes your code easier to read and your intentions clearer.
+* Using `dataframe[ , "column_name"]`
+* Using `dataframe$column_name`
 
 You can do operations on a particular column, by selecting it using the `$`
 sign. In this case, the entire column is a vector. You can use
@@ -151,21 +134,43 @@ sign. In this case, the entire column is a vector. You can use
 For instance, to extract all the strain information from our datasets:
 
 ```{r, eval=FALSE}
+# Select the strain column from metadata
+metadata[ , "strain"]
+
+# Alternatively...
 metadata$strain
 ```
 
-In some cases, you may way to select more than one column. You can do this using
-the square brackets. Suppose we wanted strain and clade information:
+The first method allows you to select multiple columns at once. Suppose we wanted strain and clade information:
 
 ```{r, eval=FALSE}
 metadata[, c("strain", "clade")]
 ```
 
-You can even access columns by column name _and_ select specific rows of interest. For example, if we wanted the strain and clade of just rows
-4 through 7, we could do:
+You can even access columns by column name _and_ select specific rows of interest. For example, if we wanted the strain and clade of just rows 4 through 7, we could do:
 
 ```{r, eval=FALSE}
 metadata[4:7, c("strain", "clade")]
 ```
+
+
+<!--
+Still need to address the following learning objectives:
+ * Append columns to a data frame.
+ * Create subsets of a data frame.
+
+The following headings are just suggestions.
+
+>
+
+# Manipulating columns
+
+
+## Mathematical operations
+
+## Appending new columns
+
+
+# Creating subsets
 
 

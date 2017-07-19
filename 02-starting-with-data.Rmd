@@ -2,7 +2,7 @@
 layout: topic
 title: Starting with data
 author: Data Carpentry contributors
-minutes: 20
+minutes: 25
 ---
 
 
@@ -42,6 +42,14 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
 
+### OR
+
+Use R to download the file by giving the `download.file()` function the link address for the file, and where you want to put this file. If you see and error in response to `download.file()`, you may need to change the directory `"~/Downloads/portal_data_joined.csv"`
+
+```{r, eval=TRUE,  purl=FALSE}
+download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv",
+              "data/Ecoli_metadata.csv")
+```
 - First, make sure you are in the correct working directory by typing `getwd()`
 - Second, create a new subdirectory within this working directory called `data`
 - Third, move the just-downloaded `Ecoli_metadata.csv` file into this `data` directory
@@ -107,21 +115,21 @@ content and the structure of a `data.frame`. Here is a non-exhaustive list of
 functions to get a sense of the content/structure of the data.
 
 * Size:
-    * `dim()` - returns a vector with the number of rows in the first element, and
+    + `dim()` - returns a vector with the number of rows in the first element, and
     the number of columns as the second element (the __dim__ensions of the object)
-    * `nrow()` - returns the number of rows
-    * `ncol()` - returns the number of columns
+    + `nrow()` - returns the number of rows
+    + `ncol()` - returns the number of columns
 * Content:
-    * `head()` - shows the first 6 rows
-    * `tail()` - shows the last 6 rows
+    + `head()` - shows the first 6 rows
+    + `tail()` - shows the last 6 rows
 * Names:
-    * `names()` - returns the column names (synonym of `colnames()` for `data.frame`
+    + `names()` - returns the column names (synonym of `colnames()` for `data.frame`
 	objects)
-   * `rownames()` - returns the row names
+    + `rownames()` - returns the row names
 * Summary:
-   * `str()` - structure of the object and information about the class, length and
+    + `str()` - structure of the object and information about the class, length and
 	content of  each column
-   * `summary()` - summary statistics for each column
+    + `summary()` - summary statistics for each column
 
 Note: most of these functions are "generic", they can be used on other types of
 objects besides `data.frame`.
@@ -129,7 +137,7 @@ objects besides `data.frame`.
 
 ### Challenge
 
-Based on the give table of functions to asses data structure, can you answer the following questions?
+Based on the given table of functions to asses data structure, can you answer the following questions?
 
 * What is the class of the object `metadata`?
 * How many rows and how many columns are in this object?

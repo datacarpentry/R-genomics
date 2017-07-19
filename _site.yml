@@ -1,0 +1,31 @@
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Before we start"
+      href: 00-before-we-start.html
+    - text: "Intro to R"
+      href: 01-intro-to-R.html
+    - text: "Starting with data"
+      href: 02-starting-with-data.html
+    - text: "Data frames"
+      href: 03-data-frames.html
+    - text: "The dplyr package"
+      href: 04-dplyr.html
+    - text: "Data visualization"
+      href: 05-data-visualization.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/data-lessons/R-genomics
+output_dir: "."
+exclude: ["CONTRIBUT*.md","index.md","README.md","*.db"]
+include: ["*.Rmd","LICENSE.md"]
+output:
+  html_document:
+    highlight: pygments
+    toc: true
+    toc_float:
+      collapsed: false
+    include:
+      after_body: footer.html
+    css: style.css

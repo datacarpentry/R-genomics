@@ -8,7 +8,6 @@ minutes: 15
 ```{r, echo=FALSE, purl=FALSE}
 knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 ```
-
 ------------
 
 > ## Learning Objectives
@@ -38,6 +37,7 @@ Start RStudio -- Let's start by learning about our tool.
 * Enter a name for this new folder, and choose a convenient location for
   it. This will be your **working directory** for the rest of the day
   (e.g., `~/data-carpentry`)
+* Confirm that the folder named in the `Create project as a sub-directory of` box is where you want the working directory created. Use the `Browse` button to navigate folders if changes are needed.
 * Click on "Create project"
 * Under the `Files` tab on the right of the screen, click on `New Folder` and
   create a folder named `data` within your newly created working directory.
@@ -184,7 +184,8 @@ dput(head(iris)) # iris is an example data.frame that comes with R
 If the object is larger, provide either the raw file (i.e., your CSV file) with
 your script up to the point of the error (and after removing everything that is
 not relevant to your issue). Alternatively, in particular if your questions is
-not related to a `data.frame`, you can save any R object to a file:
+not related to a `data.frame`, you can save any R object to a file. Note: for this
+example, the folder "/tmp" needs to already exist.
 
 ```{r, eval=FALSE}
 saveRDS(iris, file="/tmp/iris.rds")
@@ -211,7 +212,7 @@ sessionInfo()
 
 * Your friendly colleagues: if you know someone with more experience than you,
   they might be able and willing to help you.
-* Stackoverlow: if your question hasn't been answered before and is well
+* Stackoverflow: if your question hasn't been answered before and is well
   crafted, chances are you will get an answer in less than 5 min.
 * The [R-help](https://stat.ethz.ch/mailman/listinfo/r-help): it is read by a
   lot of people (including most of the R core team), a lot of people post to it,
