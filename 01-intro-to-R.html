@@ -29,23 +29,41 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -338,13 +356,13 @@ div.tocify {
 
 <hr />
 <blockquote>
-<h2>Learning Objectives</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
 <ul>
-<li>Assign names to objects in R.</li>
+<li>Assign names to objects in R with &lt;- and =.</li>
 <li>Solve mathematical operations in R.</li>
-<li>Describe what a function is in R. Describe what vectors are and how they are manipulated in R.</li>
-<li>Inspect the content of vectors in R and manipulate their content.</li>
-<li>Employ logical subsetting (i.e. TRUE, FALSE) to extract data from a vector.</li>
+<li>Describe what a function is in R.</li>
+<li>Describe what vectors are and how they are manipulated in R.</li>
+<li>Inspect the content of vectors in R and manipulate their content with class and str.</li>
 </ul>
 </blockquote>
 <hr />
@@ -364,22 +382,19 @@ div.tocify {
 <div id="creating-objects" class="section level2">
 <h2>Creating objects</h2>
 <p>You can get output from R simply by typing in math in the console</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+<span class="dv">12</span><span class="op">/</span><span class="dv">7</span></code></pre></div>
 <p>We can also comment what it is we’re doing</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3+5</span></code></pre>
-<p>What happens if we do that same command with the # sign in the front?</p>
-<pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3+5</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I&#39;m adding 3 and 5. R is fun!</span>
+<span class="dv">3</span><span class="op">+</span><span class="dv">5</span></code></pre></div>
+<p>What happens if we do that same command without the # sign in the front?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I<span class="st">&#39;m adding 3 and 5. R is fun!</span>
+<span class="st">3+5</span></code></pre></div>
 <p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
 <p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
 <p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
-</div>
-<div id="assignment-operator" class="section level2">
-<h2>Assignment operator</h2>
 <p>For instance, instead of adding 3 + 5, we can assign those values to objects and then add them.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># assign 3 to a</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># assign 3 to a</span>
 a &lt;-<span class="st"> </span><span class="dv">3</span>
 <span class="co"># assign 5 to b</span>
 b &lt;-<span class="st"> </span><span class="dv">5</span>
@@ -390,7 +405,7 @@ a
 b
 
 <span class="co">#Add a and b</span>
-a +<span class="st"> </span>b</code></pre>
+a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
 <p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
 <p>In RStudio, typing <code>Alt + -</code> (push <code>Alt</code>, the key next to your space bar at the same time as the <code>-</code> key) will write <code>&lt;-</code> in a single keystroke.</p>
 <div id="exercise" class="section level3">
@@ -404,7 +419,7 @@ a +<span class="st"> </span>b</code></pre>
 </div>
 <div id="notes-on-objects" class="section level2">
 <h2>Notes on objects</h2>
-<p>Objects can be given any name such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. You want your object names to be explicit and not too long. They cannot start with a number (<code>2x</code> is not valid but <code>x2</code> is). R is case sensitive (e.g., <code>Genome_length_mb</code> is different from <code>genome_length_mb</code>). There are some names that cannot be used because they represent the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). In doubt check the help to see if the name is already in use. It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml">Google’s</a>.</p>
+<p>Objects can be given any name such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. You want your object names to be explicit and not too long. They cannot start with a number (<code>2x</code> is not valid but <code>x2</code> is). R is case sensitive (e.g., <code>Genome_length_mb</code> is different from <code>genome_length_mb</code>). There are some names that cannot be used because they represent the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). When in doubt, check the help to see if the name is already in use. It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google.github.io/styleguide/Rguide.xml">Google’s</a>.</p>
 <p>When assigning a value to an object, R does not print anything. You can force to print the value by using parentheses or by typing the name:</p>
 </div>
 <div id="functions" class="section level2">
@@ -420,18 +435,18 @@ a +<span class="st"> </span>b</code></pre>
 <p>Arguments can be anything, not only numbers or filenames, but also other objects. Exactly what each argument means differs per function, and must be looked up in the documentation (see below). If an argument alters the way the function operates, such as whether to ignore ‘bad values’, such an argument is sometimes called an <em>option</em>.</p>
 <p>Most functions can take several arguments, but many have so-called <em>defaults</em>. If you don’t specify such an argument when calling the function, the function itself will fall back on using the <em>default</em>. This is a standard value that the author of the function specified as being “good enough in standard cases”. An example would be what symbol to use in a plot. However, if you want something specific, simply change the argument yourself with a value of your choice.</p>
 <p>Let’s try a function that can take multiple arguments <code>round</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>)</code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>We can see that we get <code>3</code>. That’s because the default is to round to the nearest whole number. If we want more digits we can see how to do that by getting information about the <code>round</code> function. We can use <code>args(round)</code> or look at the help for this function using <code>?round</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(round)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(round)</code></pre></div>
 <pre><code>## function (x, digits = 0) 
 ## NULL</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">?round</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?round</code></pre></div>
 <p>We see that if we want a different number of digits, we can type <code>digits=2</code> or however many we want.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dt">digits=</span><span class="dv">2</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dt">digits=</span><span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 3.14</code></pre>
 <p>If you provide the arguments in the exact same order as they are defined you don’t have to name them:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 3.14</code></pre>
 <p>However, it’s usually not recommended practice because it’s a lot of remembering to do, and if you share your code with others that includes less known functions it makes your code difficult to read. (It’s however OK to not include the names of the arguments for basic functions like <code>mean</code>, <code>min</code>, etc…)</p>
 <p>Another advantage of naming arguments, is that the order doesn’t matter. This is useful when there start to be more arguments.</p>
@@ -442,15 +457,15 @@ a +<span class="st"> </span>b</code></pre>
 </div>
 <div id="solution" class="section level2">
 <h2>Solution</h2>
-<pre class="sourceCode r"><code class="sourceCode r">(genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span>)
-genome_length_mb</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span>)
+genome_length_mb</code></pre></div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise</h3>
 <p>Now that R has <code>genome_length_mb</code> in memory, we can do arithmetic with it. For instance, we may want to convert this to the weight of the genome in picograms (for some reason). 978Mb = 1picogram. Divide the genome length in Mb by 978.</p>
 </div>
 <div id="solution-1" class="section level3">
 <h3>Solution</h3>
-<pre class="sourceCode r"><code class="sourceCode r">genome_length_mb /<span class="st"> </span><span class="fl">978.0</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>It turns out an E. coli genome doesn’t weigh very much.</p>
 </div>
 <div id="exercise-3" class="section level3">
@@ -459,12 +474,12 @@ genome_length_mb</code></pre>
 </div>
 <div id="solution-2" class="section level3">
 <h3>Solution</h3>
-<pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">3000.0</span>
-genome_length_mb /<span class="st"> </span><span class="fl">978.0</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">3000.0</span>
+genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the genome’s weight in a variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r">genome_weight_pg &lt;-<span class="st"> </span>genome_length_mb /<span class="st"> </span><span class="fl">978.0</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_weight_pg &lt;-<span class="st"> </span>genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>and then change <code>genome_length_mb</code> to 100.</p>
-<pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise</h3>
@@ -474,31 +489,31 @@ genome_length_mb /<span class="st"> </span><span class="fl">978.0</span></code><
 <div id="vectors-and-data-types" class="section level2">
 <h2>Vectors and data types</h2>
 <p>A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically just a list of values, mainly either numbers or characters. They’re special lists that you can do math with. You can assign this list of values to a variable, just like you would for one item. For example we can create a vector of genome lengths:</p>
-<pre class="sourceCode r"><code class="sourceCode r">glengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.6</span>, <span class="dv">3000</span>, <span class="dv">50000</span>)
-glengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.6</span>, <span class="dv">3000</span>, <span class="dv">50000</span>)
+glengths</code></pre></div>
 <p>A vector can also contain characters:</p>
-<pre class="sourceCode r"><code class="sourceCode r">species &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ecoli&quot;</span>, <span class="st">&quot;human&quot;</span>, <span class="st">&quot;corn&quot;</span>)
-species</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">species &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ecoli&quot;</span>, <span class="st">&quot;human&quot;</span>, <span class="st">&quot;corn&quot;</span>)
+species</code></pre></div>
 <p>There are many functions that allow you to inspect the content of a vector. <code>length()</code> tells you how many elements are in a particular vector:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(glengths)
-<span class="kw">length</span>(species)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(glengths)
+<span class="kw">length</span>(species)</code></pre></div>
 <p>You can also do math with whole vectors. For instance if we wanted to multiply the genome lengths of all the genomes in the list, we can do</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> *<span class="st"> </span>glengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>glengths</code></pre></div>
 <p>or we can add the data in the two vectors together</p>
-<pre class="sourceCode r"><code class="sourceCode r">new_lengths &lt;-<span class="st"> </span>glengths +<span class="st"> </span>glengths
-new_lengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_lengths &lt;-<span class="st"> </span>glengths <span class="op">+</span><span class="st"> </span>glengths
+new_lengths</code></pre></div>
 <p>This is very useful if we have data in different vectors that we want to combine or work with.</p>
 <p>There are few ways to figure out what’s going on in a vector.</p>
 <p><code>class()</code> indicates the class (the type of element) of an object:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(glengths)
-<span class="kw">class</span>(species)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(glengths)
+<span class="kw">class</span>(species)</code></pre></div>
 <p>The function <code>str()</code> provides an overview of the object and the elements it contains. It is a really useful function when working with large and complex objects:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(glengths)
-<span class="kw">str</span>(species)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(glengths)
+<span class="kw">str</span>(species)</code></pre></div>
 <p>You can add elements to your vector simply by using the <code>c()</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">lengths &lt;-<span class="st"> </span><span class="kw">c</span>(glengths, <span class="dv">90</span>) <span class="co"># adding at the end</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lengths &lt;-<span class="st"> </span><span class="kw">c</span>(glengths, <span class="dv">90</span>) <span class="co"># adding at the end</span>
 lengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, glengths) <span class="co"># adding at the beginning</span>
-lengths</code></pre>
+lengths</code></pre></div>
 <p>What happens here is that we take the original vector <code>glengths</code>, and we are adding another item first to the end of the other ones, and then another item at the beginning. We can do this over and over again to build a vector or a dataset. As we program, this may be useful to autoupdate results that we are collecting or calculating.</p>
 <p>We just saw 2 of the 6 <strong>data types</strong> that R uses: <code>&quot;character&quot;</code> and <code>&quot;numeric&quot;</code>. The other 4 are:</p>
 <ul>

@@ -1,8 +1,8 @@
 ---
-layout: topic
-title: Introduction to R
-author: Data Carpentry contributors
+title: "Introduction to R"
+author: "Data Carpentry contributors"
 minutes: 45
+layout: topic
 ---
 
 ```{r, echo=FALSE, purl=FALSE}
@@ -72,9 +72,6 @@ we want to do more interesting things.
 To do useful and interesting things, we need to assign _values_ to
 _objects_. To create objects, we need to give it a name followed by the
 assignment operator `<-` and the value we want to give it.
-
-## Assignment operator
-
 
 For instance, instead of adding 3 + 5, we can assign those
 values to objects and then add them.
