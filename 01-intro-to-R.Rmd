@@ -124,13 +124,23 @@ in R with dots in their names for historical reasons, but because dots have a
 special meaning in R (for methods) and other programming languages, it's best to
 avoid them. It is also recommended to use nouns for variable names, and verbs
 for function names. It's important to be consistent in the styling of your code
-(where you put spaces, how you name variable, etc.). In R, two popular style
+(where you put spaces, how you name variables, etc.). In R, two popular style
 guides are [Hadley Wickham's](http://adv-r.had.co.nz/Style.html) and
 [Google's](https://google.github.io/styleguide/Rguide.xml).
 
 When assigning a value to an object, R does not print anything. You can force to
 print the value by using parentheses or by typing the name:
 
+```{r}
+# Assigns a value to a variable
+genome_size_mb <- 35
+
+# Assigns a value to a variable and prints it out on the console
+(genome_size_mb <- 35)
+
+# Prints out the value of a variable on the console
+genome_size_mb
+```
 
 ## Functions
 
