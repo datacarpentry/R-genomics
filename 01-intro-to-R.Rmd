@@ -222,7 +222,7 @@ We're going to work with genome lengths.
 ## Solution
 
 ```{r, purl=FALSE}
-(genome_length_mb <- 4.6)
+genome_length_mb <- 4.6
 genome_length_mb
 ```
 
