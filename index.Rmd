@@ -149,4 +149,4 @@ then installing **`tidyverse`** and **`RSQLite`**.
 
 ## Contributors
 
-The list of contributors to this lesson is available [here](http://datacarpentry.org/R-ecology-lesson/CITATION),
+The list of contributors to this lesson is available [here](http://datacarpentry.org/R-ecology-lesson/CITATION).
