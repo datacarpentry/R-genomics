@@ -15,7 +15,7 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 >
 > * Assign names to objects in R with <- and =.
 > * Solve mathematical operations in R.
-> * Describe what a function is in R. 
+> * Describe what a function is in R.
 > * Describe what vectors are and how they are manipulated in R.
 > * Inspect the content of vectors in R and manipulate their content with class and str.
 
@@ -61,13 +61,13 @@ I'm adding 3 and 5. R is fun!
 3+5
 ```
 
-Now R is trying to run that sentence as a command, and it 
-doesn't work. Now we're stuck over in the console. The 
-`+` sign means that it's still waiting for input, so we 
-can't type in a new command. To get out of this type `Esc`. This will work whenever you're stuck with that `+` sign. 
+Now R is trying to run that sentence as a command, and it
+doesn't work. Now we're stuck over in the console. The
+`+` sign means that it's still waiting for input, so we
+can't type in a new command. To get out of this type `Esc`. This will work whenever you're stuck with that `+` sign.
 
 It's great that R is a glorified caluculator, but obviously
-we want to do more interesting things. 
+we want to do more interesting things.
 
 To do useful and interesting things, we need to assign _values_ to
 _objects_. To create objects, we need to give it a name followed by the
@@ -101,7 +101,7 @@ In RStudio, typing `Alt + -` (push `Alt`, the key next to your space bar at the
 same time as the `-` key) will write ` <- ` in a single keystroke.
 
 
-### Exercise 
+### Exercise
 
 - What happens if we change `a` and then re-add `a` and `b`?
 - Does it work if you just change `a` in the script and then add `a` and `b`? Did you still get the same answer after they changed `a`? If so, why do you think that might be?
@@ -117,7 +117,7 @@ cannot be used because they represent the names of fundamental functions in R
 (e.g., `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
 for a complete list). In general, even if it's allowed, it's best to not use
-other function names (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). When in 
+other function names (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). When in
 doubt, check the help to see if the name is already in use. It's also best to avoid
 dots (`.`) within a variable name as in `my.dataset`. There are many functions
 in R with dots in their names for historical reasons, but because dots have a
@@ -135,9 +135,7 @@ print the value by using parentheses or by typing the name:
 ## Functions
 
 The other key feature of R are functions. These are R's built in capabilities. Some examples of these are mathematical functions, like
-`sqrt` and `round`. You can also get functions from libraries (which we'll talk about in a bit), or even write your own. 
-
-## Functions and their arguments
+`sqrt` and `round`. You can also get functions from libraries (which we'll talk about in a bit), or even write your own.
 
 Functions are "canned scripts" that automate something complicated or convenient
 or both.  Many functions are predefined, or become available when using the
@@ -152,11 +150,11 @@ example of a function call is:
 
 Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
 calculates the square root. This function is very simple, because it takes just one
-argument. 
+argument.
 
 The return 'value' of a function need not be numerical (like that of `sqrt()`),
 and it also does not need to be a single item: it can be a set of things, or
-even a data set. We'll see that when we read data files in to R. 
+even a data set. We'll see that when we read data files in to R.
 
 Arguments can be anything, not only numbers or filenames, but also other
 objects. Exactly what each argument means differs per function, and must be
@@ -178,7 +176,7 @@ round(3.14159)
 ```
 
 We can see that we get `3`. That's because the default is to round
-to the nearest whole number. If we want more digits we can see 
+to the nearest whole number. If we want more digits we can see
 how to do that by getting information about the `round` function.
 We can use `args(round)` or look at the
 help for this function using `?round`.
@@ -192,7 +190,7 @@ args(round)
 ```
 
 
-We see that if we want a different number of digits, we can 
+We see that if we want a different number of digits, we can
 type `digits=2` or however many we want.
 
 ```{r, results='show'}
@@ -211,7 +209,7 @@ it makes your code difficult to read. (It's however OK to not include the names
 of the arguments for basic functions like `mean`, `min`, etc...)
 
 Another advantage of naming arguments, is that the order doesn't matter.
-This is useful when there start to be more arguments. 
+This is useful when there start to be more arguments.
 
 
 ### Exercise
@@ -219,7 +217,7 @@ This is useful when there start to be more arguments.
 We're going to work with genome lengths.
 - Create a variable `genome_length_mb` and assign it the value `4.6`
 
-## Solution
+#### Solution
 
 ```{r, purl=FALSE}
 (genome_length_mb <- 4.6)
@@ -229,11 +227,11 @@ genome_length_mb
 ### Exercise
 
 Now that R has `genome_length_mb` in memory, we can do arithmetic with it. For
-instance, we may want to convert this to the weight of the genome in 
-picograms (for some reason). 978Mb = 1picogram. Divide the 
-genome length in Mb by 978. 
+instance, we may want to convert this to the weight of the genome in
+picograms (for some reason). 978Mb = 1picogram. Divide the
+genome length in Mb by 978.
 
-### Solution
+#### Solution
 
 ```{r, purl=FALSE}
 genome_length_mb / 978.0
@@ -244,10 +242,10 @@ It turns out an E. coli genome doesn't weigh very much.
 ### Exercise
 
 We can also change the variable's value by assigning it a new one. Say
-we want to think about a human genome rather than E. coli. Change `genome_length_mb` to 3000 and figure out the weight of the human 
-genome. 
+we want to think about a human genome rather than E. coli. Change `genome_length_mb` to 3000 and figure out the weight of the human
+genome.
 
-### Solution
+#### Solution
 
 ```{r, purl=FALSE}
 genome_length_mb <- 3000.0
@@ -317,10 +315,10 @@ new_lengths <- glengths + glengths
 new_lengths
 ```
 
-This is very useful if we have data in different vectors that we 
-want to combine or work with. 
+This is very useful if we have data in different vectors that we
+want to combine or work with.
 
-There are few ways to figure out what's going on in a vector. 
+There are few ways to figure out what's going on in a vector.
 
 `class()` indicates the class (the type of element) of an object:
 
@@ -364,8 +362,3 @@ We just saw 2 of the 6 **data types** that R uses: `"character"` and
 Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`) and
 factors (`factor`).
-
-
-
-
-
