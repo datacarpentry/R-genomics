@@ -42,17 +42,13 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
 
-### OR
-
-Use R to download the file by giving the `download.file()` function the link address for the file, and where you want to put this file. If you see and error in response to `download.file()`, you may need to change the directory `"~/Downloads/portal_data_joined.csv"`
+> Tip:
+> If you can't find the Ecoli_metadata.csv file, or have lost track of it,
+> download the file directly using the R `download.file() function`
 
 ```{r, eval=TRUE,  purl=FALSE}
-download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv",
-              "data/Ecoli_metadata.csv")
+download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
 ```
-- First, make sure you are in the correct working directory by typing `getwd()`
-- Second, create a new subdirectory within this working directory called `data`
-- Third, move the just-downloaded `Ecoli_metadata.csv` file into this `data` directory
 
 You are now ready to load the data. We are going to use the R function  `read.csv()` to load the data file into memory (as a `data.frame`):
 
@@ -79,8 +75,8 @@ head(metadata)
 
 We've just done two very useful things.
 1. We've read our data in to R, so now we can work with it in R
-2. We've created a data frame (with the read.csv command) the 
-standard way R works with data. 
+2. We've created a data frame (with the read.csv command) the
+standard way R works with data.
 
 # What are data frames?
 
@@ -164,17 +160,17 @@ integers. While factors look (and often behave) like character vectors, they are
 actually integers under the hood, and you need to be careful when treating them
 like strings.
 
-In the data frame we just imported, let's do 
+In the data frame we just imported, let's do
 ```{r, purl=TRUE}
 str(metadata)
 ```
 
-We can see the names of the multiple columns. And, we see that 
+We can see the names of the multiple columns. And, we see that
 some say things like `Factor w/ 30 levels`
 
 When we read in a file, any column that contains text is automatically
 assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as
-*levels*. By default, R always sorts *levels* in alphabetical order. 
+*levels*. By default, R always sorts *levels* in alphabetical order.
 
 For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
 

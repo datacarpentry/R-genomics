@@ -13,7 +13,7 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 > ## Learning Objectives
 >
 > * Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.
-> * Create an R project. 
+> * Create an R project.
 > * Organize files and directories for a set of analyses as an R Project.
 > * Use the built-in RStudio help interface to search for more information on R functions.
 
@@ -68,7 +68,7 @@ the R console using the `Ctrl-Enter` shortcut.
 If R is ready to accept commands, the R console shows a `>` prompt. If it
 receives a command (by typing, copy-pasting or sent from the script editor using
 `Ctrl-Enter`), R will try to execute it, and when ready, show the results and
-come back with a new `>`-prompt to wait for new commands.
+come back with a new `>` prompt to wait for new commands.
 
 If R is still waiting for you to enter more data because it isn't complete yet,
 the console will show a `+` prompt. It means that you haven't finished entering
