@@ -144,9 +144,9 @@ because often, package developers rely on the error catching provided by R. You
 end up with general error messages that might not be very helpful to diagnose a
 problem (e.g. "subscript out of bounds").
 
-However, you should check stackoverflow. Search using the `[r]` tag. Most
-questions have already been answered, but the challenge is to use the right
-words in the search to find the answers:
+However, you should check [stackoverflow.com](https://stackoverflow.com). Search
+using the `[r]` tag. Most questions have already been answered, but the
+challenge is to use the right words in the search to find the answers:
 [http://stackoverflow.com/questions/tagged/r](http://stackoverflow.com/questions/tagged/r)
 
 The [Introduction to R](http://cran.r-project.org/doc/manuals/R-intro.pdf) can

@@ -47,12 +47,10 @@ the data and install everything *before* working through this lesson.
 
 ### Data
 
+Data for the lesson is available [here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv).
 
-
-Data files for the lesson are available and can be downloaded manually here: 
-
-However, we will download them directly from R during the lessons when we need
-them.
+We will download this file directly from R during the lessons when we need
+it.
 
 ### Setup instructions
 
@@ -149,4 +147,4 @@ then installing **`tidyverse`** and **`RSQLite`**.
 
 ## Contributors
 
-The list of contributors to this lesson is available [here](http://datacarpentry.org/R-ecology-lesson/CITATION),
+The list of contributors to this lesson is available [here](http://datacarpentry.org/R-ecology-lesson/CITATION).
