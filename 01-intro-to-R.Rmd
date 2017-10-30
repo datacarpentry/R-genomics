@@ -16,8 +16,8 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 > * Assign names to objects in R with <- and =.
 > * Solve mathematical operations in R.
 > * Describe what a function is in R.
-> * Describe what vectors are and how they are manipulated in R.
-> * Inspect the content of vectors in R and manipulate their content with class and str.
+> * Describe what vectors are and how they can be manipulated in R.
+> * Inspect the content of vectors in R and describe their content with class and str.
 
 ------------
 
@@ -40,21 +40,21 @@ _Start by showing an example of a script_
 ### Creating objects (assignments)
 ```
 
-You can get output from R simply by typing in math in the console
+You can get an output from R simply by typing in math in the console
 
 ```{r, purl=FALSE}
 3 + 5
 12/7
 ```
 
-We can also comment what it is we're doing
+We can also comment on what it is that we're doing
 
 ```{r, purl=FALSE}
 # I'm adding 3 and 5. R is fun!
 3+5
 ```
 
-What happens if we do that same command without the # sign in the front?
+What happens if we type that same command without the # sign in the front?
 
 ```{r, purl=FALSE, eval=FALSE}
 I'm adding 3 and 5. R is fun!
@@ -64,7 +64,7 @@ I'm adding 3 and 5. R is fun!
 Now R is trying to run that sentence as a command, and it
 doesn't work. Now we're stuck over in the console. The
 `+` sign means that it's still waiting for input, so we
-can't type in a new command. To get out of this type `Esc`. This will work whenever you're stuck with that `+` sign.
+can't type in a new command. To get out of this press the `Esc` key. This will work whenever you're stuck with that `+` sign.
 
 It's great that R is a glorified caluculator, but obviously
 we want to do more interesting things.
@@ -93,13 +93,14 @@ a + b
 
 `<-` is the assignment operator. It assigns values on the right to objects on
 the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
-be read as 3 **goes into** `x`.  You can also use `=` for assignments but not in
+be read as 3 **goes into** `x`.  You can also use `=` or `->`for assignments but not in
 all contexts so it is good practice to use `<-` for assignments. `=` should only
 be used to specify the values of arguments in functions, see below.
 
-In RStudio, typing `Alt + -` (push `Alt`, the key next to your space bar at the
-same time as the `-` key) will write ` <- ` in a single keystroke.
-
+In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
+ -same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke 
+ in a PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the
+ +same time as the <kbd>-</kbd> key) does the same in a Mac.
 
 ### Exercise
 
