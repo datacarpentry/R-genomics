@@ -27,31 +27,6 @@
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
 <style type="text/css">
@@ -338,7 +313,7 @@ div.tocify {
 
 <hr />
 <blockquote>
-<h2>Learning Objectives</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
 <ul>
 <li>Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.</li>
 <li>Create an R project.</li>
@@ -361,20 +336,22 @@ div.tocify {
 <ul>
 <li>Under the <code>File</code> menu, click on <code>New project</code>, choose <code>New directory</code>, then <code>Empty project</code></li>
 <li>Enter a name for this new folder, and choose a convenient location for it. This will be your <strong>working directory</strong> for the rest of the day (e.g., <code>~/data-carpentry</code>)</li>
+<li>Confirm that the folder named in the <code>Create project as a sub-directory of</code> box is where you want the working directory created. Use the <code>Browse</code> button to navigate folders if changes are needed.</li>
 <li>Click on “Create project”</li>
 <li>Under the <code>Files</code> tab on the right of the screen, click on <code>New Folder</code> and create a folder named <code>data</code> within your newly created working directory. (e.g., <code>~/data-carpentry/data</code>)</li>
 <li>Create a new R script (File &gt; New File &gt; R script) and save it in your working directory (e.g. <code>data-carpentry-script.R</code>)</li>
 </ul>
 <p>Your working directory should now look like this:</p>
 <div class="figure">
-<img src="img/r_starting_how_it_should_like.png" alt="How it should look like at the beginning of this lesson" /><p class="caption">How it should look like at the beginning of this lesson</p>
+<img src="img/r_starting_how_it_should_like.png" alt="How it should look like at the beginning of this lesson" />
+<p class="caption">How it should look like at the beginning of this lesson</p>
 </div>
 </div>
 <div id="interacting-with-r" class="section level1">
 <h1>Interacting with R</h1>
 <p>There are two main ways of interacting with R: using the console or by using script files (plain text files that contain your code).</p>
 <p>The console window (in RStudio, the bottom left panel) is the place where R is waiting for you to tell it what to do, and where it will show the results of a command. You can type commands directly into the console, but they will be forgotten when you close the session. It is better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the <code>Ctrl-Enter</code> shortcut.</p>
-<p>If R is ready to accept commands, the R console shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <code>Ctrl-Enter</code>), R will try to execute it, and when ready, show the results and come back with a new <code>&gt;</code>-prompt to wait for new commands.</p>
+<p>If R is ready to accept commands, the R console shows a <code>&gt;</code> prompt. If it receives a command (by typing, copy-pasting or sent from the script editor using <code>Ctrl-Enter</code>), R will try to execute it, and when ready, show the results and come back with a new <code>&gt;</code> prompt to wait for new commands.</p>
 <p>If R is still waiting for you to enter more data because it isn’t complete yet, the console will show a <code>+</code> prompt. It means that you haven’t finished entering a complete command. This is because you have not ‘closed’ a parenthesis or quotation. If you’re in Rstudio and this happens, click inside the console window and press <code>Esc</code>; this should help you out of trouble.</p>
 </div>
 <div id="basics-of-r" class="section level1">
@@ -391,84 +368,6 @@ div.tocify {
 <div id="organizing-your-working-directory" class="section level2">
 <h2>Organizing your working directory</h2>
 <p>You should separate the original data (raw data) from intermediate datasets that you may create for the need of a particular analysis. For instance, you may want to create a <code>data/</code> directory within your working directory that stores the raw data, and have a <code>data_output/</code> directory for intermediate datasets and a <code>figure_output/</code> directory for the plots you will generate.</p>
-</div>
-<div id="seeking-help" class="section level2">
-<h2>Seeking help</h2>
-<div id="i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it" class="section level3">
-<h3>I know the name of the function I want to use, but I’m not sure how to use it</h3>
-<p>If you need help with a specific function, let’s say <code>barplot()</code>, you can type:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?barplot</code></pre>
-<p>If you just need to remind yourself of the names of the arguments, you can use:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(lm)</code></pre>
-<p>If the function is part of a package that is installed on your computer but don’t remember which one, you can type:</p>
-<pre class="sourceCode r"><code class="sourceCode r">??geom_point</code></pre>
-</div>
-<div id="i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one" class="section level3">
-<h3>I want to use a function that does X, there must be a function for it but I don’t know which one…</h3>
-<p>If you are looking for a function to do a particular task, you can use <code>help.search()</code> (but only looks through the installed packages):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;kruskal&quot;</span>)</code></pre>
-<p>If you can’t find what you are looking for, you can use the <a href="http://www.rdocumentation.org">rdocumention.org</a> website that search through the help files across all packages available.</p>
-</div>
-<div id="i-am-stuck-i-get-an-error-message-that-i-dont-understand" class="section level3">
-<h3>I am stuck… I get an error message that I don’t understand</h3>
-<p>Start by googling the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).</p>
-<p>However, you should check stackoverflow. Search using the <code>[r]</code> tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <a href="http://stackoverflow.com/questions/tagged/r"><a href="http://stackoverflow.com/questions/tagged/r" class="uri">http://stackoverflow.com/questions/tagged/r</a></a></p>
-<p>The <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R</a> can also be dense for people with little programming experience but it is a good place to understand the underpinnings of the R language.</p>
-<p>The <a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ</a> is dense and technical but it is full of useful information.</p>
-</div>
-<div id="asking-for-help" class="section level3">
-<h3>Asking for help</h3>
-<p>The key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
-<p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem</p>
-<p>If possible, try to reduce what doesn’t work to a simple reproducible example. If you can reproduce the problem using a very small <code>data.frame</code> instead of your 50,000 rows and 10,000 columns one, provide the small one with the description of your problem. When appropriate, try to generalize what you are doing so even people who are not in your field can understand the question.</p>
-<p>To share an object with someone else, if it’s relatively small, you can use the function <code>dput()</code>. It will output R code that can be used to recreate the exact same object as the one in memory:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dput</span>(<span class="kw">head</span>(iris)) <span class="co"># iris is an example data.frame that comes with R</span></code></pre>
-<pre><code>## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
-##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
-##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
-##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
-## &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
-## 6L), class = &quot;data.frame&quot;)</code></pre>
-<p>If the object is larger, provide either the raw file (i.e., your CSV file) with your script up to the point of the error (and after removing everything that is not relevant to your issue). Alternatively, in particular if your questions is not related to a <code>data.frame</code>, you can save any R object to a file:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</code></pre>
-<p>The content of this file is however not human readable and cannot be posted directly on stackoverflow. It can however be sent to someone by email who can read it with this command:</p>
-<pre class="sourceCode r"><code class="sourceCode r">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</code></pre>
-<p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
-<pre><code>## R version 3.2.3 (2015-12-10)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: OS X 10.9.5 (Mavericks)
-## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  base     
-## 
-## loaded via a namespace (and not attached):
-##  [1] backports_1.1.0 magrittr_1.5    rprojroot_1.2   tools_3.2.3    
-##  [5] htmltools_0.3.6 yaml_2.1.13     Rcpp_0.12.10    stringi_1.0-1  
-##  [9] rmarkdown_1.5   knitr_1.16      methods_3.2.3   stringr_1.0.0  
-## [13] digest_0.6.9    evaluate_0.10</code></pre>
-</div>
-<div id="where-to-ask-for-help" class="section level3">
-<h3>Where to ask for help?</h3>
-<ul>
-<li>Your friendly colleagues: if you know someone with more experience than you, they might be able and willing to help you.</li>
-<li>Stackoverflow: if your question hasn’t been answered before and is well crafted, chances are you will get an answer in less than 5 min.</li>
-<li>The <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a>: it is read by a lot of people (including most of the R core team), a lot of people post to it, but the tone can be pretty dry, and it is not always very welcoming to new users. If your question is valid, you are likely to get an answer very fast but don’t expect that it will come with smiley faces. Also, here more than everywhere else, be sure to use correct vocabulary (otherwise you might get an answer pointing to the misuse of your words rather than answering your question). You will also have more success if your question is about a base function rather than a specific package.</li>
-<li>If your question is about a specific package, see if there is a mailing list for it. Usually it’s included in the DESCRIPTION file of the package that can be accessed using <code>packageDescription(&quot;name-of-package&quot;)</code>. You may also want to try to email the author of the package directly.</li>
-<li>There are also some topic-specific mailing lists (GIS, phylogenetics, etc…), the complete list is <a href="http://www.r-project.org/mail.html">here</a>.</li>
-</ul>
-</div>
-<div id="more-resources" class="section level3">
-<h3>More resources</h3>
-<ul>
-<li>The <a href="http://www.r-project.org/posting-guide.html">Posting Guide</a> for the R mailing lists.</li>
-<li><a href="http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html">How to ask for R help</a> useful guidelines</li>
-</ul>
-</div>
 </div>
 </div>
 

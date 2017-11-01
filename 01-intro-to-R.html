@@ -361,8 +361,8 @@ div.tocify {
 <li>Assign names to objects in R with &lt;- and =.</li>
 <li>Solve mathematical operations in R.</li>
 <li>Describe what a function is in R.</li>
-<li>Describe what vectors are and how they are manipulated in R.</li>
-<li>Inspect the content of vectors in R and manipulate their content with class and str.</li>
+<li>Describe what vectors are and how they can be manipulated in R.</li>
+<li>Inspect the content of vectors in R and describe their content with class and str.</li>
 </ul>
 </blockquote>
 <hr />
@@ -381,16 +381,16 @@ div.tocify {
 </div>
 <div id="creating-objects" class="section level2">
 <h2>Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
+<p>You can get an output from R simply by typing in math in the console</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
 <span class="dv">12</span><span class="op">/</span><span class="dv">7</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
+<p>We can also comment on what it is that we’re doing</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I&#39;m adding 3 and 5. R is fun!</span>
 <span class="dv">3</span><span class="op">+</span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
+<p>What happens if we type that same command without the # sign in the front?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I<span class="st">&#39;m adding 3 and 5. R is fun!</span>
 <span class="st">3+5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
+<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this press the <code>Esc</code> key. This will work whenever you’re stuck with that <code>+</code> sign.</p>
 <p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
 <p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
 <p>For instance, instead of adding 3 + 5, we can assign those values to objects and then add them.</p>
@@ -406,8 +406,8 @@ b
 
 <span class="co">#Add a and b</span>
 a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
-<p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
-<p>In RStudio, typing <code>Alt + -</code> (push <code>Alt</code>, the key next to your space bar at the same time as the <code>-</code> key) will write <code>&lt;-</code> in a single keystroke.</p>
+<p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> or <code>-&gt;</code>for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
+<p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the -same time as the <kbd>-</kbd> key) will write <code>&lt;-</code> in a single keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the +same time as the <kbd>-</kbd> key) does the same in a Mac.</p>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>
 <ul>
@@ -419,15 +419,20 @@ a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
 </div>
 <div id="notes-on-objects" class="section level2">
 <h2>Notes on objects</h2>
-<p>Objects can be given any name such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. You want your object names to be explicit and not too long. They cannot start with a number (<code>2x</code> is not valid but <code>x2</code> is). R is case sensitive (e.g., <code>Genome_length_mb</code> is different from <code>genome_length_mb</code>). There are some names that cannot be used because they represent the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). When in doubt, check the help to see if the name is already in use. It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google.github.io/styleguide/Rguide.xml">Google’s</a>.</p>
+<p>Objects can be given any name such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. You want your object names to be explicit and not too long. They cannot start with a number (<code>2x</code> is not valid but <code>x2</code> is). R is case sensitive (e.g., <code>Genome_length_mb</code> is different from <code>genome_length_mb</code>). There are some names that cannot be used because they represent the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). When in doubt, check the help to see if the name is already in use. It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variables, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google.github.io/styleguide/Rguide.xml">Google’s</a>.</p>
 <p>When assigning a value to an object, R does not print anything. You can force to print the value by using parentheses or by typing the name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Assigns a value to a variable</span>
+genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span>
+
+<span class="co"># Assigns a value to a variable and prints it out on the console</span>
+(genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span>)
+
+<span class="co"># Prints out the value of a variable on the console</span>
+genome_size_mb</code></pre></div>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
 <p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
-</div>
-<div id="functions-and-their-arguments" class="section level2">
-<h2>Functions and their arguments</h2>
 <p>Functions are “canned scripts” that automate something complicated or convenient or both. Many functions are predefined, or become available when using the function <code>library()</code> (more on that later). A function usually gets one or more inputs called <em>arguments</em>. Functions often (but not always) return a <em>value</em>. A typical example would be the function <code>sqrt()</code>. The input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function (‘running it’) is called <em>calling</em> the function. An example of a function call is:</p>
 <p><code>sqrt(a)</code></p>
 <p>Here, the value of <code>a</code> is given to the <code>sqrt()</code> function, the <code>sqrt()</code> function calculates the square root. This function is very simple, because it takes just one argument.</p>
@@ -453,33 +458,33 @@ a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
 <div id="exercise-1" class="section level3">
 <h3>Exercise</h3>
 <p>We’re going to work with genome lengths. - Create a variable <code>genome_length_mb</code> and assign it the value <code>4.6</code></p>
-</div>
-</div>
-<div id="solution" class="section level2">
-<h2>Solution</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span>)
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span>
 genome_length_mb</code></pre></div>
+</div>
+</div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise</h3>
 <p>Now that R has <code>genome_length_mb</code> in memory, we can do arithmetic with it. For instance, we may want to convert this to the weight of the genome in picograms (for some reason). 978Mb = 1picogram. Divide the genome length in Mb by 978.</p>
-</div>
-<div id="solution-1" class="section level3">
-<h3>Solution</h3>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>It turns out an E. coli genome doesn’t weigh very much.</p>
+</div>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise</h3>
 <p>We can also change the variable’s value by assigning it a new one. Say we want to think about a human genome rather than E. coli. Change <code>genome_length_mb</code> to 3000 and figure out the weight of the human genome.</p>
-</div>
-<div id="solution-2" class="section level3">
-<h3>Solution</h3>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">3000.0</span>
 genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the genome’s weight in a variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_weight_pg &lt;-<span class="st"> </span>genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
 <p>and then change <code>genome_length_mb</code> to 100.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
+</div>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise</h3>
@@ -523,6 +528,93 @@ lengths</code></pre></div>
 <li><code>&quot;raw&quot;</code> that we won’t discuss further</li>
 </ul>
 <p>Vectors are one of the many <strong>data structures</strong> that R uses. Other important ones are lists (<code>list</code>), matrices (<code>matrix</code>), data frames (<code>data.frame</code>) and factors (<code>factor</code>).</p>
+</div>
+<div id="seeking-help" class="section level2">
+<h2>Seeking help</h2>
+<div id="i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it" class="section level3">
+<h3>I know the name of the function I want to use, but I’m not sure how to use it</h3>
+<p>If you need help with a specific function, let’s say <code>barplot()</code>, you can type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?barplot</code></pre></div>
+<p>If you just need to remind yourself of the names of the arguments, you can use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(lm)</code></pre></div>
+<p>If the function is part of a package that is installed on your computer but don’t remember which one, you can type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??geom_point</code></pre></div>
+</div>
+<div id="i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one" class="section level3">
+<h3>I want to use a function that does X, there must be a function for it but I don’t know which one…</h3>
+<p>If you are looking for a function to do a particular task, you can use <code>help.search()</code> (but only looks through the installed packages):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;kruskal&quot;</span>)</code></pre></div>
+<p>If you can’t find what you are looking for, you can use the <a href="http://www.rdocumentation.org">rdocumention.org</a> website that search through the help files across all packages available.</p>
+</div>
+<div id="i-am-stuck-i-get-an-error-message-that-i-dont-understand" class="section level3">
+<h3>I am stuck… I get an error message that I don’t understand</h3>
+<p>Start by googling the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).</p>
+<p>However, you should check <a href="https://stackoverflow.com">stackoverflow.com</a>. Search using the <code>[r]</code> tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <a href="http://stackoverflow.com/questions/tagged/r" class="uri">http://stackoverflow.com/questions/tagged/r</a></p>
+<p>The <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R</a> can also be dense for people with little programming experience but it is a good place to understand the underpinnings of the R language.</p>
+<p>The <a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ</a> is dense and technical but it is full of useful information.</p>
+</div>
+<div id="asking-for-help" class="section level3">
+<h3>Asking for help</h3>
+<p>The key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
+<p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem</p>
+<p>If possible, try to reduce what doesn’t work to a simple reproducible example. If you can reproduce the problem using a very small <code>data.frame</code> instead of your 50,000 rows and 10,000 columns one, provide the small one with the description of your problem. When appropriate, try to generalize what you are doing so even people who are not in your field can understand the question.</p>
+<p>To share an object with someone else, if it’s relatively small, you can use the function <code>dput()</code>. It will output R code that can be used to recreate the exact same object as the one in memory:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dput</span>(<span class="kw">head</span>(iris)) <span class="co"># iris is an example data.frame that comes with R</span></code></pre></div>
+<pre><code>## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
+##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
+##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
+##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
+##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
+## &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
+## 6L), class = &quot;data.frame&quot;)</code></pre>
+<p>If the object is larger, provide either the raw file (i.e., your CSV file) with your script up to the point of the error (and after removing everything that is not relevant to your issue). Alternatively, in particular if your questions is not related to a <code>data.frame</code>, you can save any R object to a file. Note: for this example, the folder “/tmp” needs to already exist.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</code></pre></div>
+<p>The content of this file is however not human readable and cannot be posted directly on stackoverflow. It can however be sent to someone by email who can read it with this command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</code></pre></div>
+<p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
+<pre><code>## R version 3.4.2 (2017-09-28)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 14.04.5 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/libblas/libblas.so.3.0
+## LAPACK: /usr/lib/lapack/liblapack.so.3.0
+## 
+## locale:
+##  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=en_GB.UTF-8    
+##  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   
+##  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] compiler_3.4.2  backports_1.1.0 magrittr_1.5    rprojroot_1.2  
+##  [5] tools_3.4.2     htmltools_0.3.6 yaml_2.1.14     Rcpp_0.12.12   
+##  [9] stringi_1.1.5   rmarkdown_1.6   knitr_1.17      stringr_1.2.0  
+## [13] digest_0.6.12   evaluate_0.10.1</code></pre>
+</div>
+<div id="where-to-ask-for-help" class="section level3">
+<h3>Where to ask for help?</h3>
+<ul>
+<li>Your friendly colleagues: if you know someone with more experience than you, they might be able and willing to help you.</li>
+<li>Stackoverflow: if your question hasn’t been answered before and is well crafted, chances are you will get an answer in less than 5 min.</li>
+<li>The <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a>: it is read by a lot of people (including most of the R core team), a lot of people post to it, but the tone can be pretty dry, and it is not always very welcoming to new users. If your question is valid, you are likely to get an answer very fast but don’t expect that it will come with smiley faces. Also, here more than everywhere else, be sure to use correct vocabulary (otherwise you might get an answer pointing to the misuse of your words rather than answering your question). You will also have more success if your question is about a base function rather than a specific package.</li>
+<li>If your question is about a specific package, see if there is a mailing list for it. Usually it’s included in the DESCRIPTION file of the package that can be accessed using <code>packageDescription(&quot;name-of-package&quot;)</code>. You may also want to try to email the author of the package directly.</li>
+<li>There are also some topic-specific mailing lists (GIS, phylogenetics, etc…), the complete list is <a href="http://www.r-project.org/mail.html">here</a>.</li>
+</ul>
+</div>
+<div id="more-resources" class="section level3">
+<h3>More resources</h3>
+<ul>
+<li>The <a href="http://www.r-project.org/posting-guide.html">Posting Guide</a> for the R mailing lists.</li>
+<li><a href="http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html">How to ask for R help</a> useful guidelines</li>
+</ul>
+</div>
 </div>
 
 <hr/>
