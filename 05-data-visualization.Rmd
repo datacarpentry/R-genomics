@@ -10,7 +10,7 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 ```
 
 > ## Learning Objectives 
-* Create simple scatterplots, histograms, and boxplots in R.
+* Create simple scatter plots, histograms, and boxplots in R.
 * Compare the plotting features of base R and the ggplot2 package.
 * Customize the aesthetics of an existing plot.
 * Create plots from data in a data frame.
