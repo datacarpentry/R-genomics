@@ -15,7 +15,7 @@ knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
 >
 > * Assign names to objects in R with <- and =.
 > * Solve mathematical operations in R.
-> * Describe what a function is in R.
+> * Describe what a function in R is.
 > * Describe what vectors are and how they can be manipulated in R.
 > * Inspect the content of vectors in R and describe their content with class and str.
 
@@ -66,10 +66,8 @@ doesn't work. Now we're stuck over in the console. The
 `+` sign means that it's still waiting for input, so we
 can't type in a new command. To get out of this press the `Esc` key. This will work whenever you're stuck with that `+` sign.
 
-It's great that R is a glorified caluculator, but obviously
-we want to do more interesting things.
-
-To do useful and interesting things, we need to assign _values_ to
+It's great that R is a glorified calculator, but obviously
+we want to do more interesting things, e.g. we can assign _values_ to
 _objects_. To create objects, we need to give it a name followed by the
 assignment operator `<-` and the value we want to give it.
 
@@ -97,10 +95,8 @@ be read as 3 **goes into** `x`.  You can also use `=` or `->`for assignments but
 all contexts so it is good practice to use `<-` for assignments. `=` should only
 be used to specify the values of arguments in functions, see below.
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
- -same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke 
- in a PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the
- +same time as the <kbd>-</kbd> key) does the same in a Mac.
+In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the same time as the <kbd>-</kbd> key) will write ` <- ` in a single keystroke
+ in a PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the same time as the <kbd>-</kbd> key) does the same in a Mac.
 
 ### Exercise
 
@@ -510,4 +506,3 @@ sessionInfo()
   mailing lists.
 * [How to ask for R help](http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html)
   useful guidelines
-

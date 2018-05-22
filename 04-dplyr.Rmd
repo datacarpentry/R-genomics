@@ -22,10 +22,7 @@ metadata <- read.csv("data/Ecoli_metadata.csv")
 
 Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. 
 
-Enter `dplyr`. 
-
-`dplyr` is a package for
-making data manipulation easier.
+`dplyr` is a package for making data manipulation easier.
 
 Packages in R are basically sets of additional functions that let you do more
 stuff in R. The functions we've been using, like `str()`, come built into R;

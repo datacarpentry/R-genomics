@@ -20,7 +20,7 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers", and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of R's plotting packages.
 
-When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as hisotgrams, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We'll test a few of these out here on the `genome_size` vector from our metadata.
+When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as histograms, scatter plots, bar charts, boxplots and much [more](https://www.statmethods.net/graphs/index.html). We'll test a few of these out here on the `genome_size` vector from our metadata.
 
 
 ```{r simplestats}
@@ -35,8 +35,7 @@ Let's start with a **scatterplot**. A scatter plot provides a graphical view of 
 plot(genome_size)
 ```
 
-Each point represents a clone and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot you can customize many features of your graphs (fonts, colors, axes, titles) through [graphic options](http://www.statmethods.net/advgraphs/parameters.html)
-For example, we can change the shape of the data point using `pch`.
+Each point represents a clone and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot you can customize many features of your graphs (fonts, colors, axes, titles) through [graphic options](http://www.statmethods.net/advgraphs/parameters.html). For example, we can change the shape of the data point using `pch`.
 
 ```{r, fig.align='center'}
 plot(genome_size, pch=8)
@@ -68,7 +67,7 @@ Similar to the scatterplots above, we can pass in arguments to add in extras lik
 
 ```{r, fig.align='center'}
 boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
-        main="Average expression differences between celltypes", ylab="Expression")
+        main="Average expression differences between cell types", ylab="Expression")
 ```
 
 
@@ -93,8 +92,8 @@ ggplot(metadata)
 Geometric objects are the actual marks we put on a plot. Examples include:
 
 * points (`geom_point`, for scatter plots, dot plots, etc)
-* lines (`geom_line`, for time series, trend lines, etc)
 * boxplot (`geom_boxplot`, for, well, boxplots!)
+* lines (`geom_line`, for time series, trend lines, etc)
 
 A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
 
@@ -199,4 +198,4 @@ dev.off()
 
 Resources:
 ---------
-We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang's excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://ggplot2.tidyverse.org/), and Winston Chang's excellent [Cookbook for R](http://www.cookbook-r.com/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definitive book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).

@@ -22,9 +22,7 @@ experience. These lessons can be taught in a day (~ 6 hours). They start with
 some basic information about R syntax, the RStudio interface, and move through
 how to import CSV files, the structure of data frames, how to deal with factors,
 how to add/remove rows and columns, how to calculate summary statistics from a
-data frame, and a brief introduction to plotting. The last lesson demonstrates
-how to work with databases directly from R.
-
+data frame, and a brief introduction to plotting.
 
 ## Chapters
 
@@ -47,7 +45,7 @@ the data and install everything *before* working through this lesson.
 
 ### Data
 
-Data for the lesson is available [here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv).
+Data for the lesson are available [here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv).
 
 We will download this file directly from R during the lessons when we need
 it.
