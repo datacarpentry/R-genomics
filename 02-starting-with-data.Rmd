@@ -73,7 +73,8 @@ Wow... that was a lot of output. At least it means the data loaded properly. Let
 head(metadata)
 ```
 
-We've just done two very useful things.
+We've just done two very useful things:
+
 1. We've read our data in to R, so now we can work with it in R
 2. We've created a data frame (with the read.csv command) the
 standard way R works with data.
@@ -172,7 +173,7 @@ When we read in a file, any column that contains text is automatically
 assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order.
 
-For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
+For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`. The vector `3 3 3 3 3 3 ... ` indicates that the first samples have `unknown` (third level) citrate status.
 
 <!--
 
