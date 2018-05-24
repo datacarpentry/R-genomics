@@ -66,7 +66,7 @@ doesn't work. Now we're stuck over in the console. The
 `+` sign means that it's still waiting for input, so we
 can't type in a new command. To get out of this press the `Esc` key. This will work whenever you're stuck with that `+` sign.
 
-It's great that R is a glorified caluculator, but obviously
+It's great that R is a glorified calculator, but obviously
 we want to do more interesting things.
 
 To do useful and interesting things, we need to assign _values_ to
@@ -106,7 +106,7 @@ In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
 
 - What happens if we change `a` and then re-add `a` and `b`?
 - Does it work if you just change `a` in the script and then add `a` and `b`? Did you still get the same answer after they changed `a`? If so, why do you think that might be?
-- We can also assign a + b to a new variable, `c`. How would you do this?
+- We can also assign `a + b` to a new variable, `c`. How would you do this?
 
 ## Notes on objects
 
