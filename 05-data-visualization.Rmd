@@ -179,22 +179,22 @@ The second option is to use R functions in the console, allowing you the flexibi
 3. Close the connection to the new file (with your plot) using `dev.off()`.
 
 ```{r, eval=FALSE}
-pdf("figure/boxplot.pdf")
+pdf("results/genome_size_cit_boxplot.pdf")
 
-ggplot(example_data) +
-  geom_boxplot(aes(x = cit, y =....) +
-  ggtitle(...) +
-  xlab(...) +
-  ylab(...) +
-  theme(panel.grid.major = element_line(...),
-          axis.text.x = element_text(...),
-          axis.title = element_text(...),
-          axis.text = element_text(...)
+ggplot(metadata) + 
+  geom_boxplot(aes(x=cit, y = genome_size, fill = cit)) + 
+  ggtitle("Boxplot") +
+  xlab("citrate mutant") + 
+  ylab("genome size") + 
+  theme(panel.grid.major = element_line(size = .5, color = "grey"),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.title = element_text(size = rel(1.5)),
+        axis.text = element_text(size = rel(1.25)))
 
 dev.off()
 ```
 
-
+You will first need to create a directory `results`.
 
 
 Resources:
