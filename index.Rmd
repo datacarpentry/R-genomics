@@ -1,5 +1,5 @@
 ---
-title: "Data Carpentry: R for Genomics"
+title: "Data Analysis and Visualization in R *alpha*"
 author: Data Carpentry contributors
 ---
 
