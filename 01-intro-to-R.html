@@ -24,46 +24,76 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -121,6 +151,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -370,44 +403,46 @@ div.tocify {
 <h2>The R syntax</h2>
 <p><em>Start by showing an example of a script</em></p>
 <ul>
-<li>Point to the different parts:</li>
+<li>Point to the different parts:
+<ul>
 <li>a function</li>
 <li>the assignment operator <code>&lt;-</code></li>
 <li>the <code>=</code> for arguments</li>
 <li>the comments <code>#</code> and how they are used to document function and its content</li>
 <li>the <code>$</code> operator</li>
+</ul></li>
 <li>Point to indentation and consistency in spacing to improve clarity</li>
 </ul>
 </div>
 <div id="creating-objects" class="section level2">
 <h2>Creating objects</h2>
 <p>You can get an output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span><span class="op">/</span><span class="dv">7</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="dv">12</span><span class="op">/</span><span class="dv">7</span></a></code></pre></div>
 <p>We can also comment on what it is that we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I&#39;m adding 3 and 5. R is fun!</span>
-<span class="dv">3</span><span class="op">+</span><span class="dv">5</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># I&#39;m adding 3 and 5. R is fun!</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dv">3</span><span class="op">+</span><span class="dv">5</span></a></code></pre></div>
 <p>What happens if we type that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I<span class="st">&#39;m adding 3 and 5. R is fun!</span>
-<span class="st">3+5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this press the <code>Esc</code> key. This will work whenever you’re stuck with that <code>+</code> sign.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">I<span class="st">&#39;m adding 3 and 5. R is fun!</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">3+5</span></a></code></pre></div>
+<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this press the <kbd>Esc</kbd> key. This will work whenever you’re stuck with that <code>+</code> sign.</p>
 <p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
 <p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
 <p>For instance, instead of adding 3 + 5, we can assign those values to objects and then add them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># assign 3 to a</span>
-a &lt;-<span class="st"> </span><span class="dv">3</span>
-<span class="co"># assign 5 to b</span>
-b &lt;-<span class="st"> </span><span class="dv">5</span>
-
-<span class="co"># what now is a</span>
-a
-<span class="co"># what now is b</span>
-b
-
-<span class="co">#Add a and b</span>
-a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># assign 3 to a</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">a &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># assign 5 to b</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">b &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># what now is a</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">a</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co"># what now is b</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">b</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#Add a and b</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">a <span class="op">+</span><span class="st"> </span>b</a></code></pre></div>
 <p><code>&lt;-</code> is the assignment operator. It assigns values on the right to objects on the left. So, after executing <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>. The arrow can be read as 3 <strong>goes into</strong> <code>x</code>. You can also use <code>=</code> or <code>-&gt;</code>for assignments but not in all contexts so it is good practice to use <code>&lt;-</code> for assignments. <code>=</code> should only be used to specify the values of arguments in functions, see below.</p>
-<p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the -same time as the <kbd>-</kbd> key) will write <code>&lt;-</code> in a single keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the +same time as the <kbd>-</kbd> key) does the same in a Mac.</p>
+<p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the same time as the <kbd>-</kbd> key) will write <code>&lt;-</code> in a single keystroke.</p>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>
 <ul>
@@ -421,14 +456,14 @@ a <span class="op">+</span><span class="st"> </span>b</code></pre></div>
 <h2>Notes on objects</h2>
 <p>Objects can be given any name such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. You want your object names to be explicit and not too long. They cannot start with a number (<code>2x</code> is not valid but <code>x2</code> is). R is case sensitive (e.g., <code>Genome_length_mb</code> is different from <code>genome_length_mb</code>). There are some names that cannot be used because they represent the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). When in doubt, check the help to see if the name is already in use. It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variables, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google.github.io/styleguide/Rguide.xml">Google’s</a>.</p>
 <p>When assigning a value to an object, R does not print anything. You can force to print the value by using parentheses or by typing the name:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Assigns a value to a variable</span>
-genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span>
-
-<span class="co"># Assigns a value to a variable and prints it out on the console</span>
-(genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span>)
-
-<span class="co"># Prints out the value of a variable on the console</span>
-genome_size_mb</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Assigns a value to a variable</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Assigns a value to a variable and prints it out on the console</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">(genome_size_mb &lt;-<span class="st"> </span><span class="dv">35</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co"># Prints out the value of a variable on the console</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">genome_size_mb</a></code></pre></div>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
@@ -440,18 +475,18 @@ genome_size_mb</code></pre></div>
 <p>Arguments can be anything, not only numbers or filenames, but also other objects. Exactly what each argument means differs per function, and must be looked up in the documentation (see below). If an argument alters the way the function operates, such as whether to ignore ‘bad values’, such an argument is sometimes called an <em>option</em>.</p>
 <p>Most functions can take several arguments, but many have so-called <em>defaults</em>. If you don’t specify such an argument when calling the function, the function itself will fall back on using the <em>default</em>. This is a standard value that the author of the function specified as being “good enough in standard cases”. An example would be what symbol to use in a plot. However, if you want something specific, simply change the argument yourself with a value of your choice.</p>
 <p>Let’s try a function that can take multiple arguments <code>round</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">round</span>(<span class="fl">3.14159</span>)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>We can see that we get <code>3</code>. That’s because the default is to round to the nearest whole number. If we want more digits we can see how to do that by getting information about the <code>round</code> function. We can use <code>args(round)</code> or look at the help for this function using <code>?round</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(round)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">args</span>(round)</a></code></pre></div>
 <pre><code>## function (x, digits = 0) 
 ## NULL</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?round</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">?round</a></code></pre></div>
 <p>We see that if we want a different number of digits, we can type <code>digits=2</code> or however many we want.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dt">digits=</span><span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dt">digits=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 3.14</code></pre>
 <p>If you provide the arguments in the exact same order as they are defined you don’t have to name them:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 3.14</code></pre>
 <p>However, it’s usually not recommended practice because it’s a lot of remembering to do, and if you share your code with others that includes less known functions it makes your code difficult to read. (It’s however OK to not include the names of the arguments for basic functions like <code>mean</code>, <code>min</code>, etc…)</p>
 <p>Another advantage of naming arguments, is that the order doesn’t matter. This is useful when there start to be more arguments.</p>
@@ -460,8 +495,8 @@ genome_size_mb</code></pre></div>
 <p>We’re going to work with genome lengths. - Create a variable <code>genome_length_mb</code> and assign it the value <code>4.6</code></p>
 <div id="solution" class="section level4">
 <h4>Solution</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span>
-genome_length_mb</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">genome_length_mb &lt;-<span class="st"> </span><span class="fl">4.6</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">genome_length_mb</a></code></pre></div>
 </div>
 </div>
 <div id="exercise-2" class="section level3">
@@ -469,7 +504,7 @@ genome_length_mb</code></pre></div>
 <p>Now that R has <code>genome_length_mb</code> in memory, we can do arithmetic with it. For instance, we may want to convert this to the weight of the genome in picograms (for some reason). 978Mb = 1picogram. Divide the genome length in Mb by 978.</p>
 <div id="solution-1" class="section level4">
 <h4>Solution</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></a></code></pre></div>
 <p>It turns out an E. coli genome doesn’t weigh very much.</p>
 </div>
 </div>
@@ -478,12 +513,12 @@ genome_length_mb</code></pre></div>
 <p>We can also change the variable’s value by assigning it a new one. Say we want to think about a human genome rather than E. coli. Change <code>genome_length_mb</code> to 3000 and figure out the weight of the human genome.</p>
 <div id="solution-2" class="section level4">
 <h4>Solution</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="fl">3000.0</span>
-genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">genome_length_mb &lt;-<span class="st"> </span><span class="fl">3000.0</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></a></code></pre></div>
 <p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the genome’s weight in a variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_weight_pg &lt;-<span class="st"> </span>genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">genome_weight_pg &lt;-<span class="st"> </span>genome_length_mb <span class="op">/</span><span class="st"> </span><span class="fl">978.0</span></a></code></pre></div>
 <p>and then change <code>genome_length_mb</code> to 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genome_length_mb &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">genome_length_mb &lt;-<span class="st"> </span><span class="dv">100</span></a></code></pre></div>
 </div>
 </div>
 <div id="exercise-4" class="section level3">
@@ -494,31 +529,31 @@ genome_length_mb <span class="op">/</span><span class="st"> </span><span class="
 <div id="vectors-and-data-types" class="section level2">
 <h2>Vectors and data types</h2>
 <p>A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically just a list of values, mainly either numbers or characters. They’re special lists that you can do math with. You can assign this list of values to a variable, just like you would for one item. For example we can create a vector of genome lengths:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.6</span>, <span class="dv">3000</span>, <span class="dv">50000</span>)
-glengths</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">glengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.6</span>, <span class="dv">3000</span>, <span class="dv">50000</span>)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">glengths</a></code></pre></div>
 <p>A vector can also contain characters:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">species &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ecoli&quot;</span>, <span class="st">&quot;human&quot;</span>, <span class="st">&quot;corn&quot;</span>)
-species</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">species &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ecoli&quot;</span>, <span class="st">&quot;human&quot;</span>, <span class="st">&quot;corn&quot;</span>)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">species</a></code></pre></div>
 <p>There are many functions that allow you to inspect the content of a vector. <code>length()</code> tells you how many elements are in a particular vector:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(glengths)
-<span class="kw">length</span>(species)</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">length</span>(glengths)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">length</span>(species)</a></code></pre></div>
 <p>You can also do math with whole vectors. For instance if we wanted to multiply the genome lengths of all the genomes in the list, we can do</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>glengths</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>glengths</a></code></pre></div>
 <p>or we can add the data in the two vectors together</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_lengths &lt;-<span class="st"> </span>glengths <span class="op">+</span><span class="st"> </span>glengths
-new_lengths</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">new_lengths &lt;-<span class="st"> </span>glengths <span class="op">+</span><span class="st"> </span>glengths</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">new_lengths</a></code></pre></div>
 <p>This is very useful if we have data in different vectors that we want to combine or work with.</p>
 <p>There are few ways to figure out what’s going on in a vector.</p>
 <p><code>class()</code> indicates the class (the type of element) of an object:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(glengths)
-<span class="kw">class</span>(species)</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">class</span>(glengths)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw">class</span>(species)</a></code></pre></div>
 <p>The function <code>str()</code> provides an overview of the object and the elements it contains. It is a really useful function when working with large and complex objects:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(glengths)
-<span class="kw">str</span>(species)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">str</span>(glengths)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">str</span>(species)</a></code></pre></div>
 <p>You can add elements to your vector simply by using the <code>c()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lengths &lt;-<span class="st"> </span><span class="kw">c</span>(glengths, <span class="dv">90</span>) <span class="co"># adding at the end</span>
-lengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, glengths) <span class="co"># adding at the beginning</span>
-lengths</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">lengths &lt;-<span class="st"> </span><span class="kw">c</span>(glengths, <span class="dv">90</span>) <span class="co"># adding at the end</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">lengths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, glengths) <span class="co"># adding at the beginning</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">lengths</a></code></pre></div>
 <p>What happens here is that we take the original vector <code>glengths</code>, and we are adding another item first to the end of the other ones, and then another item at the beginning. We can do this over and over again to build a vector or a dataset. As we program, this may be useful to autoupdate results that we are collecting or calculating.</p>
 <p>We just saw 2 of the 6 <strong>data types</strong> that R uses: <code>&quot;character&quot;</code> and <code>&quot;numeric&quot;</code>. The other 4 are:</p>
 <ul>
@@ -534,16 +569,16 @@ lengths</code></pre></div>
 <div id="i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it" class="section level3">
 <h3>I know the name of the function I want to use, but I’m not sure how to use it</h3>
 <p>If you need help with a specific function, let’s say <code>barplot()</code>, you can type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?barplot</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">?barplot</a></code></pre></div>
 <p>If you just need to remind yourself of the names of the arguments, you can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(lm)</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">args</span>(lm)</a></code></pre></div>
 <p>If the function is part of a package that is installed on your computer but don’t remember which one, you can type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??geom_point</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">??geom_point</a></code></pre></div>
 </div>
 <div id="i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one" class="section level3">
 <h3>I want to use a function that does X, there must be a function for it but I don’t know which one…</h3>
 <p>If you are looking for a function to do a particular task, you can use <code>help.search()</code> (but only looks through the installed packages):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;kruskal&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">help.search</span>(<span class="st">&quot;kruskal&quot;</span>)</a></code></pre></div>
 <p>If you can’t find what you are looking for, you can use the <a href="http://www.rdocumentation.org">rdocumention.org</a> website that search through the help files across all packages available.</p>
 </div>
 <div id="i-am-stuck-i-get-an-error-message-that-i-dont-understand" class="section level3">
@@ -559,44 +594,46 @@ lengths</code></pre></div>
 <p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem</p>
 <p>If possible, try to reduce what doesn’t work to a simple reproducible example. If you can reproduce the problem using a very small <code>data.frame</code> instead of your 50,000 rows and 10,000 columns one, provide the small one with the description of your problem. When appropriate, try to generalize what you are doing so even people who are not in your field can understand the question.</p>
 <p>To share an object with someone else, if it’s relatively small, you can use the function <code>dput()</code>. It will output R code that can be used to recreate the exact same object as the one in memory:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dput</span>(<span class="kw">head</span>(iris)) <span class="co"># iris is an example data.frame that comes with R</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">dput</span>(<span class="kw">head</span>(iris)) <span class="co"># iris is an example data.frame that comes with R</span></a></code></pre></div>
 <pre><code>## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
 ##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
 ##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
 ##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
-## &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
+##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), row.names = c(NA, 
 ## 6L), class = &quot;data.frame&quot;)</code></pre>
 <p>If the object is larger, provide either the raw file (i.e., your CSV file) with your script up to the point of the error (and after removing everything that is not relevant to your issue). Alternatively, in particular if your questions is not related to a <code>data.frame</code>, you can save any R object to a file. Note: for this example, the folder “/tmp” needs to already exist.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</a></code></pre></div>
 <p>The content of this file is however not human readable and cannot be posted directly on stackoverflow. It can however be sent to someone by email who can read it with this command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</a></code></pre></div>
 <p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.4.2 (2017-09-28)
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<pre><code>## R version 3.5.1 (2018-07-02)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.5 LTS
+## Running under: Ubuntu 18.10
 ## 
 ## Matrix products: default
-## BLAS: /usr/lib/libblas/libblas.so.3.0
-## LAPACK: /usr/lib/lapack/liblapack.so.3.0
+## BLAS: /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.8.0
+## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.8.0
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=en_GB.UTF-8    
-##  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_GB.UTF-8   
-##  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
 ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
+## other attached packages:
+## [1] BiocInstaller_1.30.0
+## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_3.4.2  backports_1.1.0 magrittr_1.5    rprojroot_1.2  
-##  [5] tools_3.4.2     htmltools_0.3.6 yaml_2.1.14     Rcpp_0.12.12   
-##  [9] stringi_1.1.5   rmarkdown_1.6   knitr_1.17      stringr_1.2.0  
-## [13] digest_0.6.12   evaluate_0.10.1</code></pre>
+##  [1] compiler_3.5.1  backports_1.1.2 magrittr_1.5    rprojroot_1.3-2
+##  [5] tools_3.5.1     htmltools_0.3.6 yaml_2.2.0      Rcpp_0.12.19   
+##  [9] stringi_1.2.4   rmarkdown_1.10  knitr_1.20      stringr_1.3.1  
+## [13] digest_0.6.18   evaluate_0.12</code></pre>
 </div>
 <div id="where-to-ask-for-help" class="section level3">
 <h3>Where to ask for help?</h3>
@@ -620,9 +657,9 @@ lengths</code></pre></div>
 <hr/>
 
 <p><a href="http://datacarpentry.org/">Data Carpentry</a>,
-  2017. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
+  2017-2018. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
   Questions?  Feedback?
-  Please <a href="https://github.com/datacarpentry/R-ecology-lesson/issues/new">file
+  Please <a href="https://github.com/datacarpentry/R-genomics/issues/new">file
   an issue on GitHub</a>. <br/> On
   Twitter: <a href="https://twitter.com/datacarpentry">@datacarpentry</a></p>
 
