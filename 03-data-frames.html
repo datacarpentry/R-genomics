@@ -12,7 +12,7 @@
 <meta name="author" content="Data Carpentry contributors" />
 
 
-<title>More on data frames</title>
+<title>Using data in data frames</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,28 +24,76 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -103,6 +151,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -330,7 +381,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">More on data frames</h1>
+<h1 class="title toc-ignore">Using data in data frames</h1>
 <h4 class="author"><em>Data Carpentry contributors</em></h4>
 
 </div>
@@ -338,144 +389,116 @@ div.tocify {
 
 <hr />
 <blockquote>
-<h2>Learning Objectives</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
 <ul>
-<li>Extract values from a vector in R.</li>
+<li>Extract values from vectors and data frames.</li>
 <li>Perform operations on columns in a data frame.</li>
-<li>Subset data in a data frame.</li>
+<li>Append columns to a data frame.</li>
+<li>Create subsets of a data frame.</li>
 </ul>
 </blockquote>
 <hr />
+<p>In this lesson you will learn how to extract and manipulate data stored in data frames in R. We will work with the <em>E. coli</em> metadata file that we used previously. Be sure to read this file into a dataframe named <code>metadata</code>, if you haven’t already done so.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">metadata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/Ecoli_metadata.csv&#39;</span>)</a></code></pre></div>
+<p>Because the columns of a data frame are vectors, we will first learn how to extract elements from vectors and then learn how to apply this concept to select rows and columns from a data frame.</p>
+<div id="extracting-values-with-indexing-and-sequences" class="section level1">
+<h1>Extracting values with indexing and sequences</h1>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>Let’s create a vector containing the first ten letters of the alphabet.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">ten_letters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;g&#39;</span>, <span class="st">&#39;h&#39;</span>, <span class="st">&#39;i&#39;</span>, <span class="st">&#39;j&#39;</span>)</a></code></pre></div>
+<p>In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math. R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.</p>
+<p>So, to extract the 2nd element of <code>ten_letters</code> we type:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">ten_letters[<span class="dv">2</span>]</a></code></pre></div>
+<p>We can extract multiple elements at a time by specifying mulitple indices inside the square brackets as a vector. Notice how you can use <code>:</code> to make a vector of all integers two numbers.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">ten_letters[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">ten_letters[<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>]</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">ten_letters[<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">ten_letters[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">10</span>)]</a></code></pre></div>
+<p>Quick exercise / formative assessment: Select every other element in <code>ten_letters</code>.</p>
+<p>What if we were dealing with a much longer vector? We can use the <code>seq()</code> function to quickly create sequences of numbers.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">seq</span>(<span class="dv">20</span>, <span class="dv">4</span>, <span class="dt">by =</span> <span class="dv">-3</span>)</a></code></pre></div>
 <!--
-# What are data frames?
-
-`data.frame` is the _de facto_ data structure for most tabular data and what we
-use for statistics and plotting.
-
-A `data.frame` is a collection of vectors of identical lengths. Each vector
-represents a column, and each vector can be of a different data type (e.g.,
-characters, integers, factors). The `str()` function is useful to inspect the
-data types of the columns.
-
-A `data.frame` can be created by the functions `read.csv()` or `read.table()`, in
-other words, when importing spreadsheets from your hard drive (or the web).
-
-By default, `data.frame` converts (= coerces) columns that contain characters
-(i.e., text) into the `factor` data type. Depending on what you want to do with
-the data, you may want to keep these columns as `character`. To do so,
-`read.csv()` and `read.table()` have an argument called `stringsAsFactors` which
-can be set to `FALSE`:
-
-
-```r
-some_data <- read.csv("data/some_file.csv", stringsAsFactors=FALSE)
-```
-
-<!--- talk about colClasses argument?, row names?  --->
-<!--
-
-You can also create `data.frame` manually with the function `data.frame()`. This
-function can also take the argument `stringsAsFactors`. Compare the output of
-these examples, and compare the difference between when the data are being read
-as `character` and when they are being as `factor`.
-
-
-```r
-example_data <- data.frame(animal=c("dog", "cat", "sea cucumber", "sea urchin"),
-                           feel=c("furry", "furry", "squishy", "spiny"),
-                           weight=c(45, 8, 1.1, 0.8))
-str(example_data)
-```
-
-```
-## 'data.frame':    4 obs. of  3 variables:
-##  $ animal: Factor w/ 4 levels "cat","dog","sea cucumber",..: 2 1 3 4
-##  $ feel  : Factor w/ 3 levels "furry","spiny",..: 1 1 3 2
-##  $ weight: num  45 8 1.1 0.8
-```
-
-```r
-example_data <- data.frame(animal=c("dog", "cat", "sea cucumber", "sea urchin"),
-                           feel=c("furry", "furry", "squishy", "spiny"),
-                           weight=c(45, 8, 1.1, 0.8), stringsAsFactors=FALSE)
-str(example_data)
-```
-
-```
-## 'data.frame':    4 obs. of  3 variables:
-##  $ animal: chr  "dog" "cat" "sea cucumber" "sea urchin"
-##  $ feel  : chr  "furry" "furry" "squishy" "spiny"
-##  $ weight: num  45 8 1.1 0.8
-```
-
+  Consider including:
+  # Create sequences between two numbers, given the number of values (length.out = number of values)
+  seq(1, 10, length.out = 2)
+  seq(20, 4, length.out = 3)
+  
+  and discuss why they differ.
 -->
-<div id="indexing-and-sequences-within-a-vector" class="section level1">
-<h1>Indexing and sequences (within a vector)</h1>
-<p>If we want to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math.</p>
-<!--
-For instance:
-
-
-```r
-expression[2] # what level of expression is in the second element of the vector?
-expression[c(3, 2)]
-expression[2:4]
-expression[c(3,2, 2:4)] # combining both what do you get?
-```
--->
-<p>R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.</p>
-<!--
-`:` is a special function that creates numeric vectors of integer in increasing
-or decreasing order, test `1:10` and `10:1` for instance. The function `seq()`
-(for __seq__uence) can be used to create more complex patterns:
-
-
-```r
-seq(1, 10, by=2)
-seq(5, 10, length.out=3)       # equal breaks of sequence into vector length = length.out
-seq(50, by=5, length.out=10)   # sequence 50 by 5 until you hit vector length = length.out
-seq(1, 8, by=3)                # sequence by 3 until you hit 8
-```
--->
-<p>Our metadata data frame has rows and columns (it has 2 dimensions), if we want to extract some specific data from it, we need to specify the “coordinates” we want from it. Row numbers come first, followed by column numbers (i.e. [row, column]).</p>
-<pre class="sourceCode r"><code class="sourceCode r">metadata[<span class="dv">1</span>, <span class="dv">2</span>]   <span class="co"># first element in the 2nd column of the data frame</span>
-metadata[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column</span>
-metadata[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column</span>
-metadata[<span class="dv">3</span>, ]    <span class="co"># the 3rd element for all columns</span>
-metadata[, <span class="dv">7</span>]    <span class="co"># the entire 7th column</span>
-head_meta &lt;-<span class="st"> </span>metadata[<span class="dv">1</span>:<span class="dv">6</span>, ] <span class="co"># metadata[1:6, ] is equivalent to head(metadata)</span></code></pre>
-<!--
-### Challenge
-
-1. The function `nrow()` on a `data.frame` returns the number of rows. Use it,
-   in conjuction with `seq()` to create a new `data.frame` called
-   `meta_by_2` that includes every other row of the survey data frame
-   starting at row 2 (2, 4, 6, ...)
-
-
-
-```r
-meta_by_2 <- metadata[seq(2, nrow(metadata), by=2), ]
-```
---->
+<blockquote>
+<h2 id="exercise">Exercise</h2>
+<p>Fill in the blank to select the even elements of ten_letters using the seq() function.</p>
+<p>ten_letters[____________]</p>
+<blockquote>
+<h2 id="solution">Solution</h2>
+<p>ten_letters[seq(2, 10, by = 2)] {: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
 </div>
-<div id="indexing-and-sequences-within-a-data.frame" class="section level1">
-<h1>Indexing and sequences (within a <code>data.frame</code>)</h1>
-<p>For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. (Are species names in column 5 or 7? oh, right… they are in column 6). In some cases, in which column the variable will be can change if the script you are using adds or removes columns. It’s therefore often better to use column names to refer to a particular variable, and it makes your code easier to read and your intentions clearer.</p>
+<div id="data-frames" class="section level2">
+<h2>Data frames</h2>
+<p>The metadata data frame has rows and columns (it has 2 dimensions), if we want to extract some specific data from it, we need to specify the “coordinates” we want from it. Row numbers come first, followed by column numbers (i.e. [row, column]).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">metadata[<span class="dv">1</span>, <span class="dv">2</span>]   <span class="co"># 1st element in the 2nd column </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">metadata[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># 1st element in the 6th column</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">metadata[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># First three elements in the 7th column</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">metadata[<span class="dv">3</span>, ]    <span class="co"># 3rd element for all columns</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">metadata[, <span class="dv">7</span>]    <span class="co"># Entire 7th column</span></a></code></pre></div>
+<blockquote>
+<h2 id="challenge">Challenge</h2>
+<p>The function <code>nrow()</code> on a <code>data.frame</code> returns the number of rows. For example, try typing nrow(metadata)<code>. Use</code>nrow()<code>and</code>seq()<code>to create a new data frame called</code>meta_by_2<code>that includes all even numbered rows of</code>metadata`.</p>
+<h2 id="solution-1">Solution</h2>
+<blockquote>
+<p>meta_data[seq(2, nrow(metadata), by = 2, ]</p>
+<p>{: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. Sometimes the column number for a particular variable can change if your analysis adds or removes columns. The best practice when working with columns in a data frame is to refer to them by name. This also makes your code easier to read and your intentions clearer.</p>
+<p>There are two ways to select a column by name from a data frame:</p>
+<ul>
+<li>Using <code>dataframe[ , &quot;column_name&quot;]</code></li>
+<li>Using <code>dataframe$column_name</code></li>
+</ul>
 <p>You can do operations on a particular column, by selecting it using the <code>$</code> sign. In this case, the entire column is a vector. You can use <code>names(metadata)</code> or <code>colnames(metadata)</code> to remind yourself of the column names. For instance, to extract all the strain information from our datasets:</p>
-<pre class="sourceCode r"><code class="sourceCode r">metadata$strain</code></pre>
-<p>In some cases, you may way to select more than one column. You can do this using the square brackets. Suppose we wanted strain and clade information:</p>
-<pre class="sourceCode r"><code class="sourceCode r">metadata[, <span class="kw">c</span>(<span class="st">&quot;strain&quot;</span>, <span class="st">&quot;clade&quot;</span>)]</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Select the strain column from metadata</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">metadata[ , <span class="st">&quot;strain&quot;</span>]</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co"># Alternatively...</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">metadata<span class="op">$</span>strain</a></code></pre></div>
+<p>The first method allows you to select multiple columns at once. Suppose we wanted strain and clade information:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">metadata[, <span class="kw">c</span>(<span class="st">&quot;strain&quot;</span>, <span class="st">&quot;clade&quot;</span>)]</a></code></pre></div>
 <p>You can even access columns by column name <em>and</em> select specific rows of interest. For example, if we wanted the strain and clade of just rows 4 through 7, we could do:</p>
-<pre class="sourceCode r"><code class="sourceCode r">metadata[<span class="dv">4</span>:<span class="dv">7</span>, <span class="kw">c</span>(<span class="st">&quot;strain&quot;</span>, <span class="st">&quot;clade&quot;</span>)]</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">metadata[<span class="dv">4</span><span class="op">:</span><span class="dv">7</span>, <span class="kw">c</span>(<span class="st">&quot;strain&quot;</span>, <span class="st">&quot;clade&quot;</span>)]</a></code></pre></div>
+<p>&lt;!– Still need to address the following learning objectives: * Append columns to a data frame. * Create subsets of a data frame.</p>
+<p>The following headings are just suggestions.</p>
+<blockquote>
+
+</blockquote>
+</div>
+</div>
+<div id="manipulating-columns" class="section level1">
+<h1>Manipulating columns</h1>
+<div id="mathematical-operations" class="section level2">
+<h2>Mathematical operations</h2>
+</div>
+<div id="appending-new-columns" class="section level2">
+<h2>Appending new columns</h2>
+</div>
+</div>
+<div id="creating-subsets" class="section level1">
+<h1>Creating subsets</h1>
 </div>
 
 <hr/>
 
 <p><a href="http://datacarpentry.org/">Data Carpentry</a>,
-  2017. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
+  2017-2018. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
   Questions?  Feedback?
-  Please <a href="https://github.com/datacarpentry/R-ecology-lesson/issues/new">file
+  Please <a href="https://github.com/datacarpentry/R-genomics/issues/new">file
   an issue on GitHub</a>. <br/> On
   Twitter: <a href="https://twitter.com/datacarpentry">@datacarpentry</a></p>
 

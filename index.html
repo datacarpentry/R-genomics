@@ -12,7 +12,7 @@
 <meta name="author" content="Data Carpentry contributors" />
 
 
-<title>Data Carpentry: R for Genomics</title>
+<title>Data Analysis and Visualization in R alpha</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,7 +24,9 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
 
 
@@ -78,6 +80,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -305,7 +310,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Data Carpentry: R for Genomics</h1>
+<h1 class="title toc-ignore">Data Analysis and Visualization in R <em>alpha</em></h1>
 <h4 class="author"><em>Data Carpentry contributors</em></h4>
 
 </div>
@@ -314,7 +319,7 @@ div.tocify {
 <p>
 </p>
 <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-<img src="./img/DC-logo-vision.png" />
+<p><img src="img/DC-logo-vision.png" /></p>
 </div>
 <p>
 </p>
@@ -336,12 +341,12 @@ div.tocify {
 <p>Data Carpentry’s teaching is hands-on, so participants are encouraged to use their own computers to ensure the proper setup of tools for an efficient workflow. <em>These lessons assume no prior knowledge of the skills or tools</em>, but working through this lesson requires working copies of the software described below. To most effectively use these materials, please make sure to download the data and install everything <em>before</em> working through this lesson.</p>
 <div id="data" class="section level3">
 <h3>Data</h3>
-<p>Data files for the lesson are available and can be downloaded manually here:</p>
-<p>However, we will download them directly from R during the lessons when we need them.</p>
+<p>Data for the lesson is available <a href="https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv">here</a>.</p>
+<p>We will download this file directly from R during the lessons when we need it.</p>
 </div>
 <div id="setup-instructions" class="section level3">
 <h3>Setup instructions</h3>
-<p><strong>R</strong> and <strong>RStudio</strong> are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. After installing both programs, you will need to install the <strong><code>tidyverse</code></strong> package from within RStudio. Follow the instructions below for your operating system, and then follow the instructions to install <strong><code>tidyverse</code></strong> and <strong><code>RSQLite</code></strong>.</p>
+<p><strong>R</strong> and <strong>RStudio</strong> are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. After installing both programs, you will need to install the <strong><code>tidyverse</code></strong> package from within RStudio. In the sections below are the instructions for installing R and R Studio on your operating system, as well as instructions for then installing <strong><code>tidyverse</code></strong> and <strong><code>RSQLite</code></strong>.</p>
 <div id="windows" class="section level4">
 <h4>Windows</h4>
 <div id="if-you-already-have-r-and-rstudio-installed" class="section level5">
@@ -391,7 +396,7 @@ div.tocify {
 <ul>
 <li>Follow the instructions for your distribution from <a href="https://cloud.r-project.org/bin/linux">CRAN</a>, they provide information to get the most recent version of R for common distributions. For most distributions, you could use your package manager (e.g., for Debian/Ubuntu run <code>sudo apt-get install r-base</code>, and for Fedora <code>sudo yum install R</code>), but we don’t recommend this approach as the versions provided by this are usually out of date. In any case, make sure you have at least R 3.3.1.</li>
 <li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio download page</a></li>
-<li>Under <em>Installers</em> select the version that matches your distribution, and install it with your preferred method (e.g., with Debian/Ubuntu <code>sudo dpkg -i   rstudio-x.yy.zzz-amd64.deb</code> at the terminal).</li>
+<li>Under <em>Installers</em> select the version that matches your distribution, and install it with your preferred method (e.g., with Debian/Ubuntu <code>sudo dpkg -i rstudio-x.yy.zzz-amd64.deb</code> at the terminal).</li>
 <li>Once it’s installed, open RStudio to make sure it works and you don’t get any error messages.</li>
 </ul>
 </div>
@@ -406,15 +411,15 @@ div.tocify {
 </div>
 <div id="contributors" class="section level2">
 <h2>Contributors</h2>
-<p>The list of contributors to this lesson is available <a href="http://datacarpentry.org/R-ecology-lesson/CITATION">here</a>,</p>
+<p>The list of contributors to this lesson is available <a href="http://datacarpentry.org/R-ecology-lesson/CITATION">here</a>.</p>
 </div>
 
 <hr/>
 
 <p><a href="http://datacarpentry.org/">Data Carpentry</a>,
-  2017. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
+  2017-2018. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
   Questions?  Feedback?
-  Please <a href="https://github.com/datacarpentry/R-ecology-lesson/issues/new">file
+  Please <a href="https://github.com/datacarpentry/R-genomics/issues/new">file
   an issue on GitHub</a>. <br/> On
   Twitter: <a href="https://twitter.com/datacarpentry">@datacarpentry</a></p>
 

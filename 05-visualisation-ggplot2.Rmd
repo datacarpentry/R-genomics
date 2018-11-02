@@ -10,9 +10,9 @@ show hide magic
 
 <style> div.hidecode + pre {display: none} div.hidecode {color: #337ab7}</style><script> doclick=function(e){ e.nextSibling.nextSibling.style.display = e.nextSibling.nextSibling.style.display === "block" ? "none" : "block"; }</script>
 -->
-
-```{r}
-knitr::opts_chunk$set(fig.keep='last')
+²
+```{r, echo=FALSE, purl=FALSE}²
+knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-', fig.keep='last')
 ```
 
 ```{r setup, echo=FALSE, purl=FALSE}

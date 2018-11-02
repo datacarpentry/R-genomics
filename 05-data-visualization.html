@@ -24,28 +24,76 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -103,6 +151,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -337,12 +388,12 @@ div.tocify {
 
 
 <blockquote>
-<h2>Learning Objectives</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
 <ul>
-<li>Describe the features of R’s plotting packages (i.e. know the difference between base R and ggplot plotting approaches).</li>
 <li>Create simple scatterplots, histograms, and boxplots in R.</li>
+<li>Compare the plotting features of base R and the ggplot2 package.</li>
 <li>Customize the aesthetics of an existing plot.</li>
-<li>Build complex and customized plots from data in a data frame.</li>
+<li>Create plots from data in a data frame.</li>
 <li>Export plots from RStudio to standard graphical file formats.</li>
 </ul>
 </blockquote>
@@ -350,46 +401,45 @@ div.tocify {
 <h1>Basic plots in R</h1>
 <p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers”, and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of R’s plotting packages.</p>
 <p>When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as hisotgrams, scatter plots, bar charts, boxplots and much <a href="http://www.statmethods.net/graphs/">more</a>. We’ll test a few of these out here on the <code>genome_size</code> vector from our metadata.</p>
-<pre class="sourceCode r"><code class="sourceCode r">genome_size &lt;-<span class="st"> </span>metadata$genome_size</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">genome_size &lt;-<span class="st"> </span>metadata<span class="op">$</span>genome_size</a></code></pre></div>
 <div id="scatterplot" class="section level2">
 <h2>Scatterplot</h2>
 <p>Let’s start with a <strong>scatterplot</strong>. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don’t have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(genome_size)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/scatter-plot1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">plot</span>(genome_size)</a></code></pre></div>
+<p><img src="img/r-lesson-scatter-plot1-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Each point represents a clone and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot you can customize many features of your graphs (fonts, colors, axes, titles) through <a href="http://www.statmethods.net/advgraphs/parameters.html">graphic options</a> For example, we can change the shape of the data point using <code>pch</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(genome_size, <span class="dt">pch=</span><span class="dv">8</span>)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">plot</span>(genome_size, <span class="dt">pch=</span><span class="dv">8</span>)</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We can add a title to the plot by assigning a string to <code>main</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(genome_size, <span class="dt">pch=</span><span class="dv">8</span>, <span class="dt">main=</span><span class="st">&quot;Scatter plot of genome sizes&quot;</span>)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">plot</span>(genome_size, <span class="dt">pch=</span><span class="dv">8</span>, <span class="dt">main=</span><span class="st">&quot;Scatter plot of genome sizes&quot;</span>)</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="histogram" class="section level2">
 <h2>Histogram</h2>
 <p>Another way to visualize the distribution of genome sizes is to use a histogram, we can do this buy using the <code>hist</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(genome_size)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">hist</span>(genome_size)</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="boxplot" class="section level2">
 <h2>Boxplot</h2>
 <p>Using additional information from our metadata, we can use plots to compare values between the different citrate mutant status using a <strong>boxplot</strong>. A boxplot provides a graphical view of the median, quartiles, maximum, and minimum of a data set.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Boxplot</span>
-<span class="kw">boxplot</span>(genome_size ~<span class="st"> </span>cit, metadata)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/boxplot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Boxplot</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">boxplot</span>(genome_size <span class="op">~</span><span class="st"> </span>cit, metadata)</a></code></pre></div>
+<p><img src="img/r-lesson-boxplot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Similar to the scatterplots above, we can pass in arguments to add in extras like plot title, axis labels and colors.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(genome_size ~<span class="st"> </span>cit, metadata,  <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;pink&quot;</span>,<span class="st">&quot;purple&quot;</span>, <span class="st">&quot;darkgrey&quot;</span>),
-        <span class="dt">main=</span><span class="st">&quot;Average expression differences between celltypes&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Expression&quot;</span>)</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">boxplot</span>(genome_size <span class="op">~</span><span class="st"> </span>cit, metadata,  <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;pink&quot;</span>,<span class="st">&quot;purple&quot;</span>, <span class="st">&quot;darkgrey&quot;</span>),</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">        <span class="dt">main=</span><span class="st">&quot;Average expression differences between celltypes&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Expression&quot;</span>)</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="advanced-figures-ggplot2" class="section level1">
 <h1>Advanced figures (<code>ggplot2</code>)</h1>
 <p>More recently, R users have moved away from base graphic options and towards a plotting package called <a href="http://docs.ggplot2.org/"><code>ggplot2</code></a> that adds a lot of functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.</p>
-<p><code>ggplot</code> is best used on data in the <code>data.frame</code> form, so we will will work with <code>metadata</code> for the following figures. Let’s start by loading the <code>ggplot2</code> library.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.2.5</code></pre>
+<p><code>ggplot2</code> is best used on data in the <code>data.frame</code> form, so we will will work with <code>metadata</code> for the following figures. Let’s start by loading the <code>ggplot2</code> library.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
 <p>The <code>ggplot()</code> function is used to initialize the basic graph structure, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the <code>+</code> operator.</p>
-<p>We will start with a blank plot and will find that you will get an error, because you need to add layers.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) <span class="co"># note the error </span></code></pre>
+<p>We will start with a blank plot and will add layers as we go along.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">ggplot</span>(metadata)</a></code></pre></div>
 <p>Geometric objects are the actual marks we put on a plot. Examples include:</p>
 <ul>
 <li>points (<code>geom_point</code>, for scatter plots, dot plots, etc)</li>
@@ -397,8 +447,8 @@ div.tocify {
 <li>boxplot (<code>geom_boxplot</code>, for, well, boxplots!)</li>
 </ul>
 <p>A plot <strong>must have at least one geom</strong>; there is no upper limit. You can add a geom to a plot using the + operator</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="co"># note what happens here</span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="co"># note what happens here</span></a></code></pre></div>
 <p>Each type of geom usually has a <strong>required set of aesthetics</strong> to be set, and usually accepts only a subset of all aesthetics –refer to the geom help pages to see what mappings each geom accepts. Aesthetic mappings are set with the aes() function. Examples include:</p>
 <ul>
 <li>position (i.e., on the x and y axes)</li>
@@ -408,9 +458,9 @@ div.tocify {
 <li>size</li>
 </ul>
 <p>To start, we will add position for the x- and y-axis since <code>geom_point</code> requires mappings for x and y, all others are optional.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> sample, <span class="dt">y=</span> genome_size))</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> sample, <span class="dt">y=</span> genome_size))</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The labels on the x-axis are quite hard to read. To do this we need to add an additional theme layer. The ggplot2 <code>theme</code> system handles non-data plot elements such as:</p>
 <ul>
 <li>Axis labels</li>
@@ -419,66 +469,71 @@ div.tocify {
 <li>Legend appearance</li>
 </ul>
 <p>There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. <em>For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status.</em> The size of the points can be adjusted within the <code>geom_point</code> but does not need to be included in <code>aes()</code> since the value is not mapping to a variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> sample, <span class="dt">y=</span> genome_size, <span class="dt">color =</span> generation, <span class="dt">shape =</span> cit), <span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">3.0</span>)) +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">hjust=</span><span class="dv">1</span>))</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> sample, <span class="dt">y=</span> genome_size, <span class="dt">color =</span> generation, <span class="dt">shape =</span> cit), <span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">3.0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">hjust=</span><span class="dv">1</span>))</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="histogram-1" class="section level2">
 <h2>Histogram</h2>
 <p>To plot a histogram we require another geometric object <code>geom_bar</code>, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the <code>stat_bin</code> argument.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> genome_size))</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> genome_size))</a></code></pre></div>
 <p>Try plotting with the default value and compare it to the plot using the binwidth values. How do they differ?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> genome_size), <span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="dt">binwidth=</span><span class="fl">0.05</span>)</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> genome_size), <span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="dt">binwidth=</span><span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
 ## `geom_histogram()` instead.</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="img/r-lesson-unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="boxplot-1" class="section level2">
 <h2>Boxplot</h2>
 <p>Now that we have all the required information on let’s try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(metadata) +
-<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cit, <span class="dt">y =</span> genome_size, <span class="dt">fill =</span> cit)) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Boxplot of genome size by citrate mutant type&#39;</span>) +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;citrate mutant&#39;</span>) +
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;genome size&#39;</span>) +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>),
-          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">hjust=</span><span class="dv">1</span>),
-          <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">1.5</span>)),
-          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">1.25</span>)))</code></pre>
-<p><img src="05-data-visualization_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">ggplot</span>(metadata) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cit, <span class="dt">y =</span> genome_size, <span class="dt">fill =</span> cit)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Boxplot of genome size by citrate mutant type&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;citrate mutant&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;genome size&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">size =</span> <span class="fl">.5</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>),</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">hjust=</span><span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">          <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">1.5</span>)),</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="kw">rel</span>(<span class="fl">1.25</span>)))</a></code></pre></div>
+<p><img src="img/r-lesson-unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="writing-figures-to-file" class="section level2">
-<h2>Writing figures to file</h2>
-<p>There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on <code>Export</code> when the image is plotted. This will give you the option of <code>png</code> or <code>pdf</code> and selecting the directory to which you wish to save it to. The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include <code>pdf()</code>, <code>png</code>.</p>
-<p>Initialize a plot that will be written directly to a file using <code>pdf</code>, <code>png</code> etc. Within the function you will need to specify a name for your image, and the with and height (optional). Then create a plot using the usual functions in R. Finally, close the file using the <code>dev.off()</code> function. There are also <code>bmp</code>, <code>tiff</code>, and <code>jpeg</code> functions, though the jpeg function has proven less stable than the others.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="st">&quot;figure/boxplot.pdf&quot;</span>)
-
-<span class="kw">ggplot</span>(example_data) +
-<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cit, <span class="dt">y =</span>....) +
-<span class="st">  </span><span class="kw">ggtitle</span>(...) +
-<span class="st">  </span><span class="kw">xlab</span>(...) +
-<span class="st">  </span><span class="kw">ylab</span>(...) +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(...),
-          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(...),
-          <span class="dt">axis.title =</span> <span class="kw">element_text</span>(...),
-          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(...)
-
-<span class="kw">dev.off</span>()</code></pre>
 </div>
+<div id="writing-figures-to-file" class="section level1">
+<h1>Writing figures to file</h1>
+<p>There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on <code>Export</code> when the image is plotted. This will give you the option of <code>png</code> or <code>pdf</code> and selecting the directory to which you wish to save it to.</p>
+<p>The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include <code>pdf()</code>, <code>png()</code>, which are functions that initialize a plot that will be written directly to a file in the <code>pdf</code> or <code>png</code> format, respectively. Within the function you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file you need to:</p>
+<ol style="list-style-type: decimal">
+<li>Initialize the plot using the function that corresponds to the type of file you want to make: <code>pdf(&quot;filename&quot;)</code></li>
+<li>Write the code that makes the plot.</li>
+<li>Close the connection to the new file (with your plot) using <code>dev.off()</code>.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;figure/boxplot.pdf&quot;</span>)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw">ggplot</span>(example_data) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cit, <span class="dt">y =</span>....) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="st">  </span><span class="kw">ggtitle</span>(...) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="st">  </span><span class="kw">xlab</span>(...) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="st">  </span><span class="kw">ylab</span>(...) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(...),</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(...),</a>
+<a class="sourceLine" id="cb17-10" data-line-number="10">          <span class="dt">axis.title =</span> <span class="kw">element_text</span>(...),</a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(...)</a>
+<a class="sourceLine" id="cb17-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb17-13" data-line-number="13"><span class="kw">dev.off</span>()</a></code></pre></div>
 <div id="resources" class="section level2">
 <h2>Resources:</h2>
-<p>We have only scratched the surface here. To learn more, see the <a href="http://docs.ggplot2.org/">ggplot reference site</a>, and Winston Chang’s excellent <a href="http://wiki.stdout.org/rcookbook/Graphs/">Cookbook for R</a> site. Though slightly out of date, <a href="http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403">ggplot2: Elegant Graphics for Data Anaysis</a> is still the definative book on this subject. Much of the material here was adpapted from <a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Introduction to R graphics with ggplot2 Tutorial at IQSS</a>.</p>
+<p>We have only scratched the surface here. To learn more, see the <a href="http://docs.ggplot2.org/">ggplot2 reference site</a>, and Winston Chang’s excellent <a href="http://wiki.stdout.org/rcookbook/Graphs/">Cookbook for R</a> site. Though slightly out of date, <a href="http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403">ggplot2: Elegant Graphics for Data Anaysis</a> is still the definative book on this subject. Much of the material here was adpapted from <a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Introduction to R graphics with ggplot2 Tutorial at IQSS</a>.</p>
 </div>
 </div>
 
 <hr/>
 
 <p><a href="http://datacarpentry.org/">Data Carpentry</a>,
-  2017. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
+  2017-2018. <a href="LICENSE.html">License</a>. <a href="CONTRIBUTING.html">Contributing</a>. <br/>
   Questions?  Feedback?
-  Please <a href="https://github.com/datacarpentry/R-ecology-lesson/issues/new">file
+  Please <a href="https://github.com/datacarpentry/R-genomics/issues/new">file
   an issue on GitHub</a>. <br/> On
   Twitter: <a href="https://twitter.com/datacarpentry">@datacarpentry</a></p>
 

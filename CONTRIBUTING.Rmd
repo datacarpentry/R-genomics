@@ -9,29 +9,29 @@ reports, and reviews of proposed changes are all welcome.
 ## Contributor Agreement
 
 By contributing, you agree that we may redistribute your work
-under [our license](http://www.datacarpentry.org/R-ecology-lesson/LICENSE.html).
+under [our license](http://www.datacarpentry.org/R-genomics/LICENSE.html).
 In exchange, we will address your issues and/or assess your change proposal as
 promptly as we can, and help you become a member of our community.  Everyone
 involved in [Software Carpentry](https://software-carpentry.org)
 and [Data Carpentry](http://datacarpentry.org) agrees to abide by
 our
-[code of conduct](http://www.datacarpentry.org/R-ecology-lesson/CONDUCT.html).
+[code of conduct](http://www.datacarpentry.org/R-genomics/CONDUCT.html).
 
 
 ## Working With GitHub
 
 **NOTE: this repository uses `gh-pages` as our default branch.**
 
-1.  Fork the `datacarpentry/R-ecology-lesson` repository on GitHub.  *See the
+1.  Fork the `datacarpentry/R-genomics` repository on GitHub.  *See the
     "Fork" button in the top-right corner of the screen on the GitHub website.*
 
 2.  Clone that repository to your own machine. (It is also possible
     to make minor edits right on GitHub.) *At your terminal:*
 
 	```bash
-	git clone https://github.com/your_username/R-ecology-lesson.git R-ecology-lesson
-	cd R-ecology-lesson
-	git remote add upstream https://github.com/datacarpentry/R-ecology-lesson.git
+	git clone https://github.com/your_username/R-genomics.git R-genomics
+	cd R-genomics
+	git remote add upstream https://github.com/datacarpentry/R-genomics.git
 	```
 
 3.  Create a branch from `gh-pages` for your changes.
@@ -63,8 +63,8 @@ our
     to avoid merge conflicts.
 
 5.  Send a pull request (PR) to the `gh-pages` branch of the
-    `datacarpentry/R-ecology-lesson` repository for this lesson at
-    http://github.com/datacarpentry/R-ecology-lesson
+    `datacarpentry/R-genomics` repository for this lesson at
+    http://github.com/datacarpentry/R-genomics
 
 If it is easier for you to send edits to us some other way, please
 mail us at [board@datacarpentry.org](mailto:board@datacarpentry.org).
@@ -81,7 +81,7 @@ Each lesson is composed of files such as `00-before-we-start.Rmd`,
 For the R material, lessons must be written in RMarkdown (ending in
 `Rmd`). A Makefile converts the Rmd files into HTML that are
 processed by Jekyll (the tool GitHub uses to create websites) as
-explained in [the README file](https://github.com/datacarpentry/R-ecology-lesson#readme).
+explained in [the README file](https://github.com/datacarpentry/R-genomics#readme).
 
 _Important Note:_ We use the `purl()` function from `knitr` to
 generate a skeleton file that contains code to be distributed to

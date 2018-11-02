@@ -5,6 +5,11 @@ author: Data Carpentry contributors
 minutes: 30
 ---
 
+```{r, echo=FALSE, purl=FALSE}
+knitr::opts_chunk$set(results='hide', fig.path='img/r-lesson-')
+```
+
+
 ```{r, echo=FALSE}
 metadata <- read.csv('./data/Ecoli_metadata.csv')
 ```
