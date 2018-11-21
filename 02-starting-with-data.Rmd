@@ -76,10 +76,10 @@ Wow... that was a lot of output. At least it means the data loaded properly. Let
 head(metadata)
 ```
 
-We've just done two very useful things.
+We've just done two very useful things:
+
 1. We've read our data in to R, so now we can work with it in R
-2. We've created a data frame (with the read.csv command) the
-standard way R works with data.
+2. We've created a data frame (with the `read.csv` command) the standard way R works with data.
 
 # What are data frames?
 
@@ -100,7 +100,7 @@ the data, you may want to keep these columns as `character`. To do so,
 `read.csv()` and `read.table()` have an argument called `stringsAsFactors` which
 can be set to `FALSE`:
 
-Let's now check the __str__ucture of this `data.frame` in more details with the
+Let's now check the structure of this `data.frame` in more details with the
 function `str()`:
 
 ```{r, purl=FALSE}
