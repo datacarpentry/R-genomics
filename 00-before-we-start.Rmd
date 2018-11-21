@@ -33,7 +33,7 @@ Start RStudio -- Let's start by learning about our tool.
 # Before we get started
 
 * Under the `File` menu, click on `New project`, choose `New directory`, then
-  `Empty project`
+  `New Project` which will create a new project in an empty directory
 * Enter a name for this new folder, and choose a convenient location for
   it. This will be your **working directory** for the rest of the day
   (e.g., `~/data-carpentry`)
