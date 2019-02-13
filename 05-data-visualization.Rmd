@@ -15,7 +15,7 @@ metadata <- read.csv('./data/Ecoli_metadata.csv')
 ```
 
 > ## Learning Objectives 
-* Create simple scatterplots, histograms, and boxplots in R.
+* Create simple scatter plots, histograms, and boxplots in R.
 * Compare the plotting features of base R and the ggplot2 package.
 * Customize the aesthetics of an existing plot.
 * Create plots from data in a data frame.
@@ -33,8 +33,8 @@ genome_size <- metadata$genome_size
 
 ```
 
-## Scatterplot
-Let's start with a **scatterplot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don't have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.
+## Scatter plot
+Let's start with a **scatter plot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don't have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.
 
 ```{r scatter-plot1, fig.align='center'}
 plot(genome_size)
@@ -69,7 +69,7 @@ Using additional information from our metadata, we can use plots to compare valu
 boxplot(genome_size ~ cit, metadata)
 ```
 
-Similar to the scatterplots above, we can pass in arguments to add in extras like plot title, axis labels and colors.
+Similar to the scatter plots above, we can pass in arguments to add in extras like plot title, axis labels and colors.
 
 ```{r, fig.align='center'}
 boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
@@ -140,7 +140,7 @@ ggplot(metadata) +
 
 ## Histogram
 
-To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument. 
+To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatter plots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument. 
 
 ```{r, eval=FALSE}
 ggplot(metadata) +
