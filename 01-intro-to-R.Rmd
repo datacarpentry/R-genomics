@@ -30,9 +30,27 @@ _Start by showing an example of a script_
   - the assignment operator `<-`
   - the `=` for arguments
   - the comments `#` and how they are used to document function and its content
-  - the `$` operator
 * Point to indentation and consistency in spacing to improve clarity
 
+Example script:
+
+```{r, purl = FALSE}
+# This is a comment, R will not read anything following a hashtag
+
+x <- 6
+y <- 19
+z <- sum(x, y) # This is a function
+
+# Syntax for an if statement
+# If the expression inside the () is true, R will evaluate everything inside the {}
+if (z > 10){
+	vector <- c(x, y, z)
+}
+
+# Print vector and the length of vector 
+vector
+length(vector)
+```
 
 ## Creating objects
 
