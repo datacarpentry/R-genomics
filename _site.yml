@@ -16,7 +16,7 @@ navbar:
       href: 05-data-visualization.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/data-lessons/R-genomics
+      href: https://github.com/datacarpentry/R-genomics
 output_dir: "."
 exclude: ["CONTRIBUT*.md","index.md","README.md","*.db"]
 include: ["*.Rmd","LICENSE.md"]
