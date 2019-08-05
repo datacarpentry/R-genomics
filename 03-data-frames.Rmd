@@ -89,7 +89,7 @@ seq(20, 4, by = -3)
 > ten_letters[____________]
 > 
 > > ## Solution
-> > ten_letters[seq(2, 10, by = 2)]
+> > ten_letters[seq(2, 10, by = 2)]  
 > {: .solution}
 {: .challenge}
 
@@ -111,11 +111,11 @@ metadata[, 7]    # Entire 7th column
 
 > ## Challenge
 > 
-> The function `nrow()` on a `data.frame` returns the number of rows. For example, try typing nrow(metadata)`.
+> The function `nrow()` on a `data.frame` returns the number of rows. For example, try typing `nrow(metadata)`.
 > Use `nrow()` and `seq()` to create a new data frame called `meta_by_2` that includes all even numbered rows of `metadata`.
 > 
 > ## Solution
-> > meta_data[seq(2, nrow(metadata), by = 2, ]
+> > meta_by_2 <- metadata[seq(2, nrow(metadata), by = 2), ]
 > > 
 > >
 > {: .solution}
